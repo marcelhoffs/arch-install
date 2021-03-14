@@ -14,7 +14,7 @@ if [ $# -eq 2 ]
 
     # Create alias for ll
     echo '' >> /home/$USERNAME/.bashrc
-    echo '# Custo; aliasses' >> /home/$USERNAME/.bashrc
+    echo '# Custom aliasses' >> /home/$USERNAME/.bashrc
     echo 'alias ll='\''ls -l'\''' >> /home/$USERNAME/.bashrc
 
     # Modify .bash_profile
