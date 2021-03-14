@@ -9,7 +9,7 @@ if [ $# -eq 2 ]
     echo "$1 ALL=(ALL) ALL" >> /etc/sudoers.d/$1
 
     # Create alias for ll
-    echo 'alias ll=''ls -l''' >> /home/$1/.bashrc
+    echo 'alias ll='\''ls -l'\''' >> /home/$1/.bashrc
 
     # Modify .bash_profile
     echo '# Clear screen and run neofetch' >> /home/$1/.bash_profile
