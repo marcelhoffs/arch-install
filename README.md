@@ -87,10 +87,18 @@ genfstab -U -p /mnt >> /mnt/etc/fstab
 arch-chroot /mnt
 ```
 
-**8. Clone the repository and run the base installer**
+# Clone the repository and run the base installer
 ```
 mkdir /arch-install
 cd /arch-install
 git clone https://github.com/marcelhoffs/arch-install .
 ./base.sh
+```
+
+# Install Desktop Environment
+After reboot you will find the arch-install folder in the users home directory.
+From there you can start the installer for Desktop Environments. Run the script with root privileges.
+```
+cd arch-install
+sudo ./desktop.sh
 ```
