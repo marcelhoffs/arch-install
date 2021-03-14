@@ -3,7 +3,7 @@
 # Introduction
 This repository provides an easy way to install Arch Linux on an UEFI system.
 
-# Preparation
+# Step 1: Preparation
 You should first partition the drives manually. After that you can use the scripts to do a base installation and install a desktop environment of choice.
 
 The script expect the following partitions:
@@ -87,7 +87,7 @@ genfstab -U -p /mnt >> /mnt/etc/fstab
 arch-chroot /mnt
 ```
 
-# Clone the repository and run the base installer
+# Step 2: Clone the repository and run the base installer
 ```
 mkdir /arch-install
 cd /arch-install
@@ -96,7 +96,7 @@ chmod +x base.sh
 ./base.sh
 ```
 
-# Install Desktop Environment
+# Step 3: Install Desktop Environment
 After reboot you will find the arch-install folder in the users home directory.
 From there you can start the installer for Desktop Environments. Run the script with root privileges.
 ```
