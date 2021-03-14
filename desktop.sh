@@ -16,10 +16,11 @@ if [ "$EUID" -ne 0 ]
     echo ''
     echo ' Available Desktop Environments:'
     echo ''
-    echo ' 1) Gnome'
-    echo ' 2) KDE'
-    echo ' 3) Mate'
-    echo ' 4) XFCE'
+    echo ' 1) Gnome (default)'
+    echo ' 2) Gnome (minimal)'
+    echo ' 3) KDE'
+    echo ' 4) Mate'
+    echo ' 5) XFCE'
     echo ''
     echo ' q) Quit'
     echo ''
@@ -51,14 +52,18 @@ if [ "$EUID" -ne 0 ]
             ./library/gnome.sh
           ;;
           2)
+            # Install GNOME
+            ./library/gnome.sh MINIMAL
+          ;;
+          3)
             # Install KDE
             ./library/kde.sh
           ;;
-          3)
+          4)
             # Install MATE
             ./library/mate.sh
           ;;
-          4)
+          5)
             # Install XFCE
             ./library/xfce.sh
           ;;
