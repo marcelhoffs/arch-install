@@ -13,12 +13,12 @@ Boot | 300M | EFI (1) | /mnt/boot/EFI
 Swap | 4096M | Linux Swap (82) | swap
 Root | rest | Linux (83) | /mnt
 
-1. First set the time
+**1. First set the time**
 ```
 timedatectl set-ntp true
 ```
 
-2. Partition the drive
+**2. Partition the drive**
 ```
 # Partition the drive
 fdisk -l
@@ -52,7 +52,7 @@ default last sector
 w
 ```
 
-3. Format the drive
+**3. Format the drive**
 ```
 # Format EFI partition
 mkfs.fat -F32 /dev/sda1
@@ -65,24 +65,32 @@ swapon /dev/sda2
 mkfs.ext4 /dev/sda3
 ```
 
-4. Mount the drives
+**4. Mount the drives**
 ```
 mount /dev/sda3 /mnt
 mkdir -p /mnt/boot/EFI
 mount /dev/sda1 /mnt/boot/EFI
 ```
 
-5. Install base the base system
+**5. Install base the base system**
 ```
 pacstrap -i /mnt base base-devel vi nano git 
 ```
 
-6. Generate ftab 
+**6. Generate fstab**
 ```
 genfstab -U -p /mnt >> /mnt/etc/fstab
 ```
 
-7. Change root
+**7. Change root**
 ```
 arch-chroot /mnt
+```
+
+**8. Clone the repository and run the base installer**
+```
+mkdir /arch-install
+cd /arch-install
+git clone https://github.com/marcelhoffs/arch-install .
+./base.sh
 ```
