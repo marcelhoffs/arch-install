@@ -19,7 +19,7 @@ echo ''
 read -p ' Are you sure you want to continue? [Y/N]: ' INSTALL_CONTINUE
 
 INSTALL_CONTINUE=${INSTALL_CONTINUE^^}
-if [ INSTALL_CONTINUE == 'Y' ]
+if [ $INSTALL_CONTINUE == 'Y' ]
   then
     # Make script executable
     chmod +x library/*.sh
@@ -76,4 +76,5 @@ if [ INSTALL_CONTINUE == 'Y' ]
     echo '=============================================='
     echo ' Installation aborted.                        '
     echo '=============================================='
+    echo ''
 fi

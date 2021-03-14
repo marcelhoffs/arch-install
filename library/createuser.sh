@@ -1,22 +1,26 @@
 #!/bin/bash
+
+USERNAME=${$1,,}
+PASSWORD=${$2,,}
+
 if [ $# -eq 2 ]
   then
     # Create a new user
-    echo ">> Set new user: $1"
-    useradd -m -g users -s /bin/bash $1
-    echo $1:$2 | chpasswd
-    echo "$1 ALL=(ALL) ALL" >> /etc/sudoers.d/$1
+    echo ">> Set new user: $USERNAME"
+    useradd -m -g users -s /bin/bash $USERNAME
+    echo $USERNAME:$PASSWORD | chpasswd
+    echo "$USERNAME ALL=(ALL) ALL" >> /etc/sudoers.d/$USERNAME
 
     # Create alias for ll
-    echo '' >> /home/$1/.bashrc
-    echo '# Custo; aliasses' >> /home/$1/.bashrc
-    echo 'alias ll='\''ls -l'\''' >> /home/$1/.bashrc
+    echo '' >> /home/$USERNAME/.bashrc
+    echo '# Custo; aliasses' >> /home/$USERNAME/.bashrc
+    echo 'alias ll='\''ls -l'\''' >> /home/$USERNAME/.bashrc
 
     # Modify .bash_profile
-    echo '' >> /home/$1/.bash_profile
-    echo '# Clear screen and run neofetch' >> /home/$1/.bash_profile
-    echo 'clear' >> /home/$1/.bash_profile
-    echo 'neofetch' >> /home/$1/.bash_profile
+    echo '' >> /home/$USERNAME/.bash_profile
+    echo '# Clear screen and run neofetch' >> /home/$USERNAME/.bash_profile
+    echo 'clear' >> /home/$USERNAME/.bash_profile
+    echo 'neofetch' >> /home/$USERNAME/.bash_profile
   else
     echo "Provide a username and password."
     echo "Usage: createuser.sh <username> <password>"
