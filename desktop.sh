@@ -69,6 +69,9 @@ if [ "$EUID" -ne 0 ]
       
         # Install base applications
         ./library/baseapps.sh
+
+        # Update all
+        pacman -Syu --noconfirm
         
         # Reboot 
         reboot

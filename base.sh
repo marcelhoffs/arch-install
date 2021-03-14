@@ -14,6 +14,7 @@ read -p ' Provide the desired hostname: ' INSTALL_HOSTNAME
 read -p ' Do you want to install the LTS kernel [Y/N]: ' INSTALL_KERNEL_LTS
 read -p ' Do you use an Intel or AMD CPU [INTEL/AMD]: ' INSTALL_CPU
 read -p ' Are you installing on a virtual host [VMWARE/VIRTUALBOX]: ' INSTALL_VIRTHOST
+read -p ' Set root password: ' INSTALL_ROOT_PWD
 read -p ' Create new user: ' INSTALL_USER
 read -p ' Set new user password: ' INSTALL_PASSWORD
 echo ''
@@ -60,6 +61,9 @@ if [ $INSTALL_CONTINUE == 'Y' ]
     
     # Enable services
     ./library/services.sh
+
+    # Set root password
+    ./library/rootpwd.sh $INSTALL_ROOT_PWD
     
     # Create user
     ./library/createuser.sh $INSTALL_USER $INSTALL_PASSWORD
