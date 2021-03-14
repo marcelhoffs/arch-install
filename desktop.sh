@@ -3,7 +3,8 @@
 if [ "$EUID" -ne 0 ]
   then 
     # Not root
-    echo "Please run as root"
+    echo "Please run as root privileges:"
+    echo "sudo ./desktop.sh"
   else   
     # Clear screen
     clear
@@ -14,18 +15,21 @@ if [ "$EUID" -ne 0 ]
     echo '=============================================='
     echo ''
     echo ' Available Desktop Environments:'
+    echo ''
     echo ' 1) Gnome'
     echo ' 2) KDE'
     echo ' 3) Mate'
     echo ' 4) XFCE'
-    echo ' q) quit'
+    echo ''
+    echo ' q) Quit'
+    echo ''
 
     # Ask some questions
     read -p ' Which one do you want to install?: ' INSTALL_DE
     
     INSTALL_DE = ${INSTALL_DE^^}
     
-    if [ $INSTALL_DE == 'Q']
+    if [ $INSTALL_DE == 'Q' ]
       then
         echo ''
         echo '=============================================='
@@ -34,30 +38,34 @@ if [ "$EUID" -ne 0 ]
         echo ''
       else
         # Install X.org
-        ./library/xorg.sh
+        #./library/xorg.sh
       
         # Install graphics drivers
-        ./library/gpu.sh
+        #./library/gpu.sh
       
         # Install fonts
-        ./library/fonts.sh
+        #./library/fonts.sh
       
         case $INSTALL_DE in
 	        1)
 		        # Install GNOME
-            ./library/gnome.sh
+            #./library/gnome.sh
+            echo 'GNOME'
 		      ;;
 	        2)
 		        # Install KDE
-            ./library/kde.sh
+            #./library/kde.sh
+            echo 'KDE'
 		      ;;
           3)
 		        # Install MATE
-            ./library/mate.sh
+            #./library/mate.sh
+            echo 'MATE'
 		      ;;
           4)
 		        # Install XFCE
-            ./library/xfce.sh
+            #./library/xfce.sh
+            echo 'XFCE'
 		      ;;
 	        *)
 		        echo "Wrong option"
