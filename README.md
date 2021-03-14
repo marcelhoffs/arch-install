@@ -92,6 +92,7 @@ arch-chroot /mnt
 mkdir /arch-install
 cd /arch-install
 git clone https://github.com/marcelhoffs/arch-install .
+chmod +x base.sh
 ./base.sh
 ```
 
