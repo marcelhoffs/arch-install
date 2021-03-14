@@ -10,12 +10,13 @@ echo '=============================================='
 echo ''
 
 # Ask some questions
-read -p 'Provide the desired hostname: ' INSTALL_HOSTNAME
-read -p 'Do you want to install the LTS kernel [Y/N]: ' INSTALL_KERNEL_LTS
-read -p 'Do you use an Intel or AMD CPU [INTEL/AMD]: ' INSTALL_CPU
-read -p 'Create new user: ' INSTALL_USER
-read -p 'Set new user password: ' INSTALL_PASSWORD
-read -p 'Are you sure you want to continue? [Y/N]: ' INSTALL_CONTINUE
+read -p ' Provide the desired hostname: ' INSTALL_HOSTNAME
+read -p ' Do you want to install the LTS kernel [Y/N]: ' INSTALL_KERNEL_LTS
+read -p ' Do you use an Intel or AMD CPU [INTEL/AMD]: ' INSTALL_CPU
+read -p ' Create new user: ' INSTALL_USER
+read -p ' Set new user password: ' INSTALL_PASSWORD
+echo ''
+read -p ' Are you sure you want to continue? [Y/N]: ' INSTALL_CONTINUE
 
 INSTALL_CONTINUE=${INSTALL_CONTINUE^^}
 if [ INSTALL_CONTINUE == 'Y' ]
@@ -71,6 +72,7 @@ if [ INSTALL_CONTINUE == 'Y' ]
     echo '=============================================='
     exit
   else
+    echo ''
     echo '=============================================='
     echo ' Installation aborted.                        '
     echo '=============================================='
