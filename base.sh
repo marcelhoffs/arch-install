@@ -16,7 +16,8 @@ chmod +x library/*.sh
 # Install kernel
 INSTALL_KERNEL_LTS=${INSTALL_KERNEL_LTS^^}
 if [ $INSTALL_KERNEL_LTS == 'Y' ]
-  ./library/kernel.sh LTS
-else
-  ./library/kernel.sh
+  then
+    ./library/kernel.sh LTS
+  else
+    ./library/kernel.sh
 fi
