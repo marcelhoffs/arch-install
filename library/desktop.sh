@@ -31,30 +31,30 @@ if [ $INSTALL_DE == 'Q' ]
     echo ''
   else
     # Install X.org
-    ./xorg.sh
+    ./library/xorg.sh
   
     # Install graphics drivers
-    ./gpu.sh
+    ./library/gpu.sh
   
     # Install fonts
-    ./fonts.sh
+    ./library/fonts.sh
   
     case $INSTALL_DE in
       1)
         # Install GNOME
-        ./gnome.sh
+        ./library/gnome.sh
       ;;
       2)
         # Install KDE
-        ./kde.sh
+        ./library/kde.sh
       ;;
       3)
         # Install MATE
-        ./mate.sh
+        ./library/mate.sh
       ;;
       4)
         # Install XFCE
-        ./xfce.sh
+        ./library/xfce.sh
       ;;
       *)
         echo "Wrong option"
@@ -62,7 +62,8 @@ if [ $INSTALL_DE == 'Q' ]
     esac
   
     # Install base applications
-    ./baseapps.sh
+    ./library/baseapps.sh
+    
     # Reboot 
     reboot
 fi

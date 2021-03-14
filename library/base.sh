@@ -23,46 +23,46 @@ INSTALL_CONTINUE=${INSTALL_CONTINUE^^}
 if [ $INSTALL_CONTINUE == 'Y' ]
   then
     # Set hostname and hosts file
-    ./hostname.sh $INSTALL_HOSTNAME
+    ./library/hostname.sh $INSTALL_HOSTNAME
     
     # Set timezone
-    ./timezone.sh
+    ./library/timezone.sh
     
     # Install kernel
     INSTALL_KERNEL_LTS=${INSTALL_KERNEL_LTS^^}
     if [ $INSTALL_KERNEL_LTS == 'Y' ]
       then
-        ./kernel.sh LTS
+        ./library/kernel.sh LTS
       else
-        ./kernel.sh
+        ./library/kernel.sh
     fi
     
     # Install base packages
-    ./basepackages.sh
+    ./library/basepackages.sh
     
     # Install CPU Microcode
-    ./cpu.sh $INSTALL_CPU
+    ./library/cpu.sh $INSTALL_CPU
     
     # Update pacman mirror list
-    ./pacmanmirror.sh
+    ./library/pacmanmirror.sh
     
     # Set locale
-    ./locale.sh
+    ./library/locale.sh
     
     # Install bootloader
-    ./bootloader.sh
+    ./library/bootloader.sh
 
     # Install virtualization
-    ./virtualization.sh $INSTALL_VIRTHOST
+    ./library/virtualization.sh $INSTALL_VIRTHOST
     
     # Enable services
-    ./services.sh
+    ./library/services.sh
     
     # Create user
-    ./createuser.sh $INSTALL_USER $INSTALL_PASSWORD
+    ./library/createuser.sh $INSTALL_USER $INSTALL_PASSWORD
 
     # Move installation files
-    ./moveinstallation.sh $INSTALL_USER
+    ./library/moveinstallation.sh $INSTALL_USER
     
     # Exit
     echo '=============================================='
