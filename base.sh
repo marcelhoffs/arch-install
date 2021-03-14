@@ -1,8 +1,11 @@
 #!/bin/bash
-if [ $# -eq 1 ]
-  then
-    echo "Generate QR code for: $1"
-  else
-    echo "Provide a configuration."
-    echo "Usage: gen_qr.sh <xxx.conf>"
-fi
+
+# Ask some questions
+read -p 'Provide the desired hostname: ' INSTALL_HOSTNAME
+read -p 'Provide the desired hostname: ' INSTALL_TIMEZONE
+
+# Set hostname and hosts file
+./library/hostname.sh $INSTALL_HOSTNAME
+
+# Set timezone
+#./libary/timezone.sh $INSTALL_TIMEZONE
