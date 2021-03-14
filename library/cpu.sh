@@ -9,6 +9,7 @@ if [ $CPU == 'INTEL' ]
     echo ">> Installing Intel packages"
     pacman -S --noconfirm intel-ucode iucode-tool
 fi
+
 if [ $CPU == 'AMD' ]
   then
     echo ">> Installing AMD packages"
