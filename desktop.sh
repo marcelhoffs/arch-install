@@ -27,7 +27,7 @@ if [ "$EUID" -ne 0 ]
     # Ask some questions
     read -p ' Which one do you want to install?: ' INSTALL_DE
     
-    INSTALL_DE = ${INSTALL_DE^^}
+    INSTALL_DE=${INSTALL_DE^^}
     
     if [ $INSTALL_DE == 'Q' ]
       then
@@ -38,34 +38,30 @@ if [ "$EUID" -ne 0 ]
         echo ''
       else
         # Install X.org
-        #./library/xorg.sh
+        ./library/xorg.sh
       
         # Install graphics drivers
-        #./library/gpu.sh
+        ./library/gpu.sh
       
         # Install fonts
-        #./library/fonts.sh
+        ./library/fonts.sh
       
         case $INSTALL_DE in
 	        1)
 		        # Install GNOME
-            #./library/gnome.sh
-            echo 'GNOME'
+            ./library/gnome.sh
 		      ;;
 	        2)
 		        # Install KDE
-            #./library/kde.sh
-            echo 'KDE'
+            ./library/kde.sh
 		      ;;
           3)
 		        # Install MATE
-            #./library/mate.sh
-            echo 'MATE'
+            ./library/mate.sh
 		      ;;
           4)
 		        # Install XFCE
-            #./library/xfce.sh
-            echo 'XFCE'
+            ./library/xfce.sh
 		      ;;
 	        *)
 		        echo "Wrong option"
@@ -73,6 +69,6 @@ if [ "$EUID" -ne 0 ]
         esac
       
         # Install base applications
-        ./libary/baseapps.sh
+        ./library/baseapps.sh
     fi
 fi
