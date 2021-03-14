@@ -10,4 +10,4 @@ chmod +x library/*.sh
 ./library/hostname.sh $INSTALL_HOSTNAME
 
 # Set timezone
-./libary/timezone.sh
+./library/timezone.sh
