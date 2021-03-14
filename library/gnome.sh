@@ -5,7 +5,7 @@ MINIMAL=${MINIMAL^^}
 
 # Install GNOME
 echo ">> Installing GNOME"
-pacman -S --noconfirm gdm gnome gnome-tweak-tool gnome-bluetooth chrome-gnome-shell gnome-software-packagekit-plugin avahi
+pacman -S --noconfirm gdm gnome gnome-tweak-tool gnome-bluetooth chrome-gnome-shell gnome-software-packagekit-plugin
 
 if [ $MINIMAL == 'MINIMAL' ]
   then 
@@ -15,4 +15,3 @@ fi
 
 # Enable services
 systemctl enable gdm
-systemctl enable avahi-daemon
