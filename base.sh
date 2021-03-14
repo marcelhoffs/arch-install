@@ -59,18 +59,21 @@ if [ $INSTALL_CONTINUE == 'Y' ]
     
     # Create user
     ./library/createuser.sh $INSTALL_USER $INSTALL_PASSWORD
+
+    # Move installation files
+    ./library/moveinstallation.sh $INSTALL_USER
     
     # Exit
     echo '=============================================='
     echo ' Finished installing Arch base installation.  '
-    echo ' Now unmount all: umount -a                   '
-    echo ' Then reboot    : reboot                      '
+    echo ' Exit chroot : exit                           '
+    echo ' Unmount all : umount -a                      '
+    echo ' Then reboot : reboot                         '
     echo '                                              '
     echo ' After reboot login with:                     ' 
-    echo ' Username: '$INSTALL_USER
-    echo ' Password: '$INSTALL_PASSWORD
+    echo ' Username : '$INSTALL_USER
+    echo ' Password : '$INSTALL_PASSWORD
     echo '=============================================='
-    exit
   else
     echo ''
     echo '=============================================='

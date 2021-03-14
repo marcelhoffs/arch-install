@@ -7,7 +7,7 @@ PASSWORD=$2
 if [ $# -eq 2 ]
   then
     # Create a new user
-    echo ">> Set new user: $USERNAME"
+    echo ">> Creating new user: $USERNAME"
     useradd -m -g users -s /bin/bash $USERNAME
     echo $USERNAME:$PASSWORD | chpasswd
     echo "$USERNAME ALL=(ALL) ALL" >> /etc/sudoers.d/$USERNAME
