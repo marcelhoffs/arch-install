@@ -22,6 +22,9 @@ read -p ' Are you sure you want to continue? [Y/N]: ' INSTALL_CONTINUE
 INSTALL_CONTINUE=${INSTALL_CONTINUE^^}
 if [ $INSTALL_CONTINUE == 'Y' ]
   then
+    # Make scripts executable
+    chmod +x ./library/*.sh
+    
     # Set hostname and hosts file
     ./library/hostname.sh $INSTALL_HOSTNAME
     
