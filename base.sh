@@ -1,10 +1,11 @@
 #!/bin/bash
 
 # Clear screen
+Clear
 echo '=============================================='
-echo 'Arch Linux installation script                '
-echo 'Marcel Hoffs, 14.03.2021                      '
-echo 'Version 1.0                                   '
+echo ' Arch Linux installation script               '
+echo ' Marcel Hoffs, 14.03.2021                     '
+echo ' Version 1.0                                  '
 echo '=============================================='
 echo ''
 
