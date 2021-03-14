@@ -1,11 +1,12 @@
 # arch-install
 
-Introduction
+# Introduction
+This repository provides an easy way to install Arch Linux on an UEFI system.
 
-Preparation
-# Set keyboard layout (optional, if not US international)
-loadkeys uk
+# Preparation
+You should first partition the drives manually. After that you can use the scripts to do a base installation and install a desktop environment of choice.
 
+```
 # Set time
 timedatectl set-ntp true
 
@@ -62,3 +63,4 @@ genfstab -U -p /mnt >> /mnt/etc/fstab
 
 # Chroot
 arch-chroot /mnt
+```
