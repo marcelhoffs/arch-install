@@ -55,7 +55,7 @@ mkdir -p /mnt/boot/EFI
 mount /dev/sda1 /mnt/boot/EFI
 
 # Install base system 
-pacstrap -i /mnt base base-devel vi nano
+pacstrap -i /mnt base base-devel vi nano git 
 
 # Generate fstab
 genfstab -U -p /mnt >> /mnt/etc/fstab

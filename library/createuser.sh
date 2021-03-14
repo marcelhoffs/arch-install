@@ -1,7 +1,8 @@
 #!/bin/bash
 
-USERNAME=${$1,,}
-PASSWORD=${$2,,}
+USERNAME=$1
+USERNAME=${USERNAME,,}
+PASSWORD=$2
 
 if [ $# -eq 2 ]
   then

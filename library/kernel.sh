@@ -1,5 +1,9 @@
 #!/bin/bash
-if [ $1 == 'LTS' ]
+
+KERNEL=$1
+KERNEL=${KERNEL^^}
+
+if [ $KERNEL == 'LTS' ]
   then
     # Install linux long term support kernel
     echo ">> Installing Linux Long Term Support (LTS) kernel"
