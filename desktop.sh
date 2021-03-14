@@ -70,5 +70,8 @@ if [ "$EUID" -ne 0 ]
       
         # Install base applications
         ./library/baseapps.sh
+
+        # Reboot 
+        reboot
     fi
 fi
