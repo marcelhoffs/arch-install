@@ -9,9 +9,13 @@ collect_parameters()
        INSTALL_UEFI=${INSTALL_UEFI^^}
    done
    
+   # If bios ask which device the OS will be installed on
    if [ $INSTALL_UEFI == 'BIOS' ] 
      then
-       read -p ' On which device are you installing [e.g. /dev/sda]: ' INSTALL_DEVICE
+        while [ "$INSTALL_DEVICE" == "" ]
+          do
+            read -p ' On which device are you installing [e.g. /dev/sda]: ' INSTALL_DEVICE
+        done
    fi
 
    # What CPU are you using
