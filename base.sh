@@ -17,17 +17,20 @@ if [ "$EUID" -ne 0 ]
     
     # Ask some questions
     # What type of install
-    while [ "$INSTALL_UEFI" != "BIOS" ] && [ "$INSTALL_UEFI" != "UEFI" ] do
+    while [ "$INSTALL_UEFI" != "BIOS" ] && [ "$INSTALL_UEFI" != "UEFI" ] 
+      do
         read -p ' Install on BIOS or UEFI [BIOS/UEFI]: ' INSTALL_UEFI
         INSTALL_UEFI=${INSTALL_UEFI^^}
     done
     
-    if [ $INSTALL_UEFI == 'BIOS' ] then
+    if [ $INSTALL_UEFI == 'BIOS' ] 
+      then
         read -p ' On which device are you installing [e.g. /dev/sda]: ' INSTALL_DEVICE
     fi
 
     # What CPU are you using
-    while [ "$INSTALL_CPU" != "INTEL" ] && [ "$INSTALL_CPU" != "AMD" ] do
+    while [ "$INSTALL_CPU" != "INTEL" ] && [ "$INSTALL_CPU" != "AMD" ]
+      do
         read -p ' Do you use an Intel or AMD CPU [INTEL/AMD]: ' INSTALL_CPU
         INSTALL_CPU=${INSTALL_CPU^^}
     done
