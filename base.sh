@@ -72,11 +72,11 @@ if [ "$EUID" -ne 0 ]; then
 else
   # Clear screen
   clear
-  echo "${CYAN}==============================================${NC}"
-  echo "${CYAN} Arch Linux installation script               ${NC}"
-  echo "${CYAN} Marcel Hoffs, 14.03.2021                     ${NC}"
-  echo "${CYAN} Version 2.0                                  ${NC}"
-  echo "${CYAN}==============================================${NC}"
+  echo -e "${CYAN}==============================================${NC}"
+  echo -e "${CYAN} Arch Linux installation script               ${NC}"
+  echo -e "${CYAN} Marcel Hoffs, 14.03.2021                     ${NC}"
+  echo -e "${CYAN} Version 2.0                                  ${NC}"
+  echo -e "${CYAN}==============================================${NC}"
   echo ''
 
   # Ask questions to collect installation parameters
@@ -132,21 +132,21 @@ else
     ./library/moveinstallation.sh $INSTALL_USER
 
     # Exit
-    echo "${GREEN}==============================================${NC}"
-    echo "${GREEN} Finished installing Arch base installation.  ${NC}"
-    echo "${GREEN} Exit chroot : exit                           ${NC}"
-    echo "${GREEN} Unmount all : umount -a                      ${NC}"
-    echo "${GREEN} Then reboot : reboot                         ${NC}"
-    echo "${GREEN}                                              ${NC}"
-    echo "${GREEN} After reboot login with:                     ${NC}"
-    echo "${GREEN} Username : ${NC}"$INSTALL_USER
-    echo "${GREEN} Password : ${NC}"$INSTALL_PASSWORD
-    echo "${GREEN}==============================================${NC}"
+    echo -e "${GREEN}==============================================${NC}"
+    echo -e "${GREEN} Finished installing Arch base installation.  ${NC}"
+    echo -e "${GREEN} Exit chroot : exit                           ${NC}"
+    echo -e "${GREEN} Unmount all : umount -a                      ${NC}"
+    echo -e "${GREEN} Then reboot : reboot                         ${NC}"
+    echo -e "${GREEN}                                              ${NC}"
+    echo -e "${GREEN} After reboot login with:                     ${NC}"
+    echo -e "${GREEN} Username : ${NC}"$INSTALL_USER
+    echo -e "${GREEN} Password : ${NC}"$INSTALL_PASSWORD
+    echo -e "${GREEN}==============================================${NC}"
   else
     echo ''
-    echo "${CYAN}==============================================${NC}"
-    echo "${CYAN} Installation aborted.                        ${NC}"
-    echo "${CYAN}==============================================${NC}"
+    echo -e "${CYAN}==============================================${NC}"
+    echo -e "${CYAN} Installation aborted.                        ${NC}"
+    echo -e "${CYAN}==============================================${NC}"
     echo ''
   fi
 fi
