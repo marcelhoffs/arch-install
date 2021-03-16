@@ -2,7 +2,7 @@
 GREEN='\e[1;32m'
 RED='\e[1;31m'
 CYAN='\e[1;36m'
-WHITe='\e[1;3m'
+WHITe='\e[1;37m'
 NC='\e[0m'
 
 collect_parameters() {
