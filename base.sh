@@ -5,7 +5,7 @@ collect_parameters()
    # What type of install
    while [ "$INSTALL_UEFI" != "BIOS" ] && [ "$INSTALL_UEFI" != "UEFI" ] 
      do
-       read -p ' 1. Install on BIOS or UEFI [BIOS/UEFI]: ' INSTALL_UEFI
+       read -p ' 1)  Install on BIOS or UEFI [BIOS/UEFI]: ' INSTALL_UEFI
        INSTALL_UEFI=${INSTALL_UEFI^^}
    done
    
@@ -14,54 +14,54 @@ collect_parameters()
      then
         while [ "$INSTALL_DEVICE" == "" ]
           do
-            read -p ' 1a. On which device are you installing [e.g. /dev/sda]: ' INSTALL_DEVICE
+            read -p ' 1a) On which device are you installing [e.g. /dev/sda]: ' INSTALL_DEVICE
         done
    fi
 
    # What CPU are you using
    while [ "$INSTALL_CPU" != "INTEL" ] && [ "$INSTALL_CPU" != "AMD" ]
      do
-       read -p ' 2. Do you use an Intel or AMD CPU [INTEL/AMD]: ' INSTALL_CPU
+       read -p ' 2)  Do you use an Intel or AMD CPU [INTEL/AMD]: ' INSTALL_CPU
        INSTALL_CPU=${INSTALL_CPU^^}
    done
 
    # Are you installing a virtual host
    while [ "$INSTALL_VIRTHOST" != "VMWARE" ] && [ "$INSTALL_VIRTHOST" != "VIRTUALBOX" ]
      do
-       read -p ' 3. Are you installing on a virtual host [VMWARE/VIRTUALBOX]: ' INSTALL_VIRTHOST
+       read -p ' 3)  Are you installing on a virtual host [VMWARE/VIRTUALBOX]: ' INSTALL_VIRTHOST
        INSTALL_VIRTHOST=${INSTALL_VIRTHOST^^}
    done
     
    # Install LTS kernel    
    while [ "$INSTALL_KERNEL_LTS" != "Y" ] && [ "$INSTALL_KERNEL_LTS" != "N" ]
      do
-       read -p ' 4. Do you want to install the LTS kernel [Y/N]: ' INSTALL_KERNEL_LTS
+       read -p ' 4)  Do you want to install the LTS kernel [Y/N]: ' INSTALL_KERNEL_LTS
        INSTALL_KERNEL_LTS=${INSTALL_KERNEL_LTS^^}
    done
 
    # Hostname
    while [ "$INSTALL_HOSTNAME" == "" ]
      do
-       read -p ' 5. Provide the desired hostname: ' INSTALL_HOSTNAME
+       read -p ' 5)  Provide the desired hostname: ' INSTALL_HOSTNAME
        INSTALL_HOSTNAME=${INSTALL_HOSTNAME,,}
    done
 
    # Root password
    while [ "$INSTALL_ROOT_PWD" == "" ]
      do
-       read -p ' 6. Set root password: ' INSTALL_ROOT_PWD
+       read -p ' 6)  Set root password: ' INSTALL_ROOT_PWD
    done
    
    # Root password
    while [ "$INSTALL_USER" == "" ]
      do
-       read -p ' 7. Create new user: ' INSTALL_USER
+       read -p ' 7)  Create new user: ' INSTALL_USER
    done
 
    # Root password
    while [ "$INSTALL_PASSWORD" == "" ]
      do
-       read -p ' 8. Set new user password: ' INSTALL_PASSWORD
+       read -p ' 8)  Set new user password: ' INSTALL_PASSWORD
    done  
    
    echo ''
@@ -69,7 +69,7 @@ collect_parameters()
    # Continue    
    while [ "$INSTALL_CONTINUE" != "Y" ] && [ "$INSTALL_CONTINUE" != "N" ]
      do
-       read -p ' 9. Are you sure you want to continue? [Y/N]: ' INSTALL_CONTINUE
+       read -p ' 9)  Are you sure you want to continue? [Y/N]: ' INSTALL_CONTINUE
        INSTALL_CONTINUE=${INSTALL_CONTINUE^^}
    done
 }
