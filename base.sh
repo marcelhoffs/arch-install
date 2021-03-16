@@ -60,8 +60,6 @@ collect_parameters() {
 
   echo ''
   
-  echo "hostname: " $INSTALL_HOSTNAME
-
   # Continue
   while [ "$INSTALL_CONTINUE" != "Y" ] && [ "$INSTALL_CONTINUE" != "N" ]; do
     read -p ' Are you sure you want to continue? [Y/N]: ' INSTALL_CONTINUE
