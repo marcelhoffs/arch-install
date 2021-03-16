@@ -16,9 +16,13 @@ if [ "$EUID" -ne 0 ]
     echo ''
     
     # Ask some questions
-    read -p ' Install on BIOS or UEFI [BIOS/UEFI]: ' INSTALL_UEFI
-
-    INSTALL_UEFI=${INSTALL_UEFI^^}
+    # What type of install
+    while [ "$INSTALL_UEFI" != "BIOS" ] && [ "$INSTALL_UEFI" != "UEFI" ]
+      do
+        read -p ' Install on BIOS or UEFI [BIOS/UEFI]: ' INSTALL_UEFI
+        INSTALL_UEFI=${INSTALL_UEFI^^}
+    done
+    
     if [ $INSTALL_UEFI == 'BIOS' ]
       then
         read -p ' On which device are you installing [e.g. /dev/sda]: ' INSTALL_DEVICE
