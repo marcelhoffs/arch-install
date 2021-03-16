@@ -4,7 +4,7 @@ if [ "$EUID" -ne 0 ]
   then 
     # Not root
     echo "Please run as root privileges:"
-    echo "sudo ./install_desktop.sh"
+    echo "sudo ./desktop.sh"
   else    
     # Clear screen
     clear

@@ -4,32 +4,37 @@ if [ "$EUID" -ne 0 ]
   then 
     # Not root
     echo "Please run as root privileges:"
-    echo "sudo ./install_desktop.sh"
+    echo "sudo ./base.sh"
   else
     # Clear screen
     clear
     echo '=============================================='
     echo ' Arch Linux installation script               '
     echo ' Marcel Hoffs, 14.03.2021                     '
-    echo ' Version 1.0                                  '
+    echo ' Version 2.0                                  '
     echo '=============================================='
     echo ''
     
     # Ask some questions
     # What type of install
-    while [ "$INSTALL_UEFI" != "BIOS" ] && [ "$INSTALL_UEFI" != "UEFI" ]
-      do
+    while [ "$INSTALL_UEFI" != "BIOS" ] && [ "$INSTALL_UEFI" != "UEFI" ] do
         read -p ' Install on BIOS or UEFI [BIOS/UEFI]: ' INSTALL_UEFI
         INSTALL_UEFI=${INSTALL_UEFI^^}
     done
     
-    if [ $INSTALL_UEFI == 'BIOS' ]
-      then
+    if [ $INSTALL_UEFI == 'BIOS' ] then
         read -p ' On which device are you installing [e.g. /dev/sda]: ' INSTALL_DEVICE
     fi
+
+    # What CPU are you using
+    while [ "$INSTALL_CPU" != "INTEL" ] && [ "$INSTALL_CPU" != "AMD" ] do
+        read -p ' Do you use an Intel or AMD CPU [INTEL/AMD]: ' INSTALL_CPU
+        INSTALL_CPU=${INSTALL_CPU^^}
+    done
+
     read -p ' Provide the desired hostname: ' INSTALL_HOSTNAME
     read -p ' Do you want to install the LTS kernel [Y/N]: ' INSTALL_KERNEL_LTS
-    read -p ' Do you use an Intel or AMD CPU [INTEL/AMD]: ' INSTALL_CPU
+    
     read -p ' Are you installing on a virtual host [VMWARE/VIRTUALBOX]: ' INSTALL_VIRTHOST
     read -p ' Set root password: ' INSTALL_ROOT_PWD
     read -p ' Create new user: ' INSTALL_USER
