@@ -85,8 +85,9 @@ if [ "$EUID" -ne 0 ]
     echo '=============================================='
     echo ''
     
-    ask_questions()
-
+    # Ask questions to collect installation parameters
+    ask_questions
+    
     INSTALL_CONTINUE=${INSTALL_CONTINUE^^}
     if [ $INSTALL_CONTINUE == 'Y' ]
       then
