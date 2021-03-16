@@ -69,7 +69,7 @@ collect_parameters()
    # Continue    
    while [ "$INSTALL_CONTINUE" != "Y" ] && [ "$INSTALL_CONTINUE" != "N" ]
      do
-       read -p ' 9)  Are you sure you want to continue? [Y/N]: ' INSTALL_CONTINUE
+       read -p ' Are you sure you want to continue? [Y/N]: ' INSTALL_CONTINUE
        INSTALL_CONTINUE=${INSTALL_CONTINUE^^}
    done
 }
