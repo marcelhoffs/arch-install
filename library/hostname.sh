@@ -4,7 +4,7 @@ NC='\e[0m'
 
 if [ $# -eq 1 ]; then
   HOSTNAME=$1
-  HOSTNAME=${CPU,,}
+  HOSTNAME=${HOSTNAME,,}
 
   # Create hostname (/etc/hostname)
   echo -e "${CYAN}>> Setting hostname to: "$HOSTNAME${NC}

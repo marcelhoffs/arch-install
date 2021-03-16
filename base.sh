@@ -143,8 +143,8 @@ else
     echo -e "${GREEN} Then reboot : reboot                         ${NC}"
     echo -e "${GREEN}                                              ${NC}"
     echo -e "${GREEN} After reboot login with:                     ${NC}"
-    echo -e "${GREEN} Username : ${NC}"$INSTALL_USER
-    echo -e "${GREEN} Password : ${NC}"$INSTALL_PASSWORD
+    echo -e "${GREEN} Username : ${NC}"${WHITE}$INSTALL_USER${NC}
+    echo -e "${GREEN} Password : ${NC}"${WHITE}$INSTALL_PASSWORD${NC}
     echo -e "${GREEN}==============================================${NC}"
   else
     echo ''
