@@ -59,6 +59,8 @@ collect_parameters() {
   done
 
   echo ''
+  
+  echo "hostname: " $INSTALL_HOSTNAME
 
   # Continue
   while [ "$INSTALL_CONTINUE" != "Y" ] && [ "$INSTALL_CONTINUE" != "N" ]; do
@@ -141,8 +143,8 @@ else
     echo -e "${GREEN} Then reboot : reboot                         ${NC}"
     echo -e "${GREEN}                                              ${NC}"
     echo -e "${GREEN} After reboot login with:                     ${NC}"
-    echo -e "${GREEN} Username : ${WHITE}"$INSTALL_USER
-    echo -e "${GREEN} Password : ${WHITE}"$INSTALL_PASSWORD
+    echo -e "${GREEN} Username : ${NC}"$INSTALL_USER
+    echo -e "${GREEN} Password : ${NC}"$INSTALL_PASSWORD
     echo -e "${GREEN}==============================================${NC}"
   else
     echo ''
