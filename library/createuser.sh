@@ -1,4 +1,6 @@
 #!/bin/bash
+CYAN='\e[1;36m'
+NC='\e[0m'
 
 USERNAME=$1
 USERNAME=${USERNAME,,}
@@ -6,7 +8,7 @@ PASSWORD=$2
 
 if [ $# -eq 2 ]; then
   # Create a new user
-  echo ">> Creating new user: $USERNAME"
+  echo "${CYAN}>> Creating new user: $USERNAME${NC}"
   useradd -m -g users -s /bin/bash $USERNAME
   echo $USERNAME:$PASSWORD | chpasswd
   echo "$USERNAME ALL=(ALL) ALL" >>/etc/sudoers.d/$USERNAME

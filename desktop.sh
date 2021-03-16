@@ -1,4 +1,6 @@
 #!/bin/bash
+CYAN='\e[1;36m'
+NC='\e[0m'
 
 if [ "$EUID" -ne 0 ]; then
   # Not root
@@ -8,11 +10,11 @@ else
   # Ask what desktop to install
   while [[ ! $INSTALL_DE =~ ^(1|2|3|4|5|Q)$ ]]; do
     clear
-    echo '=============================================='
-    echo ' Arch Linux Desktop Environment installation  '
-    echo ' Marcel Hoffs, 14.03.2021                     '
-    echo ' Version 1.0                                  '
-    echo '=============================================='
+    echo "${CYAN}==============================================${NC}"
+    echo "${CYAN} Arch Linux Desktop Environment installation  ${NC}"
+    echo "${CYAN} Marcel Hoffs, 14.03.2021                     ${NC}"
+    echo "${CYAN} Version 1.0                                  ${NC}"
+    echo "${CYAN}==============================================${NC}"
     echo ''
     echo ' Available Desktop Environments:'
     echo ''
@@ -32,9 +34,9 @@ else
   # Continue if not aborted
   if [ $INSTALL_DE == 'Q' ]; then
     echo ''
-    echo '=============================================='
-    echo ' Installation aborted.                        '
-    echo '=============================================='
+    echo "${CYAN}==============================================${NC}"
+    echo "${CYAN} Installation aborted.                        ${NC}"
+    echo "${CYAN}==============================================${NC}"
     echo ''
   else
     # Install X.org

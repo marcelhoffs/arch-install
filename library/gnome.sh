@@ -1,10 +1,12 @@
 #!/bin/bash
+CYAN='\e[1;36m'
+NC='\e[0m'
 
 MINIMAL=$1
 MINIMAL=${MINIMAL^^}
 
 # Install GNOME
-echo ">> Installing GNOME"
+echo "${CYAN}>> Installing GNOME${NC}"
 pacman -S --noconfirm gdm gnome gnome-tweak-tool gnome-bluetooth chrome-gnome-shell gnome-software-packagekit-plugin
 
 if [ $MINIMAL == 'MINIMAL' ]; then
