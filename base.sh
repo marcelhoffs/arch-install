@@ -1,6 +1,8 @@
 #!/bin/bash
 GREEN='\e[1;32m'
+RED='\e[1;31m'
 CYAN='\e[1;36m'
+WHITe='\e[1;3m'
 NC='\e[0m'
 
 collect_parameters() {
@@ -73,7 +75,7 @@ else
   # Clear screen
   clear
   echo -e "${CYAN}==============================================${NC}"
-  echo -e "${CYAN} Arch Linux installation script               ${NC}"
+  echo -e "${RED} Arch Linux installation script               ${NC}"
   echo -e "${CYAN} Marcel Hoffs, 14.03.2021                     ${NC}"
   echo -e "${CYAN} Version 2.0                                  ${NC}"
   echo -e "${CYAN}==============================================${NC}"
@@ -139,8 +141,8 @@ else
     echo -e "${GREEN} Then reboot : reboot                         ${NC}"
     echo -e "${GREEN}                                              ${NC}"
     echo -e "${GREEN} After reboot login with:                     ${NC}"
-    echo -e "${GREEN} Username : ${NC}"$INSTALL_USER
-    echo -e "${GREEN} Password : ${NC}"$INSTALL_PASSWORD
+    echo -e "${GREEN} Username : ${WHITE}"$INSTALL_USER
+    echo -e "${GREEN} Password : ${WHITE}"$INSTALL_PASSWORD
     echo -e "${GREEN}==============================================${NC}"
   else
     echo ''
