@@ -24,11 +24,15 @@ if [ "$EUID" -ne 0 ]
     echo ''
     echo ' q) Quit'
     echo ''
-    # Ask some questions
-    read -p ' Which one do you want to install?: ' INSTALL_DE
+    # Ask what desktop to install
+    # while [ "$INSTALL_DE" != "1" ] && [ "$INSTALL_DE" != "2" ] && [ "$INSTALL_DE" != "3" ] && [ "$INSTALL_DE" != "4" ] && [ "$INSTALL_DE" != "5" ] && [ "$INSTALL_DE" != "Q" ]
+    while [[ ! $INSTALL_DE =~ ^(1|2|3|4|5|Q)$ ]] 
+      do
+        read -p ' Which one do you want to install?: ' INSTALL_DE
+        INSTALL_DE=${INSTALL_DE^^}
+    done
     
-    INSTALL_DE=${INSTALL_DE^^}
-
+    # Continue if not aborted
     if [ $INSTALL_DE == 'Q' ]
       then
         echo ''

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-ask_questions()
+collect_parameters()
 {
    # What type of install
    while [ "$INSTALL_UEFI" != "BIOS" ] && [ "$INSTALL_UEFI" != "UEFI" ] 
@@ -86,8 +86,8 @@ if [ "$EUID" -ne 0 ]
     echo ''
     
     # Ask questions to collect installation parameters
-    ask_questions
-    
+    collect_parameters
+
     INSTALL_CONTINUE=${INSTALL_CONTINUE^^}
     if [ $INSTALL_CONTINUE == 'Y' ]
       then
