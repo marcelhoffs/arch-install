@@ -6,28 +6,28 @@ if [ "$EUID" -ne 0 ]
     echo "Please run as root privileges:"
     echo "sudo ./desktop.sh"
   else    
-    # Clear screen
-    clear
-    echo '=============================================='
-    echo ' Arch Linux Desktop Environment installation  '
-    echo ' Marcel Hoffs, 14.03.2021                     '
-    echo ' Version 1.0                                  '
-    echo '=============================================='
-    echo ''
-    echo ' Available Desktop Environments:'
-    echo ''
-    echo ' 1) Gnome (default)'
-    echo ' 2) Gnome (minimal)'
-    echo ' 3) KDE'
-    echo ' 4) Mate'
-    echo ' 5) XFCE'
-    echo ''
-    echo ' q) Quit'
-    echo ''
     # Ask what desktop to install
     # while [ "$INSTALL_DE" != "1" ] && [ "$INSTALL_DE" != "2" ] && [ "$INSTALL_DE" != "3" ] && [ "$INSTALL_DE" != "4" ] && [ "$INSTALL_DE" != "5" ] && [ "$INSTALL_DE" != "Q" ]
     while [[ ! $INSTALL_DE =~ ^(1|2|3|4|5|Q)$ ]] 
       do
+        clear
+        echo '=============================================='
+        echo ' Arch Linux Desktop Environment installation  '
+        echo ' Marcel Hoffs, 14.03.2021                     '
+        echo ' Version 1.0                                  '
+        echo '=============================================='
+        echo ''
+        echo ' Available Desktop Environments:'
+        echo ''
+        echo ' 1) Gnome (default)'
+        echo ' 2) Gnome (minimal)'
+        echo ' 3) KDE'
+        echo ' 4) Mate'
+        echo ' 5) XFCE'
+        echo ''
+        echo ' q) Quit'
+        echo ''
+        
         read -p ' Which one do you want to install?: ' INSTALL_DE
         INSTALL_DE=${INSTALL_DE^^}
     done
