@@ -1,5 +1,75 @@
 #!/bin/bash
 
+ask_questions()
+{
+   # What type of install
+   while [ "$INSTALL_UEFI" != "BIOS" ] && [ "$INSTALL_UEFI" != "UEFI" ] 
+     do
+       read -p ' Install on BIOS or UEFI [BIOS/UEFI]: ' INSTALL_UEFI
+       INSTALL_UEFI=${INSTALL_UEFI^^}
+   done
+   
+   if [ $INSTALL_UEFI == 'BIOS' ] 
+     then
+       read -p ' On which device are you installing [e.g. /dev/sda]: ' INSTALL_DEVICE
+   fi
+
+   # What CPU are you using
+   while [ "$INSTALL_CPU" != "INTEL" ] && [ "$INSTALL_CPU" != "AMD" ]
+     do
+       read -p ' Do you use an Intel or AMD CPU [INTEL/AMD]: ' INSTALL_CPU
+       INSTALL_CPU=${INSTALL_CPU^^}
+   done
+
+   # Are you installing a virtual host
+   while [ "$INSTALL_VIRTHOST" != "VMWARE" ] && [ "$INSTALL_VIRTHOST" != "VIRTUALBOX" ]
+     do
+       read -p ' Are you installing on a virtual host [VMWARE/VIRTUALBOX]: ' INSTALL_VIRTHOST
+       INSTALL_VIRTHOST=${INSTALL_VIRTHOST^^}
+   done
+    
+   # Install LTS kernel    
+   while [ "$INSTALL_KERNEL_LTS" != "Y" ] && [ "$INSTALL_KERNEL_LTS" != "N" ]
+     do
+       read -p ' Do you want to install the LTS kernel [Y/N]: ' INSTALL_KERNEL_LTS
+       INSTALL_KERNEL_LTS=${INSTALL_KERNEL_LTS^^}
+   done
+
+   # Hostname
+   while [ "$INSTALL_HOSTNAME" == "" ]
+     do
+       read -p ' Provide the desired hostname: ' INSTALL_HOSTNAME
+       INSTALL_HOSTNAME=${INSTALL_HOSTNAME,,}
+   done
+
+   # Root password
+   while [ "$INSTALL_ROOT_PWD" == "" ]
+     do
+       read -p ' Set root password: ' INSTALL_ROOT_PWD
+   done
+   
+   # Root password
+   while [ "$INSTALL_USER" == "" ]
+     do
+       read -p ' Create new user: ' INSTALL_USER
+   done
+
+   # Root password
+   while [ "$INSTALL_PASSWORD" == "" ]
+     do
+       read -p ' Set new user password: ' INSTALL_PASSWORD
+   done  
+   
+   echo ''
+
+   # Continue    
+   while [ "$INSTALL_CONTINUE" != "Y" ] && [ "$INSTALL_CONTINUE" != "N" ]
+     do
+       read -p ' Are you sure you want to continue? [Y/N]: ' INSTALL_CONTINUE
+       INSTALL_CONTINUE=${INSTALL_CONTINUE^^}
+   done
+}
+
 if [ "$EUID" -ne 0 ]
   then 
     # Not root
@@ -15,36 +85,8 @@ if [ "$EUID" -ne 0 ]
     echo '=============================================='
     echo ''
     
-    # Ask some questions
-    # What type of install
-    while [ "$INSTALL_UEFI" != "BIOS" ] && [ "$INSTALL_UEFI" != "UEFI" ] 
-      do
-        read -p ' Install on BIOS or UEFI [BIOS/UEFI]: ' INSTALL_UEFI
-        INSTALL_UEFI=${INSTALL_UEFI^^}
-    done
-    
-    if [ $INSTALL_UEFI == 'BIOS' ] 
-      then
-        read -p ' On which device are you installing [e.g. /dev/sda]: ' INSTALL_DEVICE
-    fi
+    ask_questions()
 
-    # What CPU are you using
-    while [ "$INSTALL_CPU" != "INTEL" ] && [ "$INSTALL_CPU" != "AMD" ]
-      do
-        read -p ' Do you use an Intel or AMD CPU [INTEL/AMD]: ' INSTALL_CPU
-        INSTALL_CPU=${INSTALL_CPU^^}
-    done
-
-    read -p ' Provide the desired hostname: ' INSTALL_HOSTNAME
-    read -p ' Do you want to install the LTS kernel [Y/N]: ' INSTALL_KERNEL_LTS
-    
-    read -p ' Are you installing on a virtual host [VMWARE/VIRTUALBOX]: ' INSTALL_VIRTHOST
-    read -p ' Set root password: ' INSTALL_ROOT_PWD
-    read -p ' Create new user: ' INSTALL_USER
-    read -p ' Set new user password: ' INSTALL_PASSWORD
-    echo ''
-    read -p ' Are you sure you want to continue? [Y/N]: ' INSTALL_CONTINUE
-    
     INSTALL_CONTINUE=${INSTALL_CONTINUE^^}
     if [ $INSTALL_CONTINUE == 'Y' ]
       then
