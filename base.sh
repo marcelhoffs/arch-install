@@ -16,6 +16,13 @@ if [ "$EUID" -ne 0 ]
     echo ''
     
     # Ask some questions
+    read -p ' Install on BIOS or UEFI [BIOS/UEFI]: ' INSTALL_UEFI
+
+    INSTALL_UEFI=${INSTALL_UEFI^^}
+    if [ $INSTALL_UEFI == 'BIOS' ]
+      then
+        read -p ' On which device are you installing [e.g. /dev/sda]: ' INSTALL_DEVICE
+    fi
     read -p ' Provide the desired hostname: ' INSTALL_HOSTNAME
     read -p ' Do you want to install the LTS kernel [Y/N]: ' INSTALL_KERNEL_LTS
     read -p ' Do you use an Intel or AMD CPU [INTEL/AMD]: ' INSTALL_CPU
@@ -60,7 +67,7 @@ if [ "$EUID" -ne 0 ]
         ./library/locale.sh
         
         # Install bootloader
-        ./library/bootloader.sh
+        ./library/bootloader.sh $INSTALL_UEFI $INSTALL_DEVICE
     
         # Install virtualization
         ./library/virtualization.sh $INSTALL_VIRTHOST
