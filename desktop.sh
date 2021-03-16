@@ -10,11 +10,11 @@ else
   # Ask what desktop to install
   while [[ ! $INSTALL_DE =~ ^(1|2|3|4|5|Q)$ ]]; do
     clear
-    echo "${CYAN}==============================================${NC}"
-    echo "${CYAN} Arch Linux Desktop Environment installation  ${NC}"
-    echo "${CYAN} Marcel Hoffs, 14.03.2021                     ${NC}"
-    echo "${CYAN} Version 1.0                                  ${NC}"
-    echo "${CYAN}==============================================${NC}"
+    echo -e "${CYAN}==============================================${NC}"
+    echo -e "${CYAN} Arch Linux Desktop Environment installation  ${NC}"
+    echo -e "${CYAN} Marcel Hoffs, 14.03.2021                     ${NC}"
+    echo -e "${CYAN} Version 1.0                                  ${NC}"
+    echo -e "${CYAN}==============================================${NC}"
     echo ''
     echo ' Available Desktop Environments:'
     echo ''
@@ -34,9 +34,9 @@ else
   # Continue if not aborted
   if [ $INSTALL_DE == 'Q' ]; then
     echo ''
-    echo "${CYAN}==============================================${NC}"
-    echo "${CYAN} Installation aborted.                        ${NC}"
-    echo "${CYAN}==============================================${NC}"
+    echo -e "${CYAN}==============================================${NC}"
+    echo -e "${CYAN} Installation aborted.                        ${NC}"
+    echo -e "${CYAN}==============================================${NC}"
     echo ''
   else
     # Install X.org

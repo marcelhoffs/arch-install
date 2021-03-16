@@ -6,7 +6,7 @@ USERNAME=$1
 USERNAME=${USERNAME,,}
 
 # Move the installation files
-echo "${CYAN}>> Moving installation files to user home ($USERNAME)${NC}"
+echo -e "${CYAN}>> Moving installation files to user home ($USERNAME)${NC}"
 chmod -x ./base.sh
 chmod +x ./desktop.sh
 chown -R $USERNAME: $(pwd)
