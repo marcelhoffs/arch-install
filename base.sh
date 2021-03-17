@@ -1,6 +1,5 @@
 #!/bin/bash
 GREEN='\e[1;32m'
-RED='\e[1;31m'
 CYAN='\e[1;36m'
 WHITE='\e[1;37m'
 NC='\e[0m'
@@ -75,7 +74,7 @@ else
   # Clear screen
   clear
   echo -e "${CYAN}==============================================${NC}"
-  echo -e "${RED} Arch Linux installation script               ${NC}"
+  echo -e "${WHITE} Arch Linux installation script              ${NC}"
   echo -e "${CYAN} Marcel Hoffs, 14.03.2021                     ${NC}"
   echo -e "${CYAN} Version 2.0                                  ${NC}"
   echo -e "${CYAN}==============================================${NC}"
