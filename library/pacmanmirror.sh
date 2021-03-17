@@ -4,5 +4,5 @@ NC='\e[0m'
 
 # Update pacman mirrorlist
 echo ''
-echo -e "${CYAN}>> Select fastest pacman mirror${NC}"
+echo -e "${CYAN}>> Select fastest pacman mirror (Belgium/Netherlands/Germany)${NC}"
 reflector --country Belgium --country Netherlands --country Germany --age 12 --protocol https --sort rate --save /etc/pacman.d/mirrorlist
