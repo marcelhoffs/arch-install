@@ -17,6 +17,7 @@ if [ $# -eq 2 ]; then
   echo '' >>/home/$USERNAME/.bashrc
   echo '# Custom aliasses' >>/home/$USERNAME/.bashrc
   echo 'alias ll='\''ls -l'\''' >>/home/$USERNAME/.bashrc
+  echo 'alias ip='\''ip -color=auto'\''' >>/home/$USERNAME/.bashrc
 
   # Modify .bash_profile
   echo '' >>/home/$USERNAME/.bash_profile
