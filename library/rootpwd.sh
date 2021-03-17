@@ -4,6 +4,7 @@ NC='\e[0m'
 
 if [ $# -eq 1 ]; then
   # Set root password
+  echo ''
   echo -e "${CYAN}>> Setting root password${NC}"
   echo root:$1 | chpasswd
 else

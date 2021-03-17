@@ -8,12 +8,13 @@ PASSWORD=$2
 
 if [ $# -eq 2 ]; then
   # Create a new user
+  echo ''
   echo -e "${CYAN}>> Creating new user: $USERNAME${NC}"
   useradd -m -g users -s /bin/bash $USERNAME
   echo $USERNAME:$PASSWORD | chpasswd
   echo "$USERNAME ALL=(ALL) ALL" >>/etc/sudoers.d/$USERNAME
 
-  # Create alias for ll
+  # Create aliasses
   echo '' >>/home/$USERNAME/.bashrc
   echo '# Custom aliasses' >>/home/$USERNAME/.bashrc
   echo 'alias ll='\''ls -l'\''' >>/home/$USERNAME/.bashrc

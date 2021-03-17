@@ -7,10 +7,12 @@ if [ $# -eq 1 ]; then
   HOSTNAME=${HOSTNAME,,}
 
   # Create hostname (/etc/hostname)
+  echo ''
   echo -e "${CYAN}>> Setting hostname to: "$HOSTNAME${NC}
   echo $HOSTNAME >/etc/hostname
 
-  # Create hosts file (/etc/hosts)+
+  # Create hosts file (/etc/hosts)
+  echo ''
   echo -e "${CYAN}>> Creating hosts file${NC}"
   echo '# Static table lookup for hostnames.' >/etc/hosts
   echo '# See hosts(5) for details.' >>/etc/hosts
