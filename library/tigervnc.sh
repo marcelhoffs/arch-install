@@ -4,6 +4,9 @@ NC='\e[0m'
 
 # Run as regular user, not as root
 if [ "$EUID" -ne 0 ]; then
+  # Get current user
+  CURRENT_USER=$USER
+
   # Install TigerVNC
   echo ''
   echo -e "${CYAN}>> Install TigerVNC package manager${NC}"
@@ -14,8 +17,11 @@ if [ "$EUID" -ne 0 ]; then
   echo -e "${CYAN}>> Provide VNC password${NC}"
   vncpasswd
   
+  # Setting configuration
+  echo ''
+  echo -e "${CYAN}>> Configuring VNC server${NC}"
   # Set user
-  sudo echo ':1='"$USER" >> /etc/tigervnc/vncserver.users
+  sudo echo ':1='"$CURRENT_USER" >> /etc/tigervnc/vncserver.users
   
   # Create config files
   echo 'session=gnome' > ~/.vnc/config
@@ -23,6 +29,8 @@ if [ "$EUID" -ne 0 ]; then
   echo 'alwaysshared' >> ~/.vnc/config
   
   # Enable the service
+  echo ''
+  echo -e "${CYAN}>> Enabling VNC server${NC}"
   sudo systemctl enable vncserver@:1 --now 
 else
   # Root
