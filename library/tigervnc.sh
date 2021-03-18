@@ -21,7 +21,7 @@ if [ "$EUID" -ne 0 ]; then
   echo ''
   echo -e "${CYAN}>> Configuring VNC server${NC}"
   # Set user
-  sudo echo ':1='"$CURRENT_USER" >> /etc/tigervnc/vncserver.users
+  echo ':1='"$CURRENT_USER" | sudo tee -a /etc/tigervnc/vncserver.users
   
   # Create config files
   echo 'session=gnome' > ~/.vnc/config
