@@ -5,7 +5,7 @@ NC='\e[0m'
 # Install TigerVNC
 echo ''
 echo -e "${CYAN}>> Install TigerVNC package manager${NC}"
-sudo pacman -S --noconfirm TigerVNC
+sudo pacman -S --noconfirm tigervnc
 
 # Set VNC password
 echo ''
