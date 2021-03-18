@@ -102,7 +102,7 @@ else
     ./library/baseapps.sh | tee -a $INSTALL_LOG
 
     # Update all
-    pacman -Syu --noconfirm | tee -a $INSTALL_LOG
+    ./library/update.sh | tee -a $INSTALL_LOG
 
     # Reboot
     reboot

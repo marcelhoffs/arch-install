@@ -127,6 +127,9 @@ else
     # Create user
     ./library/createuser.sh $INSTALL_USER $INSTALL_PASSWORD | tee -a $INSTALL_LOG
 
+    # Update all
+    ./library/update.sh | tee -a $INSTALL_LOG
+
     # Move installation files
     ./library/moveinstallation.sh $INSTALL_USER | tee -a $INSTALL_LOG
 
