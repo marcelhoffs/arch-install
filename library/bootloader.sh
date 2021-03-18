@@ -11,7 +11,7 @@ INSTALL_TYPE=${INSTALL_TYPE^^}
 if [ $INSTALL_TYPE = 'UEFI' ]; then
   echo ''
   echo -e "${CYAN}>> Installing GRUB bootloader (UEFI)${NC}"
-  grub-install --target=x86_64-efi --efi-directory=/boot/EFI --bootloader-id=grub_uefi --recheck
+  grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=grub_uefi --recheck
   grub-mkconfig -o /boot/grub/grub.cfg
 fi
 
