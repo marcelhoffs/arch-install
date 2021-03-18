@@ -1,7 +1,7 @@
 # arch-install
 
 # Introduction
-This repository provides an easy way to install Arch Linux on an UEFI system. There are some hard coded things in this script. These are easily changed if needed (see scripts in library directory).
+This repository provides an easy way to install Arch Linux on an UEFI or BIOS system. There are some hard coded things in this script. These are easily changed if needed (see scripts in library directory).
 - The locale will be set to en_US
 - The timezone will be set to Europe\Brussels
 - Pacman mirrors are optimized for Belgium\Netherlands\Germany
@@ -9,7 +9,7 @@ This repository provides an easy way to install Arch Linux on an UEFI system. Th
 # Step 1: Preparation
 You should first partition the drives manually. After that you can use the scripts to do a base installation and install a desktop environment of choice.
 
-The script expect the following partitions:
+The script expect the following partitions for a UEFI install, for BIOS you can ignore the boot partition:
 Partition | Size | Type | Mount
 --------- | ---- | ---- | -----
 Boot | 300M | EFI (1) | /mnt/boot/EFI
