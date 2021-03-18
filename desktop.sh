@@ -56,7 +56,7 @@ else
   done
 
   # Continue if not aborted
-  if [ $INSTALL_CONTINUE == 'Y' ]; then
+  if [ $INSTALL_CONTINUE == 'N' ]; then
     echo ''
     echo -e "${CYAN}==============================================${NC}"
     echo -e "${CYAN} Installation aborted.                        ${NC}"
