@@ -98,13 +98,8 @@ else
     ./library/timezone.sh | tee $INSTALL_LOG
 
     # Install kernel
-    INSTALL_KERNEL_LTS=${INSTALL_KERNEL_LTS^^}
-    if [ $INSTALL_KERNEL_LTS == 'Y' ]; then
-      ./library/kernel.sh LTS | tee $INSTALL_LOG 
-    else
-      ./library/kernel.sh | tee $INSTALL_LOG
-    fi
-
+    ./library/kernel.sh $INSTALL_KERNEL_LTS | tee $INSTALL_LOG 
+   
     # Install base packages
     ./library/basepackages.sh | tee $INSTALL_LOG
 

@@ -31,10 +31,32 @@ else
 
     read -p ' Which one do you want to install: ' INSTALL_DE
     INSTALL_DE=${INSTALL_DE^^}
+
+     # What GPU are you using
+     echo ''
+     while [ "$INSTALL_CPU" != "INTEL" ] && [ "$INSTALL_CPU" != "AMD" ] && [ "$INSTALL_CPU" != "NVIDIA" ]; do
+       read -p ' What GPU are you using? [INTEL/AMD/NVIDIA]: ' INSTALL_GPU
+       INSTALL_GPU=${INSTALL_CPU^^}
+     done
+
+     # Ask extra question if it is Nvidia
+     if [ $INSTALL_GPU == 'NVIDIA' ]; then
+       while [ "$INSTALL_KERNEL_LTS" != "Y" ] && [ "$INSTALL_KERNEL_LTS" != "N" ]; do
+         read -p ' Are you using the LTS kernel [Y/N]: ' INSTALL_KERNEL_LTS
+         INSTALL_KERNEL_LTS=${INSTALL_KERNEL_LTS^^}
+       done
+     fi
+
+     # Continue
+     echo ''
+     while [ "$INSTALL_CONTINUE" != "Y" ] && [ "$INSTALL_CONTINUE" != "N" ]; do
+       read -p ' Are you sure you want to continue? [Y/N]: ' INSTALL_CONTINUE
+       INSTALL_CONTINUE=${INSTALL_CONTINUE^^}
+     done
   done
 
   # Continue if not aborted
-  if [ $INSTALL_DE == 'Q' ]; then
+  if [ $INSTALL_CONTINUE == 'Y' ]; then
     echo ''
     echo -e "${CYAN}==============================================${NC}"
     echo -e "${CYAN} Installation aborted.                        ${NC}"
@@ -45,7 +67,7 @@ else
     ./library/xorg.sh | tee $INSTALL_LOG
 
     # Install graphics drivers
-    ./library/gpu.sh | tee $INSTALL_LOG
+    ./library/gpu.sh $INSTALL_GPU $INSTALL_KERNEL_LTS | tee $INSTALL_LOG
 
     # Install fonts
     ./library/fonts.sh | tee $INSTALL_LOG
