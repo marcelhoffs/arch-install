@@ -89,46 +89,46 @@ else
   INSTALL_CONTINUE=${INSTALL_CONTINUE^^}
   if [ $INSTALL_CONTINUE == 'Y' ]; then
     # Make scripts executable
-    chmod +x ./library/*.sh | tee $INSTALL_LOG
+    chmod +x ./library/*.sh | tee -a $INSTALL_LOG
 
     # Set hostname and hosts file
-    ./library/hostname.sh $INSTALL_HOSTNAME | tee $INSTALL_LOG
+    ./library/hostname.sh $INSTALL_HOSTNAME | tee -a $INSTALL_LOG
 
     # Set timezone
-    ./library/timezone.sh | tee $INSTALL_LOG
+    ./library/timezone.sh | tee -a $INSTALL_LOG
 
     # Install kernel
-    ./library/kernel.sh $INSTALL_KERNEL_LTS | tee $INSTALL_LOG 
+    ./library/kernel.sh $INSTALL_KERNEL_LTS | tee -a $INSTALL_LOG 
    
     # Install base packages
-    ./library/basepackages.sh | tee $INSTALL_LOG
+    ./library/basepackages.sh | tee -a $INSTALL_LOG
 
     # Install CPU Microcode
-    ./library/cpu.sh $INSTALL_CPU | tee $INSTALL_LOG
+    ./library/cpu.sh $INSTALL_CPU | tee -a $INSTALL_LOG
 
     # Update pacman mirror list
-    ./library/pacmanmirror.sh | tee $INSTALL_LOG
+    ./library/pacmanmirror.sh | tee -a $INSTALL_LOG
 
     # Set locale
-    ./library/locale.sh | tee $INSTALL_LOG
+    ./library/locale.sh | tee -a $INSTALL_LOG
 
     # Install bootloader
-    ./library/bootloader.sh $INSTALL_UEFI $INSTALL_DEVICE | tee $INSTALL_LOG
+    ./library/bootloader.sh $INSTALL_UEFI $INSTALL_DEVICE | tee -a $INSTALL_LOG
 
     # Install virtualization
-    ./library/virtualization.sh $INSTALL_VIRTHOST | tee $INSTALL_LOG
+    ./library/virtualization.sh $INSTALL_VIRTHOST | tee -a $INSTALL_LOG
 
     # Enable services
-    ./library/services.sh | tee $INSTALL_LOG
+    ./library/services.sh | tee -a $INSTALL_LOG
 
     # Set root password
-    ./library/rootpwd.sh $INSTALL_ROOT_PWD | tee $INSTALL_LOG
+    ./library/rootpwd.sh $INSTALL_ROOT_PWD | tee -a $INSTALL_LOG
 
     # Create user
-    ./library/createuser.sh $INSTALL_USER $INSTALL_PASSWORD | tee $INSTALL_LOG
+    ./library/createuser.sh $INSTALL_USER $INSTALL_PASSWORD | tee -a $INSTALL_LOG
 
     # Move installation files
-    ./library/moveinstallation.sh $INSTALL_USER | tee $INSTALL_LOG
+    ./library/moveinstallation.sh $INSTALL_USER | tee -a $INSTALL_LOG
 
     # Finish
     echo ''

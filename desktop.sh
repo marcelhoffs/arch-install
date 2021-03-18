@@ -64,34 +64,34 @@ else
     echo ''
   else
     # Install X.org
-    ./library/xorg.sh | tee $INSTALL_LOG
+    ./library/xorg.sh | tee -a $INSTALL_LOG
 
     # Install graphics drivers
-    ./library/gpu.sh $INSTALL_GPU $INSTALL_KERNEL_LTS | tee $INSTALL_LOG
+    ./library/gpu.sh $INSTALL_GPU $INSTALL_KERNEL_LTS | tee -a $INSTALL_LOG
 
     # Install fonts
-    ./library/fonts.sh | tee $INSTALL_LOG
+    ./library/fonts.sh | tee -a $INSTALL_LOG
 
     case $INSTALL_DE in
     1)
       # Install GNOME
-      ./library/gnome.sh | tee $INSTALL_LOG
+      ./library/gnome.sh | tee -a $INSTALL_LOG
       ;;
     2)
       # Install GNOME
-      ./library/gnome.sh MINIMAL | tee $INSTALL_LOG
+      ./library/gnome.sh MINIMAL | tee -a $INSTALL_LOG
       ;;
     3)
       # Install KDE
-      ./library/kde.sh | tee $INSTALL_LOG
+      ./library/kde.sh | tee -a $INSTALL_LOG
       ;;
     4)
       # Install MATE
-      ./library/mate.sh | tee $INSTALL_LOG
+      ./library/mate.sh | tee -a $INSTALL_LOG
       ;;
     5)
       # Install XFCE
-      ./library/xfce.sh | tee $INSTALL_LOG
+      ./library/xfce.sh | tee -a $INSTALL_LOG
       ;;
     *)
       echo "Wrong option"
@@ -99,10 +99,10 @@ else
     esac
 
     # Install base applications
-    ./library/baseapps.sh | tee $INSTALL_LOG
+    ./library/baseapps.sh | tee -a $INSTALL_LOG
 
     # Update all
-    pacman -Syu --noconfirm | tee $INSTALL_LOG
+    pacman -Syu --noconfirm | tee -a $INSTALL_LOG
 
     # Reboot
     reboot
