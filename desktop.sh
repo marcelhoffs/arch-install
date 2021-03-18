@@ -34,9 +34,9 @@ else
 
      # What GPU are you using
      echo ''
-     while [ "$INSTALL_CPU" != "INTEL" ] && [ "$INSTALL_CPU" != "AMD" ] && [ "$INSTALL_CPU" != "NVIDIA" ]; do
+     while [ "$INSTALL_GPU" != "INTEL" ] && [ "$INSTALL_GPU" != "AMD" ] && [ "$INSTALL_GPU" != "NVIDIA" ]; do
        read -p ' What GPU are you using? [INTEL/AMD/NVIDIA]: ' INSTALL_GPU
-       INSTALL_GPU=${INSTALL_CPU^^}
+       INSTALL_GPU=${INSTALL_GPU^^}
      done
 
      # Ask extra question if it is Nvidia
