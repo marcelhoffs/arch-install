@@ -1,8 +1,11 @@
 #!/bin/bash
+
+# Constants
 GREEN='\e[1;32m'
 CYAN='\e[1;36m'
 WHITE='\e[1;37m'
 NC='\e[0m'
+INSTALL_LOG='install_base.log'
 
 collect_parameters() {
   # What type of install
@@ -86,51 +89,51 @@ else
   INSTALL_CONTINUE=${INSTALL_CONTINUE^^}
   if [ $INSTALL_CONTINUE == 'Y' ]; then
     # Make scripts executable
-    chmod +x ./library/*.sh
+    chmod +x ./library/*.sh | tee $INSTALL_LOG
 
     # Set hostname and hosts file
-    ./library/hostname.sh $INSTALL_HOSTNAME
+    ./library/hostname.sh $INSTALL_HOSTNAME | tee $INSTALL_LOG
 
     # Set timezone
-    ./library/timezone.sh
+    ./library/timezone.sh | tee $INSTALL_LOG
 
     # Install kernel
     INSTALL_KERNEL_LTS=${INSTALL_KERNEL_LTS^^}
     if [ $INSTALL_KERNEL_LTS == 'Y' ]; then
-      ./library/kernel.sh LTS
+      ./library/kernel.sh LTS | tee $INSTALL_LOG 
     else
-      ./library/kernel.sh
+      ./library/kernel.sh | tee $INSTALL_LOG
     fi
 
     # Install base packages
-    ./library/basepackages.sh
+    ./library/basepackages.sh | tee $INSTALL_LOG
 
     # Install CPU Microcode
-    ./library/cpu.sh $INSTALL_CPU
+    ./library/cpu.sh $INSTALL_CPU | tee $INSTALL_LOG
 
     # Update pacman mirror list
-    ./library/pacmanmirror.sh
+    ./library/pacmanmirror.sh | tee $INSTALL_LOG
 
     # Set locale
-    ./library/locale.sh
+    ./library/locale.sh | tee $INSTALL_LOG
 
     # Install bootloader
-    ./library/bootloader.sh $INSTALL_UEFI $INSTALL_DEVICE
+    ./library/bootloader.sh $INSTALL_UEFI $INSTALL_DEVICE | tee $INSTALL_LOG
 
     # Install virtualization
-    ./library/virtualization.sh $INSTALL_VIRTHOST
+    ./library/virtualization.sh $INSTALL_VIRTHOST | tee $INSTALL_LOG
 
     # Enable services
-    ./library/services.sh
+    ./library/services.sh | tee $INSTALL_LOG
 
     # Set root password
-    ./library/rootpwd.sh $INSTALL_ROOT_PWD
+    ./library/rootpwd.sh $INSTALL_ROOT_PWD | tee $INSTALL_LOG
 
     # Create user
-    ./library/createuser.sh $INSTALL_USER $INSTALL_PASSWORD
+    ./library/createuser.sh $INSTALL_USER $INSTALL_PASSWORD | tee $INSTALL_LOG
 
     # Move installation files
-    ./library/moveinstallation.sh $INSTALL_USER
+    ./library/moveinstallation.sh $INSTALL_USER | tee $INSTALL_LOG
 
     # Finish
     echo ''

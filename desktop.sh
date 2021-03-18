@@ -2,6 +2,7 @@
 CYAN='\e[1;36m'
 WHITE='\e[1;37m'
 NC='\e[0m'
+INSTALL_LOG='install_desktop.log'
 
 if [ "$EUID" -ne 0 ]; then
   # Not root
@@ -41,34 +42,34 @@ else
     echo ''
   else
     # Install X.org
-    ./library/xorg.sh
+    ./library/xorg.sh | tee $INSTALL_LOG
 
     # Install graphics drivers
-    ./library/gpu.sh
+    ./library/gpu.sh | tee $INSTALL_LOG
 
     # Install fonts
-    ./library/fonts.sh
+    ./library/fonts.sh | tee $INSTALL_LOG
 
     case $INSTALL_DE in
     1)
       # Install GNOME
-      ./library/gnome.sh
+      ./library/gnome.sh | tee $INSTALL_LOG
       ;;
     2)
       # Install GNOME
-      ./library/gnome.sh MINIMAL
+      ./library/gnome.sh MINIMAL | tee $INSTALL_LOG
       ;;
     3)
       # Install KDE
-      ./library/kde.sh
+      ./library/kde.sh | tee $INSTALL_LOG
       ;;
     4)
       # Install MATE
-      ./library/mate.sh
+      ./library/mate.sh | tee $INSTALL_LOG
       ;;
     5)
       # Install XFCE
-      ./library/xfce.sh
+      ./library/xfce.sh | tee $INSTALL_LOG
       ;;
     *)
       echo "Wrong option"
@@ -76,10 +77,10 @@ else
     esac
 
     # Install base applications
-    ./library/baseapps.sh
+    ./library/baseapps.sh | tee $INSTALL_LOG
 
     # Update all
-    pacman -Syu --noconfirm
+    pacman -Syu --noconfirm | tee $INSTALL_LOG
 
     # Reboot
     reboot
