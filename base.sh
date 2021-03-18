@@ -61,7 +61,7 @@ collect_parameters() {
   done
 
   echo ''
-  
+
   # Continue
   while [ "$INSTALL_CONTINUE" != "Y" ] && [ "$INSTALL_CONTINUE" != "N" ]; do
     read -p ' Are you sure you want to continue? [Y/N]: ' INSTALL_CONTINUE
@@ -98,8 +98,8 @@ else
     ./library/timezone.sh | tee -a $INSTALL_LOG
 
     # Install kernel
-    ./library/kernel.sh $INSTALL_KERNEL_LTS | tee -a $INSTALL_LOG 
-   
+    ./library/kernel.sh $INSTALL_KERNEL_LTS | tee -a $INSTALL_LOG
+
     # Install base packages
     ./library/basepackages.sh | tee -a $INSTALL_LOG
 
@@ -123,7 +123,7 @@ else
 
     # Enable services
     ./library/services.sh | tee -a $INSTALL_LOG
-    
+
     # Set root password
     ./library/rootpwd.sh $INSTALL_ROOT_PWD | tee -a $INSTALL_LOG
 
