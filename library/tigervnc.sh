@@ -31,7 +31,8 @@ if [ "$EUID" -ne 0 ]; then
   # Enable the service
   echo ''
   echo -e "${CYAN}>> Enabling VNC server${NC}"
-  sudo systemctl enable vncserver@:1 --now 
+  sudo systemctl enable vncserver@:1
+  sudo systemctl start vncserver@:1
 else
   # Root
   echo "Do not execute this script with root privileges"
