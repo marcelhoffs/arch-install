@@ -118,17 +118,17 @@ else
     # Install virtualization
     ./library/virtualization.sh $INSTALL_VIRTHOST | tee -a $INSTALL_LOG
 
+    # Update all
+    ./library/update.sh | tee -a $INSTALL_LOG
+
     # Enable services
     ./library/services.sh | tee -a $INSTALL_LOG
-
+    
     # Set root password
     ./library/rootpwd.sh $INSTALL_ROOT_PWD | tee -a $INSTALL_LOG
 
     # Create user
     ./library/createuser.sh $INSTALL_USER $INSTALL_PASSWORD | tee -a $INSTALL_LOG
-
-    # Update all
-    ./library/update.sh | tee -a $INSTALL_LOG
 
     # Move installation files
     ./library/moveinstallation.sh $INSTALL_USER | tee -a $INSTALL_LOG
