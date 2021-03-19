@@ -5,4 +5,4 @@ NC='\e[0m'
 # Install X.org packages
 echo ''
 echo -e "${CYAN}>> Installing X.org packages${NC}"
-pacman -S --noconfirm xorg-server xorg-xinit xorg-apps
+pacman -S --noconfirm xorg
