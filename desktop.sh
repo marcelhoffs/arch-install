@@ -32,7 +32,7 @@ else
     read -p ' Which one do you want to install: ' INSTALL_DE
     INSTALL_DE=${INSTALL_DE^^}
     
-    if [ $INSTALL_DE != 'Q']; then 
+    if [ $INSTALL_DE != 'Q' ]; then 
       # What GPU are you using
       echo ''
       while [ "$INSTALL_GPU" != "INTEL" ] && [ "$INSTALL_GPU" != "AMD" ] && [ "$INSTALL_GPU" != "NVIDIA" ]; do
