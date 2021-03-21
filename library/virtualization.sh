@@ -12,6 +12,10 @@ if [ $VMHOST == 'VMWARE' ]; then
   pacman -S --noconfirm open-vm-tools xf86-video-vmware
   systemctl enable vmtoolsd
   systemctl enable vmware-vmblock-fuse
+
+  # Load kernel modules
+  sed -i -e 's/MODULES=()/MODULES=(vsock vmw_vsock_vmci_transport vmw_balloon vmw_vmci vmwgfx)/' /etc/mkinitcpio.conf
+  mkinitcpio -P
 fi
 
 if [ $VMHOST == 'VIRTUALBOX']; then
