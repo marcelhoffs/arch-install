@@ -18,7 +18,7 @@ if [ $VMHOST == 'VMWARE' ]; then
   mkinitcpio -P
 fi
 
-if [ $VMHOST == 'VIRTUALBOX']; then
+if [ $VMHOST == 'VIRTUALBOX' ]; then
   echo ''
   echo -e "${CYAN}>> Enable VirtualBox guest tools${NC}"
   pacman -S --noconfirm virtualbox-guest-utils xf86-video-vmware
