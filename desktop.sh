@@ -29,21 +29,21 @@ else
     echo ' q) Quit'
     echo ''
 
-    read -p ' Which one do you want to install: ' INSTALL_DE
+    read -r -p ' Which one do you want to install: ' INSTALL_DE
     INSTALL_DE=${INSTALL_DE^^}
     
-    if [ $INSTALL_DE != 'Q' ]; then 
+    if [ "$INSTALL_DE" != 'Q' ]; then 
       # What GPU are you using
       echo ''
       while [ "$INSTALL_GPU" != "INTEL" ] && [ "$INSTALL_GPU" != "AMD" ] && [ "$INSTALL_GPU" != "NVIDIA" ]; do
-        read -p ' What GPU are you using? [INTEL/AMD/NVIDIA]: ' INSTALL_GPU
+        read -r -p ' What GPU are you using? [INTEL/AMD/NVIDIA]: ' INSTALL_GPU
         INSTALL_GPU=${INSTALL_GPU^^}
       done
   
       # Ask extra question if it is Nvidia
-      if [ $INSTALL_GPU == 'NVIDIA' ]; then
+      if [ "$INSTALL_GPU" == 'NVIDIA' ]; then
         while [ "$INSTALL_KERNEL_LTS" != "Y" ] && [ "$INSTALL_KERNEL_LTS" != "N" ]; do
-          read -p ' Are you using the LTS kernel [Y/N]: ' INSTALL_KERNEL_LTS
+          read -r -p ' Are you using the LTS kernel [Y/N]: ' INSTALL_KERNEL_LTS
           INSTALL_KERNEL_LTS=${INSTALL_KERNEL_LTS^^}
         done
       fi
@@ -51,7 +51,7 @@ else
       # Continue
       echo ''
       while [ "$INSTALL_CONTINUE" != "Y" ] && [ "$INSTALL_CONTINUE" != "N" ]; do
-        read -p ' Are you sure you want to continue? [Y/N]: ' INSTALL_CONTINUE
+        read -r -p ' Are you sure you want to continue? [Y/N]: ' INSTALL_CONTINUE
         INSTALL_CONTINUE=${INSTALL_CONTINUE^^}
       done
     else
@@ -60,7 +60,7 @@ else
   done
 
   # Continue if not aborted
-  if [ $INSTALL_CONTINUE == 'N' ]; then
+  if [ "$INSTALL_CONTINUE" == 'N' ]; then
     echo ''
     echo -e "${CYAN}==============================================${NC}"
     echo -e "${CYAN} Installation aborted.                        ${NC}"
@@ -68,34 +68,34 @@ else
     echo ''
   else
     # Install X.org
-    ./library/xorg.sh | tee -a $INSTALL_LOG
+    ./library/xorg.sh | tee -a "$INSTALL_LOG"
 
     # Install graphics drivers
-    ./library/gpu.sh $INSTALL_GPU $INSTALL_KERNEL_LTS | tee -a $INSTALL_LOG
+    ./library/gpu.sh "$INSTALL_GPU" "$INSTALL_KERNEL_LTS" | tee -a "$INSTALL_LOG"
 
     # Install fonts
-    ./library/fonts.sh | tee -a $INSTALL_LOG
+    ./library/fonts.sh | tee -a "$INSTALL_LOG"
 
     case $INSTALL_DE in
     1)
       # Install GNOME
-      ./library/gnome.sh | tee -a $INSTALL_LOG
+      ./library/gnome.sh | tee -a "$INSTALL_LOG"
       ;;
     2)
       # Install GNOME
-      ./library/gnome.sh MINIMAL | tee -a $INSTALL_LOG
+      ./library/gnome.sh MINIMAL | tee -a "$INSTALL_LOG"
       ;;
     3)
       # Install KDE
-      ./library/kde.sh | tee -a $INSTALL_LOG
+      ./library/kde.sh | tee -a "$INSTALL_LOG"
       ;;
     4)
       # Install MATE
-      ./library/mate.sh | tee -a $INSTALL_LOG
+      ./library/mate.sh | tee -a "$INSTALL_LOG"
       ;;
     5)
       # Install XFCE
-      ./library/xfce.sh | tee -a $INSTALL_LOG
+      ./library/xfce.sh | tee -a "$INSTALL_LOG"
       ;;
     *)
       echo "Wrong option"
@@ -103,10 +103,10 @@ else
     esac
 
     # Install base applications
-    ./library/baseapps.sh | tee -a $INSTALL_LOG
+    ./library/baseapps.sh | tee -a "$INSTALL_LOG"
 
     # Update all
-    ./library/update.sh | tee -a $INSTALL_LOG
+    ./library/update.sh | tee -a "$INSTALL_LOG"
 
     # Reboot
     reboot
