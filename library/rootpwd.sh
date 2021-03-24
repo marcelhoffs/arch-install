@@ -5,9 +5,9 @@ NC='\e[0m'
 if [ $# -eq 1 ]; then
   # Set root password
   echo ''
-  echo -e "${CYAN}>> Setting root password${NC}"
+  echo -e "${CYAN}"'>> Setting root password'"${NC}"
   echo root:"$1" | chpasswd
 else
-  echo "Provide a password."
-  echo "Usage: rootpwd.sh <password>"
+  echo 'Provide a password.'
+  echo 'Usage: rootpwd.sh <password>'
 fi

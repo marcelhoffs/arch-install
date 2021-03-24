@@ -6,17 +6,17 @@ INSTALL_LOG='install_desktop.log'
 
 if [ "$EUID" -ne 0 ]; then
   # Not root
-  echo "Please run as root privileges:"
-  echo "sudo ./desktop.sh"
+  echo 'Please run as root privileges:'
+  echo 'sudo ./desktop.sh'
 else
   # Ask what desktop to install
   while [[ ! $INSTALL_DE =~ ^(1|2|3|4|5|Q)$ ]]; do
     clear
-    echo -e "${CYAN}==============================================${NC}"
-    echo -e "${WHITE} Arch Linux Desktop Environment installation ${NC}"
-    echo -e "${CYAN} Marcel Hoffs, 14.03.2021                     ${NC}"
-    echo -e "${CYAN} Version 1.0                                  ${NC}"
-    echo -e "${CYAN}==============================================${NC}"
+    echo -e "${CYAN}"'=============================================='"${NC}"
+    echo -e "${WHITE}"' Arch Linux Desktop Environment installation '"${NC}"
+    echo -e "${CYAN}"' Marcel Hoffs, 14.03.2021                     '"${NC}"
+    echo -e "${CYAN}"' Version 1.0                                  '"${NC}"
+    echo -e "${CYAN}"'=============================================='"${NC}"
     echo ''
     echo ' Available Desktop Environments:'
     echo ''
@@ -35,14 +35,14 @@ else
     if [ "$INSTALL_DE" != 'Q' ]; then 
       # What GPU are you using
       echo ''
-      while [ "$INSTALL_GPU" != "INTEL" ] && [ "$INSTALL_GPU" != "AMD" ] && [ "$INSTALL_GPU" != "NVIDIA" ]; do
+      while [ "$INSTALL_GPU" != 'INTEL' ] && [ "$INSTALL_GPU" != 'AMD' ] && [ "$INSTALL_GPU" != 'NVIDIA' ]; do
         read -r -p ' What GPU are you using? [INTEL/AMD/NVIDIA]: ' INSTALL_GPU
         INSTALL_GPU=${INSTALL_GPU^^}
       done
   
       # Ask extra question if it is Nvidia
       if [ "$INSTALL_GPU" == 'NVIDIA' ]; then
-        while [ "$INSTALL_KERNEL_LTS" != "Y" ] && [ "$INSTALL_KERNEL_LTS" != "N" ]; do
+        while [ "$INSTALL_KERNEL_LTS" != 'Y' ] && [ "$INSTALL_KERNEL_LTS" != 'N' ]; do
           read -r -p ' Are you using the LTS kernel [Y/N]: ' INSTALL_KERNEL_LTS
           INSTALL_KERNEL_LTS=${INSTALL_KERNEL_LTS^^}
         done
@@ -50,7 +50,7 @@ else
   
       # Continue
       echo ''
-      while [ "$INSTALL_CONTINUE" != "Y" ] && [ "$INSTALL_CONTINUE" != "N" ]; do
+      while [ "$INSTALL_CONTINUE" != 'Y' ] && [ "$INSTALL_CONTINUE" != 'N' ]; do
         read -r -p ' Are you sure you want to continue? [Y/N]: ' INSTALL_CONTINUE
         INSTALL_CONTINUE=${INSTALL_CONTINUE^^}
       done
@@ -62,9 +62,9 @@ else
   # Continue if not aborted
   if [ "$INSTALL_CONTINUE" == 'N' ]; then
     echo ''
-    echo -e "${CYAN}==============================================${NC}"
-    echo -e "${CYAN} Installation aborted.                        ${NC}"
-    echo -e "${CYAN}==============================================${NC}"
+    echo -e "${CYAN}"'=============================================='"${NC}"
+    echo -e "${CYAN}"' Installation aborted.                        '"${NC}"
+    echo -e "${CYAN}"'=============================================='"${NC}"
     echo ''
   else
     # Install X.org
@@ -76,7 +76,7 @@ else
     # Install fonts
     ./library/fonts.sh | tee -a "$INSTALL_LOG"
 
-    case $INSTALL_DE in
+    case "$INSTALL_DE" in
     1)
       # Install GNOME
       ./library/gnome.sh | tee -a "$INSTALL_LOG"
@@ -98,7 +98,7 @@ else
       ./library/xfce.sh | tee -a "$INSTALL_LOG"
       ;;
     *)
-      echo "Wrong option"
+      echo 'Wrong option'
       ;;
     esac
 

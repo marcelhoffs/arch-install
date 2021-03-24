@@ -4,7 +4,7 @@ NC='\e[0m'
 
 # Install XFCE
 echo ''
-echo -e "${CYAN}>> Installing XFCE${NC}"
+echo -e "${CYAN}"'>> Installing XFCE'"${NC}"
 pacman -S --noconfirm lightdm lightdm-gtk-greeter xfce4 xfce4-goodies gnome-bluetooth
 
 # Enable services

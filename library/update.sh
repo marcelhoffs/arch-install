@@ -4,5 +4,5 @@ NC='\e[0m'
 
 # Update
 echo ''
-echo -e "${CYAN}>> Update all upackages${NC}"
+echo -e "${CYAN}"'>> Update all upackages'"${NC}"
 pacman -Syu --noconfirm

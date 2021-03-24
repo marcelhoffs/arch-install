@@ -9,17 +9,17 @@ if [ "$EUID" -ne 0 ]; then
 
   # Install TigerVNC
   echo ''
-  echo -e "${CYAN}>> Install TigerVNC package manager${NC}"
+  echo -e "${CYAN}"'>> Install TigerVNC package manager'"${NC}"
   sudo pacman -S --noconfirm tigervnc
   
   # Set VNC password
   echo ''
-  echo -e "${CYAN}>> Provide VNC password${NC}"
+  echo -e "${CYAN}"'>> Provide VNC password'"${NC}"
   vncpasswd
   
   # Setting configuration
   echo ''
-  echo -e "${CYAN}>> Configuring VNC server${NC}"
+  echo -e "${CYAN}"'>> Configuring VNC server'"${NC}"
   # Set user
   echo ':1='"$CURRENT_USER" | sudo tee -a /etc/tigervnc/vncserver.users
   
@@ -30,10 +30,10 @@ if [ "$EUID" -ne 0 ]; then
   
   # Enable the service
   echo ''
-  echo -e "${CYAN}>> Enabling VNC server${NC}"
+  echo -e "${CYAN}"'>> Enabling VNC server'"${NC}"
   sudo systemctl enable vncserver@:1
   sudo systemctl start vncserver@:1
 else
   # Root
-  echo "Do not execute this script with root privileges"
+  echo 'Do not execute this script with root privileges'
 fi

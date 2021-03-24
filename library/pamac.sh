@@ -4,7 +4,7 @@ NC='\e[0m'
 
 # Install Pamac
 echo ''
-echo -e "${CYAN}>> Install Pamac package manager${NC}"
+echo -e "${CYAN}"'>> Install Pamac package manager'"${NC}"
 mkdir pamac
 cd pamac || exit
 git clone https://aur.archlinux.org/pamac-aur.git .

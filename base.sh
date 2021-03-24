@@ -9,7 +9,7 @@ INSTALL_LOG='install_base.log'
 
 collect_parameters() {
   # What type of install
-  while [ "$INSTALL_UEFI" != "BIOS" ] && [ "$INSTALL_UEFI" != "UEFI" ]; do
+  while [ "$INSTALL_UEFI" != 'BIOS' ] && [ "$INSTALL_UEFI" != 'UEFI' ]; do
     read -r -p ' 1)  Install on BIOS or UEFI [BIOS/UEFI]: ' INSTALL_UEFI
     INSTALL_UEFI=${INSTALL_UEFI^^}
   done
@@ -22,48 +22,48 @@ collect_parameters() {
   fi
 
   # What CPU are you using
-  while [ "$INSTALL_CPU" != "INTEL" ] && [ "$INSTALL_CPU" != "AMD" ]; do
+  while [ "$INSTALL_CPU" != 'INTEL' ] && [ "$INSTALL_CPU" != 'AMD' ]; do
     read -r -p ' 2)  Do you use an Intel or AMD CPU [INTEL/AMD]: ' INSTALL_CPU
     INSTALL_CPU=${INSTALL_CPU^^}
   done
 
   # Are you installing a virtual host
-  while [ "$INSTALL_VIRTHOST" != "VMWARE" ] && [ "$INSTALL_VIRTHOST" != "VIRTUALBOX" ]; do
+  while [ "$INSTALL_VIRTHOST" != 'VMWARE' ] && [ "$INSTALL_VIRTHOST" != 'VIRTUALBOX' ]; do
     read -r -p ' 3)  Are you installing on a virtual host [VMWARE/VIRTUALBOX]: ' INSTALL_VIRTHOST
     INSTALL_VIRTHOST=${INSTALL_VIRTHOST^^}
   done
 
   # Install LTS kernel
-  while [ "$INSTALL_KERNEL_LTS" != "Y" ] && [ "$INSTALL_KERNEL_LTS" != "N" ]; do
+  while [ "$INSTALL_KERNEL_LTS" != 'Y' ] && [ "$INSTALL_KERNEL_LTS" != 'N' ]; do
     read -r -p ' 4)  Do you want to install the LTS kernel [Y/N]: ' INSTALL_KERNEL_LTS
     INSTALL_KERNEL_LTS=${INSTALL_KERNEL_LTS^^}
   done
 
   # Hostname
-  while [ "$INSTALL_HOSTNAME" == "" ]; do
+  while [ "$INSTALL_HOSTNAME" == '' ]; do
     read -r -p ' 5)  Provide the desired hostname: ' INSTALL_HOSTNAME
     INSTALL_HOSTNAME=${INSTALL_HOSTNAME,,}
   done
 
   # Root password
-  while [ "$INSTALL_ROOT_PWD" == "" ]; do
+  while [ "$INSTALL_ROOT_PWD" == '' ]; do
     read -r -p ' 6)  Set root password: ' INSTALL_ROOT_PWD
   done
 
   # Root password
-  while [ "$INSTALL_USER" == "" ]; do
+  while [ "$INSTALL_USER" == '' ]; do
     read -r -p ' 7)  Create new user: ' INSTALL_USER
   done
 
   # Root password
-  while [ "$INSTALL_PASSWORD" == "" ]; do
+  while [ "$INSTALL_PASSWORD" == '' ]; do
     read -r -p ' 8)  Set new user password: ' INSTALL_PASSWORD
   done
 
   echo ''
 
   # Continue
-  while [ "$INSTALL_CONTINUE" != "Y" ] && [ "$INSTALL_CONTINUE" != "N" ]; do
+  while [ "$INSTALL_CONTINUE" != 'Y' ] && [ "$INSTALL_CONTINUE" != 'N' ]; do
     read -r -p ' Are you sure you want to continue? [Y/N]: ' INSTALL_CONTINUE
     INSTALL_CONTINUE=${INSTALL_CONTINUE^^}
   done
@@ -71,16 +71,16 @@ collect_parameters() {
 
 if [ "$EUID" -ne 0 ]; then
   # Not root
-  echo "Please run as root privileges:"
-  echo "sudo ./base.sh"
+  echo 'Please run as root privileges:'
+  echo 'sudo ./base.sh'
 else
   # Clear screen
   clear
-  echo -e "${CYAN}==============================================${NC}"
-  echo -e "${WHITE} Arch Linux installation script              ${NC}"
-  echo -e "${CYAN} Marcel Hoffs, 14.03.2021                     ${NC}"
-  echo -e "${CYAN} Version 2.0                                  ${NC}"
-  echo -e "${CYAN}==============================================${NC}"
+  echo -e "${CYAN}"'=============================================='"${NC}"
+  echo -e "${WHITE}"' Arch Linux installation script              '"${NC}"
+  echo -e "${CYAN}"' Marcel Hoffs, 14.03.2021                     '"${NC}"
+  echo -e "${CYAN}"' Version 2.0                                  '"${NC}"
+  echo -e "${CYAN}"'=============================================='"${NC}"
   echo ''
 
   # Ask questions to collect installation parameters
@@ -135,22 +135,22 @@ else
 
     # Finish
     echo ''
-    echo -e "${GREEN}==============================================${NC}"
-    echo -e "${GREEN} Finished installing Arch base installation.  ${NC}"
-    echo -e "${GREEN} Exit chroot : ${WHITE}exit                   ${NC}"
-    echo -e "${GREEN} Unmount all : ${WHITE}umount -a              ${NC}"
-    echo -e "${GREEN} Then reboot : ${WHITE}reboot                 ${NC}"
-    echo -e "${GREEN}                                              ${NC}"
-    echo -e "${GREEN} After reboot login with:                     ${NC}"
-    echo -e "${GREEN} Username : ""${WHITE}""$INSTALL_USER""${NC}"
-    echo -e "${GREEN} Password : ""${WHITE}""$INSTALL_PASSWORD""${NC}"
-    echo -e "${GREEN}==============================================${NC}"
+    echo -e "${GREEN}"'=============================================='"${NC}"
+    echo -e "${GREEN}"' Finished installing Arch base installation.  '"${NC}"
+    echo -e "${GREEN}"' Exit chroot : ${WHITE}exit                   '"${NC}"
+    echo -e "${GREEN}"' Unmount all : ${WHITE}umount -a              '"${NC}"
+    echo -e "${GREEN}"' Then reboot : ${WHITE}reboot                 '"${NC}"
+    echo -e "${GREEN}"'                                              '"${NC}"
+    echo -e "${GREEN}"' After reboot login with:                     '"${NC}"
+    echo -e "${GREEN}"' Username : '"${WHITE}""$INSTALL_USER""${NC}"
+    echo -e "${GREEN}"' Password : '"${WHITE}""$INSTALL_PASSWORD""${NC}"
+    echo -e "${GREEN}"'=============================================='"${NC}"
     echo ''
   else
     echo ''
-    echo -e "${CYAN}==============================================${NC}"
-    echo -e "${CYAN} Installation aborted.                        ${NC}"
-    echo -e "${CYAN}==============================================${NC}"
+    echo -e "${CYAN}"'=============================================='"${NC}"
+    echo -e "${CYAN}"' Installation aborted.                        '"${NC}"
+    echo -e "${CYAN}"'=============================================='"${NC}"
     echo ''
   fi
 fi

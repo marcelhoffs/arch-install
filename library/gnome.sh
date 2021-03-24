@@ -7,7 +7,7 @@ MINIMAL=${MINIMAL^^}
 
 # Install GNOME
 echo ''
-echo -e "${CYAN}>> Installing GNOME${NC}"
+echo -e "${CYAN}"'>> Installing GNOME'"${NC}"
 pacman -S --noconfirm gdm gnome gnome-tweak-tool gnome-bluetooth chrome-gnome-shell gnome-software-packagekit-plugin
 
 if [ "$MINIMAL" == 'MINIMAL' ]; then

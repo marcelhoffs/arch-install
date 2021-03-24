@@ -4,7 +4,7 @@ NC='\e[0m'
 
 # Install Yay
 echo ''
-echo -e "${CYAN}>> Install Yay package manager${NC}"
+echo -e "${CYAN}"'>> Install Yay package manager'"${NC}"
 mkdir yay
 cd yay || exit
 git clone https://aur.archlinux.org/yay.git .
