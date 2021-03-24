@@ -6,13 +6,13 @@ CPU=$1
 CPU=${CPU^^}
 
 # Install CPU specific microcode
-if [ $CPU == 'INTEL' ]; then
+if [ "$CPU" == 'INTEL' ]; then
   echo ''
   echo -e "${CYAN}>> Installing Intel packages${NC}"
   pacman -S --noconfirm intel-ucode iucode-tool
 fi
 
-if [ $CPU == 'AMD' ]; then
+if [ "$CPU" == 'AMD' ]; then
   echo ''
   echo -e "${CYAN}>> Installing AMD packages${NC}"
   pacman -S --noconfirm amd-ucode

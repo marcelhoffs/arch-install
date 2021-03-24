@@ -8,16 +8,16 @@ INSTALL_DEV=$2
 INSTALL_TYPE=${INSTALL_TYPE^^}
 
 # Install boot loader
-if [ $INSTALL_TYPE = 'UEFI' ]; then
+if [ "$INSTALL_TYPE" = 'UEFI' ]; then
   echo ''
   echo -e "${CYAN}>> Installing GRUB bootloader (UEFI)${NC}"
   grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=grub_uefi --recheck
   grub-mkconfig -o /boot/grub/grub.cfg
 fi
 
-if [ $INSTALL_TYPE = 'BIOS' ]; then
+if [ "$INSTALL_TYPE" = 'BIOS' ]; then
   echo ''
   echo -e "${CYAN}>> Installing GRUB bootloader (BIOS)${NC}"
-  grub-install --target=i386-pc $INSTALL_DEV
+  grub-install --target=i386-pc "$INSTALL_DEV"
   grub-mkconfig -o /boot/grub/grub.cfg
 fi

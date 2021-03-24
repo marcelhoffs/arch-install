@@ -10,54 +10,54 @@ INSTALL_LOG='install_base.log'
 collect_parameters() {
   # What type of install
   while [ "$INSTALL_UEFI" != "BIOS" ] && [ "$INSTALL_UEFI" != "UEFI" ]; do
-    read -p ' 1)  Install on BIOS or UEFI [BIOS/UEFI]: ' INSTALL_UEFI
+    read -r -p ' 1)  Install on BIOS or UEFI [BIOS/UEFI]: ' INSTALL_UEFI
     INSTALL_UEFI=${INSTALL_UEFI^^}
   done
 
   # If bios ask which device the OS will be installed on
-  if [ $INSTALL_UEFI == 'BIOS' ]; then
+  if [ "$INSTALL_UEFI" == 'BIOS' ]; then
     while [ "$INSTALL_DEVICE" == "" ]; do
-      read -p ' 1a) On which device are you installing [e.g. /dev/sda]: ' INSTALL_DEVICE
+      read -r -p ' 1a) On which device are you installing [e.g. /dev/sda]: ' INSTALL_DEVICE
     done
   fi
 
   # What CPU are you using
   while [ "$INSTALL_CPU" != "INTEL" ] && [ "$INSTALL_CPU" != "AMD" ]; do
-    read -p ' 2)  Do you use an Intel or AMD CPU [INTEL/AMD]: ' INSTALL_CPU
+    read -r -p ' 2)  Do you use an Intel or AMD CPU [INTEL/AMD]: ' INSTALL_CPU
     INSTALL_CPU=${INSTALL_CPU^^}
   done
 
   # Are you installing a virtual host
   while [ "$INSTALL_VIRTHOST" != "VMWARE" ] && [ "$INSTALL_VIRTHOST" != "VIRTUALBOX" ]; do
-    read -p ' 3)  Are you installing on a virtual host [VMWARE/VIRTUALBOX]: ' INSTALL_VIRTHOST
+    read -r -p ' 3)  Are you installing on a virtual host [VMWARE/VIRTUALBOX]: ' INSTALL_VIRTHOST
     INSTALL_VIRTHOST=${INSTALL_VIRTHOST^^}
   done
 
   # Install LTS kernel
   while [ "$INSTALL_KERNEL_LTS" != "Y" ] && [ "$INSTALL_KERNEL_LTS" != "N" ]; do
-    read -p ' 4)  Do you want to install the LTS kernel [Y/N]: ' INSTALL_KERNEL_LTS
+    read -r -p ' 4)  Do you want to install the LTS kernel [Y/N]: ' INSTALL_KERNEL_LTS
     INSTALL_KERNEL_LTS=${INSTALL_KERNEL_LTS^^}
   done
 
   # Hostname
   while [ "$INSTALL_HOSTNAME" == "" ]; do
-    read -p ' 5)  Provide the desired hostname: ' INSTALL_HOSTNAME
+    read -r -p ' 5)  Provide the desired hostname: ' INSTALL_HOSTNAME
     INSTALL_HOSTNAME=${INSTALL_HOSTNAME,,}
   done
 
   # Root password
   while [ "$INSTALL_ROOT_PWD" == "" ]; do
-    read -p ' 6)  Set root password: ' INSTALL_ROOT_PWD
+    read -r -p ' 6)  Set root password: ' INSTALL_ROOT_PWD
   done
 
   # Root password
   while [ "$INSTALL_USER" == "" ]; do
-    read -p ' 7)  Create new user: ' INSTALL_USER
+    read -r -p ' 7)  Create new user: ' INSTALL_USER
   done
 
   # Root password
   while [ "$INSTALL_PASSWORD" == "" ]; do
-    read -p ' 8)  Set new user password: ' INSTALL_PASSWORD
+    read -r -p ' 8)  Set new user password: ' INSTALL_PASSWORD
   done
 
   echo ''
@@ -87,51 +87,51 @@ else
   collect_parameters
 
   INSTALL_CONTINUE=${INSTALL_CONTINUE^^}
-  if [ $INSTALL_CONTINUE == 'Y' ]; then
+  if [ "$INSTALL_CONTINUE" == 'Y' ]; then
     # Make scripts executable
-    chmod +x ./library/*.sh | tee -a $INSTALL_LOG
+    chmod +x ./library/*.sh | tee -a "$INSTALL_LOG"
 
     # Set hostname and hosts file
-    ./library/hostname.sh $INSTALL_HOSTNAME | tee -a $INSTALL_LOG
+    ./library/hostname.sh "$INSTALL_HOSTNAME" | tee -a "$INSTALL_LOG"
 
     # Set timezone
-    ./library/timezone.sh | tee -a $INSTALL_LOG
+    ./library/timezone.sh | tee -a "$INSTALL_LOG"
 
     # Install kernel
-    ./library/kernel.sh $INSTALL_KERNEL_LTS | tee -a $INSTALL_LOG
+    ./library/kernel.sh "$INSTALL_KERNEL_LTS" | tee -a "$INSTALL_LOG"
 
     # Install base packages
-    ./library/basepackages.sh | tee -a $INSTALL_LOG
+    ./library/basepackages.sh | tee -a "$INSTALL_LOG"
 
     # Install CPU Microcode
-    ./library/cpu.sh $INSTALL_CPU | tee -a $INSTALL_LOG
+    ./library/cpu.sh "$INSTALL_CPU" | tee -a "$INSTALL_LOG"
 
     # Update pacman mirror list
-    ./library/pacmanmirror.sh | tee -a $INSTALL_LOG
+    ./library/pacmanmirror.sh | tee -a "$INSTALL_LOG"
 
     # Set locale
-    ./library/locale.sh | tee -a $INSTALL_LOG
+    ./library/locale.sh | tee -a "$INSTALL_LOG"
 
     # Install bootloader
-    ./library/bootloader.sh $INSTALL_UEFI $INSTALL_DEVICE | tee -a $INSTALL_LOG
+    ./library/bootloader.sh "$INSTALL_UEFI" "$INSTALL_DEVICE" | tee -a "$INSTALL_LOG"
 
     # Install virtualization
-    ./library/virtualization.sh $INSTALL_VIRTHOST | tee -a $INSTALL_LOG
+    ./library/virtualization.sh "$INSTALL_VIRTHOST" | tee -a "$INSTALL_LOG"
 
     # Update all
-    ./library/update.sh | tee -a $INSTALL_LOG
+    ./library/update.sh | tee -a "$INSTALL_LOG"
 
     # Enable services
-    ./library/services.sh | tee -a $INSTALL_LOG
+    ./library/services.sh | tee -a "$INSTALL_LOG"
 
     # Set root password
-    ./library/rootpwd.sh $INSTALL_ROOT_PWD | tee -a $INSTALL_LOG
+    ./library/rootpwd.sh "$INSTALL_ROOT_PWD" | tee -a "$INSTALL_LOG"
 
     # Create user
-    ./library/createuser.sh $INSTALL_USER $INSTALL_PASSWORD | tee -a $INSTALL_LOG
+    ./library/createuser.sh "$INSTALL_USER" "$INSTALL_PASSWORD" | tee -a "$INSTALL_LOG"
 
     # Move installation files
-    ./library/moveinstallation.sh $INSTALL_USER | tee -a $INSTALL_LOG
+    ./library/moveinstallation.sh "$INSTALL_USER" | tee -a "$INSTALL_LOG"
 
     # Finish
     echo ''
@@ -142,8 +142,8 @@ else
     echo -e "${GREEN} Then reboot : ${WHITE}reboot                 ${NC}"
     echo -e "${GREEN}                                              ${NC}"
     echo -e "${GREEN} After reboot login with:                     ${NC}"
-    echo -e "${GREEN} Username : "${WHITE}$INSTALL_USER${NC}
-    echo -e "${GREEN} Password : "${WHITE}$INSTALL_PASSWORD${NC}
+    echo -e "${GREEN} Username : ""${WHITE}""$INSTALL_USER""${NC}"
+    echo -e "${GREEN} Password : ""${WHITE}""$INSTALL_PASSWORD""${NC}"
     echo -e "${GREEN}==============================================${NC}"
     echo ''
   else
