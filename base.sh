@@ -137,9 +137,9 @@ else
     echo ''
     echo -e "${GREEN}"'=============================================='"${NC}"
     echo -e "${GREEN}"' Finished installing Arch base installation.  '"${NC}"
-    echo -e "${GREEN}"' Exit chroot : ${WHITE}exit                   '"${NC}"
-    echo -e "${GREEN}"' Unmount all : ${WHITE}umount -a              '"${NC}"
-    echo -e "${GREEN}"' Then reboot : ${WHITE}reboot                 '"${NC}"
+    echo -e "${GREEN}"' Exit chroot : '"${WHITE}"'exit               '"${NC}"
+    echo -e "${GREEN}"' Unmount all : '"${WHITE}"'umount -a          '"${NC}"
+    echo -e "${GREEN}"' Then reboot : '"${WHITE}"'reboot             '"${NC}"
     echo -e "${GREEN}"'                                              '"${NC}"
     echo -e "${GREEN}"' After reboot login with:                     '"${NC}"
     echo -e "${GREEN}"' Username : '"${WHITE}""$INSTALL_USER""${NC}"
