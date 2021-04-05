@@ -21,7 +21,12 @@ Root | rest | Linux (83) | /mnt
 timedatectl set-ntp true
 ```
 
-**2. Partition the drive**
+**2. Set keyboard layout**
+```
+loadkeys us
+```
+
+**3. Partition the drive**
 ```
 # Partition the drive
 fdisk -l
@@ -34,7 +39,7 @@ p
 default first sector
 +300M
 t
-1
+ef
 
 # Create Swap partition
 n
@@ -55,7 +60,7 @@ default last sector
 w
 ```
 
-**3. Format the drive**
+**4. Format the drive**
 ```
 # Format EFI partition
 mkfs.fat -F32 /dev/sda1
@@ -68,24 +73,24 @@ swapon /dev/sda2
 mkfs.ext4 /dev/sda3
 ```
 
-**4. Mount the drives**
+**5. Mount the drives**
 ```
 mount /dev/sda3 /mnt
 mkdir -p /mnt/boot
 mount /dev/sda1 /mnt/boot
 ```
 
-**5. Install base the base system**
+**6. Install base the base system**
 ```
 pacstrap -i /mnt base base-devel vi nano git 
 ```
 
-**6. Generate fstab**
+**7. Generate fstab**
 ```
 genfstab -U -p /mnt >> /mnt/etc/fstab
 ```
 
-**7. Change root**
+**8. Change root**
 ```
 arch-chroot /mnt
 ```

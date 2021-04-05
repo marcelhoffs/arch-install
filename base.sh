@@ -21,43 +21,49 @@ collect_parameters() {
     done
   fi
 
+  # What keyboard are you using
+  while [ "$INSTALL_KEYBOARD" == '' ]; do
+    read -r -p ' 2)  What keyboard layout are you using : ' INSTALL_KEYBOARD
+    INSTALL_KEYBOARD=${INSTALL_KEYBOARD,,}
+  done
+
   # What CPU are you using
   while [ "$INSTALL_CPU" != 'INTEL' ] && [ "$INSTALL_CPU" != 'AMD' ]; do
-    read -r -p ' 2)  Do you use an Intel or AMD CPU [INTEL/AMD]: ' INSTALL_CPU
+    read -r -p ' 3)  Do you use an Intel or AMD CPU [INTEL/AMD]: ' INSTALL_CPU
     INSTALL_CPU=${INSTALL_CPU^^}
   done
 
   # Are you installing a virtual host
   while [ "$INSTALL_VIRTHOST" != 'VMWARE' ] && [ "$INSTALL_VIRTHOST" != 'VIRTUALBOX' ] && [ "$INSTALL_VIRTHOST" != 'NONE' ]; do
-    read -r -p ' 3)  Are you installing on a virtual host [VMWARE/VIRTUALBOX/NONE]: ' INSTALL_VIRTHOST
+    read -r -p ' 4)  Are you installing on a virtual host [VMWARE/VIRTUALBOX/NONE]: ' INSTALL_VIRTHOST
     INSTALL_VIRTHOST=${INSTALL_VIRTHOST^^}
   done
 
   # Install LTS kernel
   while [ "$INSTALL_KERNEL_LTS" != 'Y' ] && [ "$INSTALL_KERNEL_LTS" != 'N' ]; do
-    read -r -p ' 4)  Do you want to install the LTS kernel [Y/N]: ' INSTALL_KERNEL_LTS
+    read -r -p ' 5)  Do you want to install the LTS kernel [Y/N]: ' INSTALL_KERNEL_LTS
     INSTALL_KERNEL_LTS=${INSTALL_KERNEL_LTS^^}
   done
 
   # Hostname
   while [ "$INSTALL_HOSTNAME" == '' ]; do
-    read -r -p ' 5)  Provide the desired hostname: ' INSTALL_HOSTNAME
+    read -r -p ' 6)  Provide the desired hostname: ' INSTALL_HOSTNAME
     INSTALL_HOSTNAME=${INSTALL_HOSTNAME,,}
   done
 
   # Root password
   while [ "$INSTALL_ROOT_PWD" == '' ]; do
-    read -r -p ' 6)  Set root password: ' INSTALL_ROOT_PWD
+    read -r -p ' 7)  Set root password: ' INSTALL_ROOT_PWD
   done
 
   # Root password
   while [ "$INSTALL_USER" == '' ]; do
-    read -r -p ' 7)  Create new user: ' INSTALL_USER
+    read -r -p ' 8)  Create new user: ' INSTALL_USER
   done
 
   # Root password
   while [ "$INSTALL_PASSWORD" == '' ]; do
-    read -r -p ' 8)  Set new user password: ' INSTALL_PASSWORD
+    read -r -p ' 9)  Set new user password: ' INSTALL_PASSWORD
   done
 
   echo ''
@@ -111,6 +117,9 @@ else
 
     # Set locale
     ./library/locale.sh | tee -a "$INSTALL_LOG"
+
+    # Set keyboard
+    ./library/keyboard.sh "$INSTALL_KEYBOARD" | tee -a "$INSTALL_LOG"
 
     # Install bootloader
     ./library/bootloader.sh "$INSTALL_UEFI" "$INSTALL_DEVICE" | tee -a "$INSTALL_LOG"
