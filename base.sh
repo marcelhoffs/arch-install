@@ -83,7 +83,7 @@ else
   # Clear screen
   clear
   echo -e "${CYAN}"'=============================================='"${NC}"
-  echo -e "${WHITE}"' Arch Linux installation script              '"${NC}"
+  echo -e "${CYAN}"' Arch Linux installation script               '"${NC}"
   echo -e "${CYAN}"' Marcel Hoffs, 14.03.2021                     '"${NC}"
   echo -e "${CYAN}"' Version 2.0                                  '"${NC}"
   echo -e "${CYAN}"'=============================================='"${NC}"
