@@ -12,7 +12,7 @@ You should first partition the drives manually. After that you can use the scrip
 The script expect the following partitions for an UEFI system. For BIOS you can ignore the boot partition:
 Partition | Size | Type | Mount
 --------- | ---- | ---- | -----
-Boot | 300M | EFI (1) | /mnt/boot/EFI
+Boot | 300M | EFI (ef) | /mnt/boot/EFI
 Swap | 4096M | Linux Swap (82) | swap
 Root | rest | Linux (83) | /mnt
 
