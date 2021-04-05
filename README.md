@@ -71,8 +71,8 @@ mkfs.ext4 /dev/sda3
 **4. Mount the drives**
 ```
 mount /dev/sda3 /mnt
-mkdir -p /mnt/boot/efi
-mount /dev/sda1 /mnt/boot/efi
+mkdir -p /mnt/boot
+mount /dev/sda1 /mnt/boot
 ```
 
 **5. Install base the base system**
