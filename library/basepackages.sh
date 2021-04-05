@@ -5,4 +5,4 @@ NC='\e[0m'
 # Install base packages
 echo ''
 echo -e "${CYAN}"'>> Installing base packages'"${NC}"
-pacman -S --noconfirm grub efibootmgr dosfstools openssh os-prober mtools reflector networkmanager wpa_supplicant git curl wget htop neofetch bluez bluez-utils
+pacman -S --noconfirm grub efibootmgr dosfstools openssh os-prober mtools reflector networkmanager wpa_supplicant git curl wget htop neofetch bluez bluez-utils tlp
