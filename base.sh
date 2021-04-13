@@ -82,11 +82,11 @@ if [ "$EUID" -ne 0 ]; then
 else
   # Clear screen
   clear
-  echo -e "${CYAN}"'=============================================='"${NC}"
-  echo -e "${CYAN}"' Arch Linux installation script               '"${NC}"
-  echo -e "${CYAN}"' Marcel Hoffs, 14.03.2021                     '"${NC}"
-  echo -e "${CYAN}"' Version 2.0                                  '"${NC}"
-  echo -e "${CYAN}"'=============================================='"${NC}"
+  echo -e "${CYAN}"'╔══════════════════════════════════════════════╗'"${NC}"
+  echo -e "${CYAN}"'║ Arch Linux installation script               ║'"${NC}"
+  echo -e "${CYAN}"'║ Marcel Hoffs, 14.03.2021                     ║'"${NC}"
+  echo -e "${CYAN}"'║ Version 2.0                                  ║'"${NC}"
+  echo -e "${CYAN}"'╚══════════════════════════════════════════════╝'"${NC}"
   echo ''
 
   # Ask questions to collect installation parameters
@@ -144,22 +144,22 @@ else
 
     # Finish
     echo ''
-    echo -e "${GREEN}"'=============================================='"${NC}"
-    echo -e "${GREEN}"' Finished installing Arch base installation.  '"${NC}"
-    echo -e "${GREEN}"' Exit chroot : '"${WHITE}"'exit               '"${NC}"
-    echo -e "${GREEN}"' Unmount all : '"${WHITE}"'umount -a          '"${NC}"
-    echo -e "${GREEN}"' Then reboot : '"${WHITE}"'reboot             '"${NC}"
-    echo -e "${GREEN}"'                                              '"${NC}"
-    echo -e "${GREEN}"' After reboot login with:                     '"${NC}"
+    echo -e "${GREEN}"'════════════════════════════════════════════════'"${NC}"
+    echo -e "${GREEN}"' Finished installing Arch base installation.    '"${NC}"
+    echo -e "${GREEN}"' Exit chroot : '"${WHITE}"'exit                 '"${NC}"
+    echo -e "${GREEN}"' Unmount all : '"${WHITE}"'umount -a            '"${NC}"
+    echo -e "${GREEN}"' Then reboot : '"${WHITE}"'reboot               '"${NC}"
+    echo -e "${GREEN}"'                                                '"${NC}"
+    echo -e "${GREEN}"' After reboot login with:                       '"${NC}"
     echo -e "${GREEN}"' Username : '"${WHITE}""$INSTALL_USER""${NC}"
     echo -e "${GREEN}"' Password : '"${WHITE}""$INSTALL_PASSWORD""${NC}"
-    echo -e "${GREEN}"'=============================================='"${NC}"
+    echo -e "${GREEN}"'════════════════════════════════════════════════'"${NC}"
     echo ''
   else
     echo ''
-    echo -e "${CYAN}"'=============================================='"${NC}"
-    echo -e "${CYAN}"' Installation aborted.                        '"${NC}"
-    echo -e "${CYAN}"'=============================================='"${NC}"
+    echo -e "${CYAN}"'════════════════════════════════════════════════'"${NC}"
+    echo -e "${CYAN}"' Installation aborted.                          '"${NC}"
+    echo -e "${CYAN}"'════════════════════════════════════════════════'"${NC}"
     echo ''
   fi
 fi
