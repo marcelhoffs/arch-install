@@ -11,7 +11,7 @@ KERNEL_LTS=${KERNEL_LTS^^}
 if [ "$GPU" == 'INTEL' ]; then
   echo ''
   echo -e "${CYAN}"'>> Installing Intel graphics drivers'"${NC}"
-  pacman -S --noconfirm xf86-video-vesa xf86-video-intel mesa vulkan-intel
+  pacman -S --noconfirm xf86-video-vesa mesa vulkan-intel
 fi
 
 # Install AMD specific packages
