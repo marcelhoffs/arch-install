@@ -25,11 +25,11 @@ sgdisk --new 3:: --typecode 2:8300 --change-name 3:DATA "$DRIVE"
 partprobe "$DRIVE"
 
 # format EFI partition
-mkfs.fat -F32 "$DRIVE"1
+yes | mkfs.fat -F32 "$DRIVE"1
 
 # format SWAP partition
-mkswap "$DRIVE"2
-swapon "$DRIVE"2
+yes | mkswap "$DRIVE"2
+yes | swapon "$DRIVE"2
 
 # format DATA partition
-mkfs.ext4 "$DRIVE"3
+yes | mkfs.ext4 "$DRIVE"3
