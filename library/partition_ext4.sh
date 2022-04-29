@@ -34,3 +34,8 @@ yes | swapon "$DRIVE"2
 
 # format DATA partition
 yes | mkfs.ext4 "$DRIVE"3
+
+# mount partitions
+mount "$DRIVE"3 /mnt
+mkdir -p /mnt/boot
+mount "$DRIVE"1 /mnt/boot
