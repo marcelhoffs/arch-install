@@ -5,6 +5,17 @@ NC='\e[0m'
 DRIVE=$1
 DRIVE=${DRIVE,,}
 
+# Set time and keyboard
+echo ''
+echo -e "${CYAN}"'>> Setting time and keyboard layout'"${NC}"
+
+timedatectl set-ntp true
+loadkeys us
+
+# Partition drive
+echo ''
+echo -e "${CYAN}"'>> Partitioning and formating drive: '"$DRIVE""${NC}"
+
 # Partition drive
 echo ''
 echo -e "${CYAN}"'>> Partitioning and formating drive: '"$DRIVE""${NC}"
