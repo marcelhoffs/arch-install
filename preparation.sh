@@ -7,24 +7,24 @@ NC='\e[0m'
 collect_parameters() {
   # What keyboard are you using
   while [ "$INSTALL_KEYBOARD" == '' ]; do
-    read -r -p ' 1) What keyboard layout are you using : ' INSTALL_KEYBOARD
+    read -r -p ' 1)  What keyboard layout are you using : ' INSTALL_KEYBOARD
     INSTALL_KEYBOARD=${INSTALL_KEYBOARD,,}
   done  
 
   # What type of install
   while [ "$INSTALL_UEFI" != 'BIOS' ] && [ "$INSTALL_UEFI" != 'UEFI' ]; do
-    read -r -p ' 2) Install on BIOS or UEFI [BIOS/UEFI]: ' INSTALL_UEFI
+    read -r -p ' 2)  Install on BIOS or UEFI [BIOS/UEFI]: ' INSTALL_UEFI
     INSTALL_UEFI=${INSTALL_UEFI^^}
   done
 
   # Ask which device the OS will be installed on
   while [ "$INSTALL_DEVICE" == "" ]; do
-      read -r -p ' 3) On which device are you installing [e.g. /dev/sda]: ' INSTALL_DEVICE
+      read -r -p ' 3)  On which device are you installing [e.g. /dev/sda]: ' INSTALL_DEVICE
   done  
 
   # Swap file size
   while [ "$INSTALL_SWAPSIZE" == "" ]; do
-      read -r -p ' 4) What should be the size of the swap partition (in Gb): ' INSTALL_SWAPSIZE
+      read -r -p ' 4)  What should be the size of the swap partition (in Gb): ' INSTALL_SWAPSIZE
   done 
 
   echo ''
@@ -75,7 +75,7 @@ else
       sgdisk --new 2::+"$INSTALL_SWAPSIZE"G --typecode 2:8200 --change-name 2:SWAP "$INSTALL_DEVICE"
       sgdisk --new 3:: --typecode 3:8300 --change-name 3:DATA "$INSTALL_DEVICE"
     else
-      # create EFI, SWAP and DATA partition
+      # create SWAP and DATA partition
       sgdisk --new 1::+"$INSTALL_SWAPSIZE"G --typecode 2:8200 --change-name 2:SWAP "$INSTALL_DEVICE"
       sgdisk --new 2:: --typecode 3:8300 --change-name 3:DATA "$INSTALL_DEVICE"
     fi
