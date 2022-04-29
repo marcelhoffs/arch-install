@@ -39,3 +39,12 @@ yes | mkfs.ext4 "$DRIVE"3
 mount "$DRIVE"3 /mnt
 mkdir -p /mnt/boot
 mount "$DRIVE"1 /mnt/boot
+
+# pacstrap
+pacstrap -i /mnt base base-devel vi nano git
+
+# generate fstab
+genfstab -U -p /mnt >> /mnt/etc/fstab
+
+# chroot
+arch-chroot /mnt
