@@ -22,6 +22,10 @@ Root | rest | Linux (83) | /mnt
 curl -o preparation.sh https://raw.githubusercontent.com/marcelhoffs/arch-install/main/preparation.sh
 chmod +x preparation.sh
 ```
+**Execute the script**
+```
+./preparation.sh /dev/sda
+```
 
 # Step 2: Clone the repository and run the base installer
 ```
