@@ -7,92 +7,20 @@ This repository provides an easy way to install Arch Linux on an UEFI or BIOS sy
 - Pacman mirrors are optimized for Belgium\Netherlands\Germany
 
 # Step 1: Preparation
-You should first partition the drives manually. After that you can use the scripts to do a base installation and install a desktop environment of choice.
+You should first run the preparation script. This script creates the needed partitions and formats them.
+It will also mount the partitions and prepares them for further installation
 
-The script expect the following partitions for an UEFI system. For BIOS you can ignore the boot partition:
+The script creates the following partitions for an UEFI system. For BIOS you can ignore the boot partition:
 Partition | Size | Type | Mount
 --------- | ---- | ---- | -----
-Boot | 300M | EFI (ef) | /mnt/boot
+Boot | 500M | EFI (ef) | /mnt/boot
 Swap | 4096M | Linux Swap (82) | swap
 Root | rest | Linux (83) | /mnt
 
-**1. First set the time**
+**Download the script**
 ```
-timedatectl set-ntp true
-```
-
-**2. Set keyboard layout**
-```
-loadkeys us
-```
-
-**3. Partition the drive**
-```
-# Partition the drive
-fdisk -l
-fdisk /dev/sda
-
-# Create EFI partition
-n
-p
-1
-default first sector
-+300M
-t
-ef
-
-# Create Swap partition
-n
-p
-2
-default first sector
-+4096M
-t
-82
-w
-
-# Create filesystem for root
-n
-p
-2
-default first sector
-default last sector
-w
-```
-
-**4. Format the drive**
-```
-# Format EFI partition
-mkfs.fat -F32 /dev/sda1
-
-# Set swap partition
-mkswap /dev/sda2
-swapon /dev/sda2
-
-# Format root partition
-mkfs.ext4 /dev/sda3
-```
-
-**5. Mount the drives**
-```
-mount /dev/sda3 /mnt
-mkdir -p /mnt/boot
-mount /dev/sda1 /mnt/boot
-```
-
-**6. Install base the base system**
-```
-pacstrap -i /mnt base base-devel vi nano git 
-```
-
-**7. Generate fstab**
-```
-genfstab -U -p /mnt >> /mnt/etc/fstab
-```
-
-**8. Change root**
-```
-arch-chroot /mnt
+curl -o preparation.sh https://raw.githubusercontent.com/marcelhoffs/arch-install/main/preparation.sh
+chmod +x preparation.sh
 ```
 
 # Step 2: Clone the repository and run the base installer
