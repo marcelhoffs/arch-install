@@ -77,7 +77,7 @@ collect_parameters() {
 
 if [ "$EUID" -ne 0 ]; then
   # Not root
-  echo 'Please run as root privileges:'
+  echo 'Please run with root privileges:'
   echo 'sudo ./base.sh'
 else
   # Clear screen
