@@ -76,8 +76,8 @@ else
       sgdisk --new 3:: --typecode 3:8300 --change-name 3:DATA "$INSTALL_DEVICE"
     else
       # create SWAP and DATA partition
-      sgdisk --new 1::+"$INSTALL_SWAPSIZE"G --typecode 2:8200 --change-name 2:SWAP "$INSTALL_DEVICE"
-      sgdisk --new 2:: --typecode 3:8300 --change-name 3:DATA "$INSTALL_DEVICE"
+      sgdisk --new 1::+"$INSTALL_SWAPSIZE"G --typecode 1:8200 --change-name 1:SWAP "$INSTALL_DEVICE"
+      sgdisk --new 2:: --typecode 2:8300 --change-name 2:DATA "$INSTALL_DEVICE"
     fi
  
     # partprobe
