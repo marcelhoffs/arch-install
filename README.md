@@ -29,7 +29,9 @@ chmod +x preparation.sh
 
 # Step 2: Clone the repository and run the base installer
 ```
+mkdir /arch-install
 cd /arch-install
+git clone https://github.com/marcelhoffs/arch-install .
 ./base.sh
 ```
 The base.sh script will do the following:

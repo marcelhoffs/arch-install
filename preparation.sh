@@ -59,7 +59,3 @@ genfstab -U -p /mnt >> /mnt/etc/fstab
 
 # chroot
 arch-chroot /mnt
-
-# clone the git repository
-mkdir /arch-install
-git clone https://github.com/marcelhoffs/arch-install /arch-install
