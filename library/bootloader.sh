@@ -18,6 +18,6 @@ fi
 if [ "$INSTALL_TYPE" = 'BIOS' ]; then
   echo ''
   echo -e "${CYAN}"'>> Installing GRUB bootloader (BIOS)'"${NC}"
-  grub-install --target=i386-pc "$INSTALL_DEV"
+  grub-install --target=i386-pc --force "$INSTALL_DEV"
   grub-mkconfig -o /boot/grub/grub.cfg
 fi
