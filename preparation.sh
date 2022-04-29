@@ -52,10 +52,14 @@ mkdir -p /mnt/boot
 mount "$DRIVE"1 /mnt/boot
 
 # pacstrap
-pacstrap -i /mnt base base-devel vi nano git
+pacstrap /mnt base base-devel vi nano git
 
 # generate fstab
 genfstab -U -p /mnt >> /mnt/etc/fstab
 
 # chroot
 arch-chroot /mnt
+
+# clone the git repository
+mkdir /arch-install
+git clone https://github.com/marcelhoffs/arch-install /arch-install
