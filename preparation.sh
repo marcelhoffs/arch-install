@@ -70,16 +70,16 @@ else
     sgdisk --zap-all "$INSTALL_DEVICE"
     
     if [ "$INSTALL_UEFI" == 'UEFI' ]; then
-      # create EFI partition
+      # create EFI, SWAP and DATA partition
       sgdisk --new 1::+500M --typecode 1:ef00 --change-name 1:EFI "$INSTALL_DEVICE"
+      sgdisk --new 2::+"$INSTALL_SWAPSIZE"G --typecode 2:8200 --change-name 2:SWAP "$INSTALL_DEVICE"
+      sgdisk --new 3:: --typecode 3:8300 --change-name 3:DATA "$INSTALL_DEVICE"
+    else
+      # create EFI, SWAP and DATA partition
+      sgdisk --new 1::+"$INSTALL_SWAPSIZE"G --typecode 2:8200 --change-name 2:SWAP "$INSTALL_DEVICE"
+      sgdisk --new 2:: --typecode 3:8300 --change-name 3:DATA "$INSTALL_DEVICE"
     fi
-    
-    # create SWAP partition
-    sgdisk --new 2::+"$INSTALL_SWAPSIZE"G --typecode 2:8200 --change-name 2:SWAP "$INSTALL_DEVICE"
-    
-    # create DATA parition
-    sgdisk --new 3:: --typecode 3:8300 --change-name 3:DATA "$INSTALL_DEVICE"
-    
+ 
     # partprobe
     partprobe "$INSTALL_DEVICE"
     
