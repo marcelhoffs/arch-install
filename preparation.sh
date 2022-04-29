@@ -120,5 +120,11 @@ else
     
     # chroot
     arch-chroot /mnt
+  else
+    echo ''
+    echo -e "${CYAN}"'════════════════════════════════════════════════'"${NC}"
+    echo -e "${CYAN}"' Installation aborted.                          '"${NC}"
+    echo -e "${CYAN}"'════════════════════════════════════════════════'"${NC}"
+    echo ''
   fi
 fi  
