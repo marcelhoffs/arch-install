@@ -24,7 +24,7 @@ chmod +x preparation.sh
 ```
 **Execute the script**
 ```
-./preparation.sh /dev/sda
+./preparation.sh
 ```
 
 # Step 2: Clone the repository and run the base installer
