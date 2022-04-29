@@ -7,13 +7,13 @@ NC='\e[0m'
 collect_parameters() {
   # What keyboard are you using
   while [ "$INSTALL_KEYBOARD" == '' ]; do
-    read -r -p ' 1)  What keyboard layout are you using : ' INSTALL_KEYBOARD
+    read -r -p ' 1) What keyboard layout are you using : ' INSTALL_KEYBOARD
     INSTALL_KEYBOARD=${INSTALL_KEYBOARD,,}
   done  
 
   # What type of install
   while [ "$INSTALL_UEFI" != 'BIOS' ] && [ "$INSTALL_UEFI" != 'UEFI' ]; do
-    read -r -p ' 2)  Install on BIOS or UEFI [BIOS/UEFI]: ' INSTALL_UEFI
+    read -r -p ' 2) Install on BIOS or UEFI [BIOS/UEFI]: ' INSTALL_UEFI
     INSTALL_UEFI=${INSTALL_UEFI^^}
   done
 
@@ -98,7 +98,7 @@ else
       # mount partitions
       mount "$INSTALL_DEVICE"3 /mnt
       mkdir -p /mnt/boot
-      mount "$INSTALL_DEVICE"3 /mnt/boot
+      mount "$INSTALL_DEVICE"1 /mnt/boot
     else
       # format SWAP partition
       yes | swapoff "$INSTALL_DEVICE"1
@@ -110,8 +110,6 @@ else
   
       # mount partitions
       mount "$INSTALL_DEVICE"2 /mnt
-      mkdir -p /mnt/boot
-      mount "$INSTALL_DEVICE"2 /mnt/boot
     fi
   
     # pacstrap
