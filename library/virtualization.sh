@@ -20,14 +20,14 @@ fi
 
 if [ "$VMHOST" == 'VIRTUALBOX' ]; then
   echo ''
-  echo -e "${CYAN}"'>> Enable VirtualBox guest tools'"${NC}"
+  echo -e "${CYAN}"'>> Enable VirtualBox guest utilities'"${NC}"
   pacman -S --noconfirm virtualbox-guest-utils xf86-video-vmware
   systemctl enable vboxservice
 fi
 
 if [ "$VMHOST" == 'QEMU' ]; then
   echo ''
-  echo -e "${CYAN}"'>> Enable QEMU guest tools'"${NC}"
+  echo -e "${CYAN}"'>> Enable QEMU guest agent'"${NC}"
   pacman -S --noconfirm qemu-guest-agent xf86-video-vmware
   systemctl enable qemu-guest-agent
 fi
