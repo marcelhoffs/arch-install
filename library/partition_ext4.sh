@@ -7,7 +7,7 @@ DRIVE=${DRIVE,,}
 
 # Partition drive
 echo ''
-echo -e "${CYAN}"'>> Partitioning and formating drive: '"$KEYBOARD""${NC}"
+echo -e "${CYAN}"'>> Partitioning and formating drive: '"$DRIVE""${NC}"
 
 # Remove all partitions
 #sgdisk --zap-all /dev/sda
