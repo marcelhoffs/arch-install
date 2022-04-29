@@ -24,3 +24,10 @@ if [ "$VMHOST" == 'VIRTUALBOX' ]; then
   pacman -S --noconfirm virtualbox-guest-utils xf86-video-vmware
   systemctl enable vboxservice
 fi
+
+if [ "$VMHOST" == 'QEMU' ]; then
+  echo ''
+  echo -e "${CYAN}"'>> Enable QEMU guest tools'"${NC}"
+  pacman -S --noconfirm qemu-guest-agent xf86-video-vmware
+  systemctl enable qemu-guest-agent
+fi
