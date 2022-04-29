@@ -28,6 +28,7 @@ partprobe "$DRIVE"
 yes | mkfs.fat -F32 "$DRIVE"1
 
 # format SWAP partition
+yes | swapoff "$DRIVE"2 
 yes | mkswap "$DRIVE"2
 yes | swapon "$DRIVE"2
 
