@@ -19,7 +19,7 @@ sgdisk --new 1::+500M --typecode 1:ef00 --change-name 1:EFI "$DRIVE"
 sgdisk --new 2::+8G --typecode 2:8200 --change-name 2:SWAP "$DRIVE"
 
 # create DATA parition
-sgdisk --new 3:: --typcode 2:8300 --change-name 3:DATA "$DRIVE"
+sgdisk --new 3:: --typecode 2:8300 --change-name 3:DATA "$DRIVE"
 
 # format EFI partition
 mkfs.fat -F32 "$DRIVE"1
