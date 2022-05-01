@@ -77,43 +77,40 @@ else
     else
       # create SWAP and DATA partition
       sgdisk --new 1::+"$INSTALL_SWAPSIZE"G --typecode 1:8200 --change-name 1:SWAP "$INSTALL_DEVICE"
-      sgdisk --new 2:: --typecode 2:8300 --change-name 3:DATA "$INSTALL_DEVICE"
+      sgdisk --new 2:: --typecode 2:8300 --change-name 2:DATA "$INSTALL_DEVICE"
     fi
  
     # partprobe
     partprobe "$INSTALL_DEVICE"
+
+    # get devices by label
+    PART_EFI=$(blkid -t PARTLABEL=EFI -o device)
+    PART_SWAP=$(blkid -t PARTLABEL=SWAP -o device)
+    PART_DATA=$(blkid -t PARTLABEL=DATA -o device)
     
     if [ "$INSTALL_UEFI" == 'UEFI' ]; then
       # format EFI partition
-      yes | mkfs.fat -F32 "$INSTALL_DEVICE"1
-  
-       # format SWAP partition
-      yes | swapoff "$INSTALL_DEVICE"2 
-      yes | mkswap "$INSTALL_DEVICE"2
-      yes | swapon "$INSTALL_DEVICE"2
-    
-      # format DATA partition
-      yes | mkfs.ext4 "$INSTALL_DEVICE"3
-  
-      # mount partitions
-      mount "$INSTALL_DEVICE"3 /mnt
-      mkdir -p /mnt/boot
-      mount "$INSTALL_DEVICE"1 /mnt/boot
-    else
-      # format SWAP partition
-      yes | swapoff "$INSTALL_DEVICE"1
-      yes | mkswap "$INSTALL_DEVICE"1
-      yes | swapon "$INSTALL_DEVICE"1
-    
-      # format DATA partition
-      yes | mkfs.ext4 "$INSTALL_DEVICE"2
-  
-      # mount partitions
-      mount "$INSTALL_DEVICE"2 /mnt
+      yes | mkfs.fat -F32 "$PART_EFI"
     fi
+
+    # format SWAP partition
+    yes | swapoff "$PART_SWAP" 
+    yes | mkswap "$PART_SWAP"
+    yes | swapon "$PART_SWAP"
+    
+    # format DATA partition
+    yes | mkfs.ext4 "$PART_DATA"3
   
+    # mount partitions
+    mount "$PART_DATA" /mnt
+    
+    if [ "$INSTALL_UEFI" == 'UEFI' ]; then
+      mkdir -p /mnt/boot
+      mount "$PART_EFI"1 /mnt/boot
+    fi
+     
     # pacstrap
-    pacstrap /mnt base base-devel vi vim nano git
+    pacstrap /mnt base base-devel vi nano git
     
     # generate fstab
     genfstab -U -p /mnt >> /mnt/etc/fstab
