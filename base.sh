@@ -122,7 +122,7 @@ else
     ./library/keyboard.sh "$INSTALL_KEYBOARD" | tee -a "$INSTALL_LOG"
 
     # Install bootloader
-    ./library/bootloader.sh "$INSTALL_UEFI" "$INSTALL_DEVICE" | tee -a "$INSTALL_LOG"
+    ./library/bootloader.sh "$INSTALL_UEFI" "$INSTALL_DEVICE" "$INSTALL_CPU" "$INSTALL_KERNEL_LTS" | tee -a "$INSTALL_LOG"
 
     # Install virtualization
     ./library/virtualization.sh "$INSTALL_VIRTHOST" | tee -a "$INSTALL_LOG"
