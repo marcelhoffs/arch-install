@@ -2,7 +2,7 @@
 CYAN='\e[1;36m'
 NC='\e[0m'
 
-INSTALL_CPU=$3
+INSTALL_CPU=$1
 
 INSTALL_CPU=${INSTALL_CPU^^}
 
