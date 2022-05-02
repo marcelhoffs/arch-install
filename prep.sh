@@ -54,7 +54,9 @@ else
     echo -e "${CYAN}"'>> Setting time'"${NC}"
     timedatectl set-ntp true
     
+    # ---------------------------------------------------------
     # Partition drive
+    # ---------------------------------------------------------
     echo ''
     echo -e "${CYAN}"'>> Partitioning and formating drive: '"$INSTALL_DEVICE""${NC}"
     
@@ -76,6 +78,10 @@ else
     partprobe "$INSTALL_DEVICE"
     umount -a
 
+    # ---------------------------------------------------------
+    # Format partitions
+    # ---------------------------------------------------------
+
     # get devices by label
     PART_EFI=$(blkid -t PARTLABEL=EFI -o device)
     PART_SWAP=$(blkid -t PARTLABEL=SWAP -o device)
@@ -94,7 +100,10 @@ else
     # format DATA partition
     yes | mkfs.ext4 "$PART_OS"
   
-    # mount partitions
+    # ---------------------------------------------------------
+    # Mount partitions
+    # ---------------------------------------------------------
+
     mount "$PART_OS" /mnt
     
     if [ "$INSTALL_UEFI" == 'UEFI' ]; then
@@ -102,6 +111,10 @@ else
       mount "$PART_EFI" /mnt/boot
     fi
      
+    # ---------------------------------------------------------
+    # Pacstrap and generate fstab
+    # ---------------------------------------------------------
+
     # pacstrap
     pacstrap /mnt base base-devel vi nano git
     
