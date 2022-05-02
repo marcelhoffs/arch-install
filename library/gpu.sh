@@ -4,8 +4,6 @@ NC='\e[0m'
 
 GPU=$1
 GPU=${GPU^^}
-KERNEL_LTS=$2
-KERNEL_LTS=${KERNEL_LTS^^}
 
 # Install Intel specific packages
 if [ "$GPU" == 'INTEL' ]; then
@@ -25,9 +23,5 @@ fi
 if [ "$CPU" == 'NVIDIA' ]; then
   echo ''
   echo -e "${CYAN}"'>> Installing Nvidia graphics drivers'"${NC}"
-  if [ "$KERNEL_LTS" == "Y" ]; then
-    pacman -S --noconfirm xf86-video-vesa nvidia-lts
-  else
-    pacman -S --noconfirm xf86-video-vesa nvidia
-  fi 
+  pacman -S --noconfirm xf86-video-vesa nvidia
 fi

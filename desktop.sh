@@ -40,14 +40,6 @@ else
         INSTALL_GPU=${INSTALL_GPU^^}
       done
   
-      # Ask extra question if it is Nvidia
-      if [ "$INSTALL_GPU" == 'NVIDIA' ]; then
-        while [ "$INSTALL_KERNEL_LTS" != 'Y' ] && [ "$INSTALL_KERNEL_LTS" != 'N' ]; do
-          read -r -p ' Are you using the LTS kernel [Y/N]: ' INSTALL_KERNEL_LTS
-          INSTALL_KERNEL_LTS=${INSTALL_KERNEL_LTS^^}
-        done
-      fi
-  
       # Continue
       echo ''
       while [ "$INSTALL_CONTINUE" != 'Y' ] && [ "$INSTALL_CONTINUE" != 'N' ]; do
@@ -71,7 +63,7 @@ else
     ./library/xorg.sh | tee -a "$INSTALL_LOG"
 
     # Install graphics drivers
-    ./library/gpu.sh "$INSTALL_GPU" "$INSTALL_KERNEL_LTS" | tee -a "$INSTALL_LOG"
+    ./library/gpu.sh "$INSTALL_GPU" | tee -a "$INSTALL_LOG"
 
     # Install fonts
     ./library/fonts.sh | tee -a "$INSTALL_LOG"
