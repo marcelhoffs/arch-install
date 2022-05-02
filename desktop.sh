@@ -20,11 +20,10 @@ else
     echo ''
     echo ' Available Desktop Environments:'
     echo ''
-    echo ' 1) Gnome (default)'
-    echo ' 2) Gnome (minimal)'
-    echo ' 3) KDE'
-    echo ' 4) Mate'
-    echo ' 5) XFCE'
+    echo ' 1) Gnome'
+    echo ' 2) KDE'
+    echo ' 3) Mate'
+    echo ' 4) XFCE'
     echo ''
     echo ' q) Quit'
     echo ''
@@ -74,18 +73,14 @@ else
       ./library/gnome.sh | tee -a "$INSTALL_LOG"
       ;;
     2)
-      # Install GNOME
-      ./library/gnome.sh MINIMAL | tee -a "$INSTALL_LOG"
-      ;;
-    3)
       # Install KDE
       ./library/kde.sh | tee -a "$INSTALL_LOG"
       ;;
-    4)
+    3)
       # Install MATE
       ./library/mate.sh | tee -a "$INSTALL_LOG"
       ;;
-    5)
+    4)
       # Install XFCE
       ./library/xfce.sh | tee -a "$INSTALL_LOG"
       ;;

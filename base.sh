@@ -8,19 +8,6 @@ NC='\e[0m'
 INSTALL_LOG='install_base.log'
 
 collect_parameters() {
-  # What type of install
-  while [ "$INSTALL_UEFI" != 'BIOS' ] && [ "$INSTALL_UEFI" != 'UEFI' ]; do
-    read -r -p ' 1)  Install on BIOS or UEFI [BIOS/UEFI]: ' INSTALL_UEFI
-    INSTALL_UEFI=${INSTALL_UEFI^^}
-  done
-
-  # If bios ask which device the OS will be installed on
-  if [ "$INSTALL_UEFI" == 'BIOS' ]; then
-    while [ "$INSTALL_DEVICE" == "" ]; do
-      read -r -p ' 1a) On which device are you installing [e.g. /dev/sda]: ' INSTALL_DEVICE
-    done
-  fi
-
   # What keyboard are you using
   while [ "$INSTALL_KEYBOARD" == '' ]; do
     read -r -p ' 2)  What keyboard layout are you using : ' INSTALL_KEYBOARD
@@ -116,7 +103,7 @@ else
     ./library/keyboard.sh "$INSTALL_KEYBOARD" | tee -a "$INSTALL_LOG"
 
     # Install bootloader
-    ./library/bootloader.sh "$INSTALL_UEFI" "$INSTALL_DEVICE" "$INSTALL_CPU" | tee -a "$INSTALL_LOG"
+    ./library/bootloader.sh "$INSTALL_CPU" | tee -a "$INSTALL_LOG"
 
     # Install virtualization
     ./library/virtualization.sh "$INSTALL_VIRTHOST" | tee -a "$INSTALL_LOG"

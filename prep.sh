@@ -5,12 +5,6 @@ CYAN='\e[1;36m'
 NC='\e[0m'
 
 collect_parameters() {
-  # What type of install
-  while [ "$INSTALL_UEFI" != 'BIOS' ] && [ "$INSTALL_UEFI" != 'UEFI' ]; do
-    read -r -p ' 1)  Install on BIOS or UEFI [BIOS/UEFI]: ' INSTALL_UEFI
-    INSTALL_UEFI=${INSTALL_UEFI^^}
-  done
-
   # Ask which device the OS will be installed on
   while [ "$INSTALL_DEVICE" == "" ]; do
     read -r -p ' 2)  On which device are you installing [e.g. /dev/sda]: ' INSTALL_DEVICE
@@ -69,17 +63,11 @@ else
     # Remove all partitions
     sgdisk --zap-all "$INSTALL_DEVICE"
 
-    if [ "$INSTALL_UEFI" == 'UEFI' ]; then
-      # create EFI, SWAP and DATA partition
-      sgdisk --new 1::+500M --typecode 1:ef00 --change-name 1:EFI "$INSTALL_DEVICE"
-      sgdisk --new 2::+"$INSTALL_SWAPSIZE"G --typecode 2:8200 --change-name 2:SWAP "$INSTALL_DEVICE"
-      sgdisk --new 3:: --typecode 3:8300 --change-name 3:OS "$INSTALL_DEVICE"
-    else
-      # create SWAP and DATA partition
-      sgdisk --new 1::+"$INSTALL_SWAPSIZE"G --typecode 1:8200 --change-name 1:SWAP "$INSTALL_DEVICE"
-      sgdisk --new 2:: --typecode 2:8300 --change-name 2:OS "$INSTALL_DEVICE"
-    fi
-
+    # create EFI, SWAP and DATA partition
+    sgdisk --new 1::+500M --typecode 1:ef00 --change-name 1:EFI "$INSTALL_DEVICE"
+    sgdisk --new 2::+"$INSTALL_SWAPSIZE"G --typecode 2:8200 --change-name 2:SWAP "$INSTALL_DEVICE"
+    sgdisk --new 3:: --typecode 3:8300 --change-name 3:OS "$INSTALL_DEVICE"
+   
     # partprobe and unmount everything
     partprobe "$INSTALL_DEVICE"
     umount -a
@@ -93,11 +81,9 @@ else
     PART_SWAP=$(blkid -t PARTLABEL=SWAP -o device)
     PART_OS=$(blkid -t PARTLABEL=OS -o device)
 
-    if [ "$INSTALL_UEFI" == 'UEFI' ]; then
-      # format EFI partition
-      yes | mkfs.fat -F32 "$PART_EFI"
-    fi
-
+    # format EFI partition
+    yes | mkfs.fat -F32 "$PART_EFI"
+    
     # format SWAP partition
     yes | swapoff "$PART_SWAP"
     yes | mkswap "$PART_SWAP"
@@ -117,6 +103,7 @@ else
     # Mount partitions
     # ---------------------------------------------------------
 
+    # mount OS partition
     mount "$PART_OS" /mnt
 
     # if BTRFS create subvolumes and mount
@@ -129,10 +116,9 @@ else
       mount -o noatime,space_cache=v2,compress=zstd,ssd,discard=async,subvol=@home "$PART_OS" /mnt/home
     fi
 
-    if [ "$INSTALL_UEFI" == 'UEFI' ]; then
-      mkdir -p /mnt/boot
-      mount "$PART_EFI" /mnt/boot
-    fi
+    # mount EFI partition
+    mkdir -p /mnt/boot
+    mount "$PART_EFI" /mnt/boot
 
     # ---------------------------------------------------------
     # Pacstrap and generate fstab

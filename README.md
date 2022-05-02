@@ -1,7 +1,7 @@
 # arch-install
 
 # Introduction
-This repository provides an easy way to install Arch Linux on an UEFI or BIOS system. There are some hard coded things in this script. These are easily changed if needed (see scripts in library directory).
+This repository provides an easy way to install Arch Linux on an UEFI. There are some hard coded things in this script. These are easily changed if needed (see scripts in library directory).
 - The locale will be set to en_US.UTF-8
 - The timezone will be set to Europe\Brussels
 - Pacman mirrors are optimized for Belgium\Netherlands\Germany
@@ -10,7 +10,7 @@ This repository provides an easy way to install Arch Linux on an UEFI or BIOS sy
 You should first run the preparation script. This script creates the needed partitions and formats them.
 It will also mount the partitions and prepares them for further installation
 
-The script creates the following partitions for an UEFI system. For BIOS the boot partition will not be created:
+The script creates the following partitions for an UEFI system.
 Partition | Size | Type | Mount
 --------- | ---- | ---- | -----
 Boot | 500M | EFI (ef) | /mnt/boot
@@ -39,7 +39,7 @@ The base.sh script will do the following:
 - Install Intel or AMD CPU Microcode
 - Update pacman mirror list (Netherlands/Belgium/Germany)
 - Set locale (en_US.UTF-8)
-- Install the bootloader (systemd-boot for UEFI or GRUB for BIOS)
+- Install the bootloader (systemd-boot)
 - Install packages for virtual guest
 - Update all packages
 - Enable services
