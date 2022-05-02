@@ -49,7 +49,7 @@ if [ "$INSTALL_TYPE" = 'UEFI' ]; then
   echo 'options root='"$(blkid -t PARTLABEL=OS -o export | grep PARTUUID)" >>/boot/loader/entries/archlinux.conf
 
   # Enable update service
-  systemctl enable systemd-boot-update.service
+  systemctl enable systemd-boot-update
 fi
 
 # For BIOS use GRUB
