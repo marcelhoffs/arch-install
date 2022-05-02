@@ -5,12 +5,6 @@ CYAN='\e[1;36m'
 NC='\e[0m'
 
 collect_parameters() {
-  # What keyboard are you using
-  while [ "$INSTALL_KEYBOARD" == '' ]; do
-    read -r -p ' 1)  What keyboard layout are you using : ' INSTALL_KEYBOARD
-    INSTALL_KEYBOARD=${INSTALL_KEYBOARD,,}
-  done  
-
   # What type of install
   while [ "$INSTALL_UEFI" != 'BIOS' ] && [ "$INSTALL_UEFI" != 'UEFI' ]; do
     read -r -p ' 2)  Install on BIOS or UEFI [BIOS/UEFI]: ' INSTALL_UEFI
@@ -57,10 +51,8 @@ else
   if [ "$INSTALL_CONTINUE" == 'Y' ]; then
     # Set time and keyboard
     echo ''
-    echo -e "${CYAN}"'>> Setting time and keyboard layout'"${NC}"
-    
+    echo -e "${CYAN}"'>> Setting time'"${NC}"
     timedatectl set-ntp true
-    loadkeys "$INSTALL_KEYBOARD"
     
     # Partition drive
     echo ''
