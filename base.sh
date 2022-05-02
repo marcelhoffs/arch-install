@@ -39,12 +39,6 @@ collect_parameters() {
     INSTALL_VIRTHOST=${INSTALL_VIRTHOST^^}
   done
 
-  # Install LTS kernel
-  while [ "$INSTALL_KERNEL_LTS" != 'Y' ] && [ "$INSTALL_KERNEL_LTS" != 'N' ]; do
-    read -r -p ' 5)  Do you want to install the LTS kernel [Y/N]: ' INSTALL_KERNEL_LTS
-    INSTALL_KERNEL_LTS=${INSTALL_KERNEL_LTS^^}
-  done
-
   # Hostname
   while [ "$INSTALL_HOSTNAME" == '' ]; do
     read -r -p ' 6)  Provide the desired hostname: ' INSTALL_HOSTNAME
@@ -104,7 +98,7 @@ else
     ./library/timezone.sh | tee -a "$INSTALL_LOG"
 
     # Install kernel
-    ./library/kernel.sh "$INSTALL_KERNEL_LTS" | tee -a "$INSTALL_LOG"
+    ./library/kernel.sh | tee -a "$INSTALL_LOG"
 
     # Install base packages
     ./library/basepackages.sh | tee -a "$INSTALL_LOG"
@@ -122,7 +116,7 @@ else
     ./library/keyboard.sh "$INSTALL_KEYBOARD" | tee -a "$INSTALL_LOG"
 
     # Install bootloader
-    ./library/bootloader.sh "$INSTALL_UEFI" "$INSTALL_DEVICE" "$INSTALL_CPU" "$INSTALL_KERNEL_LTS" | tee -a "$INSTALL_LOG"
+    ./library/bootloader.sh "$INSTALL_UEFI" "$INSTALL_DEVICE" "$INSTALL_CPU" | tee -a "$INSTALL_LOG"
 
     # Install virtualization
     ./library/virtualization.sh "$INSTALL_VIRTHOST" | tee -a "$INSTALL_LOG"
