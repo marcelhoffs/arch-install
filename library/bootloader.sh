@@ -35,6 +35,7 @@ DEVICES_FS=$(blkid -t PARTLABEL=OS -o export | grep TYPE)
 if [ "$DEVICES_FS" = 'TYPE=btrfs' ]; then
   echo 'options root='"$(blkid -t PARTLABEL=OS -o export | grep PARTUUID)"' rootflags=subvol=@ rw' >>/boot/loader/entries/archlinux.conf    
   sed -i -e 's/MODULES=()/MODULES=(btrfs)/' /etc/mkinitcpio.conf
+  mkinitcpio -P
 else
   echo 'options root='"$(blkid -t PARTLABEL=OS -o export | grep PARTUUID)" >>/boot/loader/entries/archlinux.conf
 fi

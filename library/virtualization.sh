@@ -20,6 +20,7 @@ if [ "$VMHOST" == 'VMWARE' ]; then
   else
     sed -i -e 's/MODULES=(btrfs)/MODULES=(btrfs vsock vmw_vsock_vmci_transport vmw_balloon vmw_vmci vmwgfx)/' /etc/mkinitcpio.conf
   fi  
+  mkinitcpio -P
 fi
 
 if [ "$VMHOST" == 'VIRTUALBOX' ]; then
