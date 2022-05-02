@@ -26,25 +26,31 @@ if [ "$INSTALL_TYPE" = 'UEFI' ]; then
 
   # Create entry file
   echo 'title Arch Linux' >/boot/loader/entries/archlinux.conf
+  
+  # Set the desired kernel
   if [ "$INSTALL_KERNEL_LTS" == 'Y' ]; then
     echo 'linux /vmlinuz-linux-lts' >>/boot/loader/entries/archlinux.conf 
   else
     echo 'linux /vmlinuz-linux' >>/boot/loader/entries/archlinux.conf 
   fi
 
-  if [ "$INSTALL_CPU" = 'INTEL' ] 
+  # Set the cpu microcode
+  if [ "$INSTALL_CPU" = 'INTEL' ]; then
     echo 'initrd /intel-ucode.img' >>/boot/loader/entries/archlinux.conf  
   fi
-  if [ "$INSTALL_CPU" = 'AMD' ] 
+
+  if [ "$INSTALL_CPU" = 'AMD' ]; then
     echo 'initrd /amd-ucode.img' >>/boot/loader/entries/archlinux.conf  
   fi
 
+  # Set the desired initramfs
   if [ "$INSTALL_KERNEL_LTS" == 'Y' ]; then
     echo 'initrd /initramfs-linux-lts.img' >>/boot/loader/entries/archlinux.conf 
   else
     echo 'initrd /initramfs-linux.img' >>/boot/loader/entries/archlinux.conf 
   fi
 
+  # Set the OS device
   echo 'options root='$(blkid -t PARTLABEL=DATA -o export | grep PARTUUID) >>/boot/loader/entries/archlinux.conf  
 
   # Enable update service
