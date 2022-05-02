@@ -51,7 +51,7 @@ if [ "$INSTALL_TYPE" = 'UEFI' ]; then
   fi
 
   # Set the OS device
-  echo 'options root='$(blkid -t PARTLABEL=DATA -o export | grep PARTUUID) >>/boot/loader/entries/archlinux.conf  
+  echo 'options root='$(blkid -t PARTLABEL=OS -o export | grep PARTUUID) >>/boot/loader/entries/archlinux.conf  
 
   # Enable update service
   systemctl enable systemd-boot-update.service
