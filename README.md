@@ -39,7 +39,7 @@ The base.sh script will do the following:
 - Install Intel or AMD CPU Microcode
 - Update pacman mirror list (Netherlands/Belgium/Germany)
 - Set locale (en_US.UTF-8)
-- Install GRUB bootloader
+- Install the bootloader (systemd-boot for UEFI or GRUB for BIOS)
 - Install packages for virtual guest
 - Update all packages
 - Enable services
