@@ -123,6 +123,9 @@ else
     # Move installation files
     ./library/moveinstallation.sh "$INSTALL_USER" | tee -a "$INSTALL_LOG"
 
+    # Mkinit 
+    mkinitcpio -P
+
     # Finish
     echo ''
     echo -e "${GREEN}"'════════════════════════════════════════════════'"${NC}"

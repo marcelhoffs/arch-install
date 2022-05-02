@@ -14,8 +14,12 @@ if [ "$VMHOST" == 'VMWARE' ]; then
   systemctl enable vmware-vmblock-fuse
 
   # Load kernel modules
-  sed -i -e 's/MODULES=()/MODULES=(vsock vmw_vsock_vmci_transport vmw_balloon vmw_vmci vmwgfx)/' /etc/mkinitcpio.conf
-  mkinitcpio -P
+  DEVICES_FS=$(blkid -t PARTLABEL=OS -o export | grep TYPE)
+  if [ "$DEVICES_FS" = 'TYPE=btrfs' ]; then
+    sed -i -e 's/MODULES=()/MODULES=(vsock vmw_vsock_vmci_transport vmw_balloon vmw_vmci vmwgfx)/' /etc/mkinitcpio.conf
+  else
+    sed -i -e 's/MODULES=(btrfs)/MODULES=(btrfs vsock vmw_vsock_vmci_transport vmw_balloon vmw_vmci vmwgfx)/' /etc/mkinitcpio.conf
+  fi  
 fi
 
 if [ "$VMHOST" == 'VIRTUALBOX' ]; then

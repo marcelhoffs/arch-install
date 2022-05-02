@@ -17,7 +17,7 @@ collect_parameters() {
 
   # File system
   while [ "$INSTALL_FS" != 'EXT4' ] && [ "$INSTALL_FS" != 'BTRFS' ]; do
-    read -r -p ' 4)  What filesystem do you wnt to use [EXT4/BTRFS]: ' INSTALL_FS
+    read -r -p ' 4)  What filesystem do you want to use [EXT4/BTRFS]: ' INSTALL_FS
     INSTALL_FS=${INSTALL_FS^^}
   done
 
