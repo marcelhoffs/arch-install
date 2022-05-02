@@ -73,11 +73,11 @@ else
       # create EFI, SWAP and DATA partition
       sgdisk --new 1::+500M --typecode 1:ef00 --change-name 1:EFI "$INSTALL_DEVICE"
       sgdisk --new 2::+"$INSTALL_SWAPSIZE"G --typecode 2:8200 --change-name 2:SWAP "$INSTALL_DEVICE"
-      sgdisk --new 3:: --typecode 3:8300 --change-name 3:DATA "$INSTALL_DEVICE"
+      sgdisk --new 3:: --typecode 3:8300 --change-name 3:OS "$INSTALL_DEVICE"
     else
       # create SWAP and DATA partition
       sgdisk --new 1::+"$INSTALL_SWAPSIZE"G --typecode 1:8200 --change-name 1:SWAP "$INSTALL_DEVICE"
-      sgdisk --new 2:: --typecode 2:8300 --change-name 2:DATA "$INSTALL_DEVICE"
+      sgdisk --new 2:: --typecode 2:8300 --change-name 2:OS "$INSTALL_DEVICE"
     fi
  
     # partprobe
@@ -86,7 +86,7 @@ else
     # get devices by label
     PART_EFI=$(blkid -t PARTLABEL=EFI -o device)
     PART_SWAP=$(blkid -t PARTLABEL=SWAP -o device)
-    PART_DATA=$(blkid -t PARTLABEL=DATA -o device)
+    PART_OS=$(blkid -t PARTLABEL=OS -o device)
     
     if [ "$INSTALL_UEFI" == 'UEFI' ]; then
       # format EFI partition
@@ -99,10 +99,10 @@ else
     yes | swapon "$PART_SWAP"
     
     # format DATA partition
-    yes | mkfs.ext4 "$PART_DATA"3
+    yes | mkfs.ext4 "$PART_OS"3
   
     # mount partitions
-    mount "$PART_DATA" /mnt
+    mount "$PART_OS" /mnt
     
     if [ "$INSTALL_UEFI" == 'UEFI' ]; then
       mkdir -p /mnt/boot
