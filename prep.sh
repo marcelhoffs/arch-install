@@ -7,17 +7,17 @@ NC='\e[0m'
 collect_parameters() {
   # Ask which device the OS will be installed on
   while [ "$INSTALL_DEVICE" == "" ]; do
-    read -r -p ' 2)  On which device are you installing [e.g. /dev/sda]: ' INSTALL_DEVICE
+    read -r -p ' 1) On which device are you installing [e.g. /dev/sda]: ' INSTALL_DEVICE
   done
 
   # Swap file size
   while [ "$INSTALL_SWAPSIZE" == "" ]; do
-    read -r -p ' 3)  What should be the size of the swap partition (in Gb): ' INSTALL_SWAPSIZE
+    read -r -p ' 2) What should be the size of the swap partition (in Gb): ' INSTALL_SWAPSIZE
   done
 
   # File system
   while [ "$INSTALL_FS" != 'EXT4' ] && [ "$INSTALL_FS" != 'BTRFS' ]; do
-    read -r -p ' 4)  What filesystem do you want to use [EXT4/BTRFS]: ' INSTALL_FS
+    read -r -p ' 3) What filesystem do you want to use [EXT4/BTRFS]: ' INSTALL_FS
     INSTALL_FS=${INSTALL_FS^^}
   done
 
