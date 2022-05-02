@@ -13,13 +13,13 @@ collect_parameters() {
 
   # Ask which device the OS will be installed on
   while [ "$INSTALL_DEVICE" == "" ]; do
-      read -r -p ' 3)  On which device are you installing [e.g. /dev/sda]: ' INSTALL_DEVICE
-  done  
+    read -r -p ' 3)  On which device are you installing [e.g. /dev/sda]: ' INSTALL_DEVICE
+  done
 
   # Swap file size
   while [ "$INSTALL_SWAPSIZE" == "" ]; do
-      read -r -p ' 4)  What should be the size of the swap partition (in Gb): ' INSTALL_SWAPSIZE
-  done 
+    read -r -p ' 4)  What should be the size of the swap partition (in Gb): ' INSTALL_SWAPSIZE
+  done
 
   echo ''
 
@@ -53,16 +53,16 @@ else
     echo ''
     echo -e "${CYAN}"'>> Setting time'"${NC}"
     timedatectl set-ntp true
-    
+
     # ---------------------------------------------------------
     # Partition drive
     # ---------------------------------------------------------
     echo ''
     echo -e "${CYAN}"'>> Partitioning and formating drive: '"$INSTALL_DEVICE""${NC}"
-    
+
     # Remove all partitions
     sgdisk --zap-all "$INSTALL_DEVICE"
-    
+
     if [ "$INSTALL_UEFI" == 'UEFI' ]; then
       # create EFI, SWAP and DATA partition
       sgdisk --new 1::+500M --typecode 1:ef00 --change-name 1:EFI "$INSTALL_DEVICE"
@@ -73,7 +73,7 @@ else
       sgdisk --new 1::+"$INSTALL_SWAPSIZE"G --typecode 1:8200 --change-name 1:SWAP "$INSTALL_DEVICE"
       sgdisk --new 2:: --typecode 2:8300 --change-name 2:OS "$INSTALL_DEVICE"
     fi
- 
+
     # partprobe and unmount everything
     partprobe "$INSTALL_DEVICE"
     umount -a
@@ -86,41 +86,41 @@ else
     PART_EFI=$(blkid -t PARTLABEL=EFI -o device)
     PART_SWAP=$(blkid -t PARTLABEL=SWAP -o device)
     PART_OS=$(blkid -t PARTLABEL=OS -o device)
-    
+
     if [ "$INSTALL_UEFI" == 'UEFI' ]; then
       # format EFI partition
       yes | mkfs.fat -F32 "$PART_EFI"
     fi
 
     # format SWAP partition
-    yes | swapoff "$PART_SWAP" 
+    yes | swapoff "$PART_SWAP"
     yes | mkswap "$PART_SWAP"
     yes | swapon "$PART_SWAP"
-    
+
     # format DATA partition
     yes | mkfs.ext4 "$PART_OS"
-  
+
     # ---------------------------------------------------------
     # Mount partitions
     # ---------------------------------------------------------
 
     mount "$PART_OS" /mnt
-    
+
     if [ "$INSTALL_UEFI" == 'UEFI' ]; then
       mkdir -p /mnt/boot
       mount "$PART_EFI" /mnt/boot
     fi
-     
+
     # ---------------------------------------------------------
     # Pacstrap and generate fstab
     # ---------------------------------------------------------
 
     # pacstrap
     pacstrap /mnt base base-devel vi nano git
-    
+
     # generate fstab
-    genfstab -U -p /mnt >> /mnt/etc/fstab
-    
+    genfstab -U -p /mnt >>/mnt/etc/fstab
+
     # chroot
     arch-chroot /mnt
   else
@@ -130,4 +130,4 @@ else
     echo -e "${CYAN}"'════════════════════════════════════════════════'"${NC}"
     echo ''
   fi
-fi  
+fi
