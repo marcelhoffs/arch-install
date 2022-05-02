@@ -7,18 +7,24 @@ NC='\e[0m'
 collect_parameters() {
   # What type of install
   while [ "$INSTALL_UEFI" != 'BIOS' ] && [ "$INSTALL_UEFI" != 'UEFI' ]; do
-    read -r -p ' 2)  Install on BIOS or UEFI [BIOS/UEFI]: ' INSTALL_UEFI
+    read -r -p ' 1)  Install on BIOS or UEFI [BIOS/UEFI]: ' INSTALL_UEFI
     INSTALL_UEFI=${INSTALL_UEFI^^}
   done
 
   # Ask which device the OS will be installed on
   while [ "$INSTALL_DEVICE" == "" ]; do
-    read -r -p ' 3)  On which device are you installing [e.g. /dev/sda]: ' INSTALL_DEVICE
+    read -r -p ' 2)  On which device are you installing [e.g. /dev/sda]: ' INSTALL_DEVICE
   done
 
   # Swap file size
   while [ "$INSTALL_SWAPSIZE" == "" ]; do
-    read -r -p ' 4)  What should be the size of the swap partition (in Gb): ' INSTALL_SWAPSIZE
+    read -r -p ' 3)  What should be the size of the swap partition (in Gb): ' INSTALL_SWAPSIZE
+  done
+
+  # File system
+  while [ "$INSTALL_FS" != 'EXT4' ] && [ "$INSTALL_FS" != 'BTRFS' ]; do
+    read -r -p ' 4)  What filesystem do you wnt to use [EXT4/BTRFS]: ' INSTALL_FS
+    INSTALL_FS=${INSTALL_FS^^}
   done
 
   echo ''
@@ -97,14 +103,31 @@ else
     yes | mkswap "$PART_SWAP"
     yes | swapon "$PART_SWAP"
 
-    # format DATA partition
-    yes | mkfs.ext4 "$PART_OS"
+    if [ "$INSTALL_FS" == 'EXT4' ]; then
+      # format DATA partition
+      yes | mkfs.ext4 "$PART_OS"
+    fi
+    
+    if [ "$INSTALL_FS" == 'BTRFS' ]; then
+      # format DATA partition
+      yes | mkfs.btrfs "$PART_OS" 
+    fi
 
     # ---------------------------------------------------------
     # Mount partitions
     # ---------------------------------------------------------
 
     mount "$PART_OS" /mnt
+
+    # if BTRFS create subvolumes and mount
+    if [ "$INSTALL_FS" == 'BTRFS' ]; then
+      btrfs subvolume create /mnt/@
+      btrfs subvolume create /mnt/@home
+      umount /mnt
+      mount -o noatime,space_cache=v2,compress=zstd,ssd,discard=async,subvol=@ "$PART_OS" /mnt
+      mkdir -p /mnt/home
+      mount -o noatime,space_cache=v2,compress=zstd,ssd,discard=async,subvol=@home "$PART_OS" /mnt/home
+    fi
 
     if [ "$INSTALL_UEFI" == 'UEFI' ]; then
       mkdir -p /mnt/boot
