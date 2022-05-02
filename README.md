@@ -10,21 +10,18 @@ This repository provides an easy way to install Arch Linux on an UEFI or BIOS sy
 You should first run the preparation script. This script creates the needed partitions and formats them.
 It will also mount the partitions and prepares them for further installation
 
-The script creates the following partitions for an UEFI system. For BIOS you can ignore the boot partition:
+The script creates the following partitions for an UEFI system. For BIOS the boot partition will not be created:
 Partition | Size | Type | Mount
 --------- | ---- | ---- | -----
 Boot | 500M | EFI (ef) | /mnt/boot
 Swap | 4096M | Linux Swap (82) | swap
 Root | rest | Linux (83) | /mnt
 
-**Download the script**
+**Download an execute the script**
 ```
-curl -o preparation.sh https://raw.githubusercontent.com/marcelhoffs/arch-install/main/preparation.sh
-chmod +x preparation.sh
-```
-**Execute the script**
-```
-./preparation.sh
+curl -o prep.sh https://raw.githubusercontent.com/marcelhoffs/arch-install/main/prep.sh
+chmod +x prep.sh
+./prep.sh
 ```
 
 # Step 2: Clone the repository and run the base installer
@@ -35,7 +32,7 @@ git clone https://github.com/marcelhoffs/arch-install .
 ./base.sh
 ```
 The base.sh script will do the following:
-- Set hostname and hosts file
+- Set hostname and create hosts file
 - Set timezone to Europe/Brussels
 - Install the selected kernel
 - Install base packages
