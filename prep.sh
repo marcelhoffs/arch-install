@@ -82,7 +82,7 @@ else
     PART_OS=$(blkid -t PARTLABEL=OS -o device)
 
     # format EFI partition
-    yes | mkfs.fat -F32 "$PART_EFI"
+    yes | mkfs.fat -F32 -f "$PART_EFI"
     
     # format SWAP partition
     yes | swapoff "$PART_SWAP"
@@ -91,12 +91,12 @@ else
 
     if [ "$INSTALL_FS" == 'EXT4' ]; then
       # format DATA partition
-      yes | mkfs.ext4 "$PART_OS"
+      yes | mkfs.ext4 -f "$PART_OS"
     fi
     
     if [ "$INSTALL_FS" == 'BTRFS' ]; then
       # format DATA partition
-      yes | mkfs.btrfs "$PART_OS" 
+      yes | mkfs.btrfs -f "$PART_OS" 
     fi
 
     # ---------------------------------------------------------
