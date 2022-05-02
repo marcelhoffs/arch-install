@@ -20,7 +20,6 @@ echo 'timeout 3' >>/boot/loader/loader.conf
 # Create entry file
 echo 'title Arch Linux' >/boot/loader/entries/archlinux.conf
 echo 'linux /vmlinuz-linux' >>/boot/loader/entries/archlinux.conf
-echo 'initrd /initramfs-linux.img' >>/boot/loader/entries/archlinux.conf
 
 # Set the cpu microcode
 if [ "$INSTALL_CPU" = 'INTEL' ]; then
@@ -29,6 +28,8 @@ fi
 if [ "$INSTALL_CPU" = 'AMD' ]; then
   echo 'initrd /amd-ucode.img' >>/boot/loader/entries/archlinux.conf
 fi
+
+echo 'initrd /initramfs-linux.img' >>/boot/loader/entries/archlinux.conf
 
 # Set the OS device
 DEVICES_FS=$(blkid -t PARTLABEL=OS -o export | grep TYPE)
