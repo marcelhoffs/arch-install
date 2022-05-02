@@ -80,8 +80,9 @@ else
       sgdisk --new 2:: --typecode 2:8300 --change-name 2:OS "$INSTALL_DEVICE"
     fi
  
-    # partprobe
+    # partprobe and unmount everything
     partprobe "$INSTALL_DEVICE"
+    umount -a
 
     # get devices by label
     PART_EFI=$(blkid -t PARTLABEL=EFI -o device)
@@ -99,14 +100,14 @@ else
     yes | swapon "$PART_SWAP"
     
     # format DATA partition
-    yes | mkfs.ext4 "$PART_OS"3
+    yes | mkfs.ext4 "$PART_OS"
   
     # mount partitions
     mount "$PART_OS" /mnt
     
     if [ "$INSTALL_UEFI" == 'UEFI' ]; then
       mkdir -p /mnt/boot
-      mount "$PART_EFI"1 /mnt/boot
+      mount "$PART_EFI" /mnt/boot
     fi
      
     # pacstrap
