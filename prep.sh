@@ -96,7 +96,7 @@ else
     
     if [ "$INSTALL_FS" == 'BTRFS' ]; then
       # format DATA partition
-      mkfs.btrfs -f "$PART_OS" 
+      mkfs.btrfs --force "$PART_OS" 
     fi
 
     # ---------------------------------------------------------
