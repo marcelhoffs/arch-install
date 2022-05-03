@@ -15,11 +15,16 @@ if [ "$VMHOST" == 'VMWARE' ]; then
 
   # Load kernel modules
   DEVICES_FS=$(blkid -t PARTLABEL=OS -o export | grep TYPE)
-  if [ "$DEVICES_FS" = 'TYPE=btrfs' ]; then
+  DEVICES_FS=${DEVICES_FS^^}
+
+  if [ "$DEVICES_FS" = 'TYPE=EXT4' ]; then
     sed -i -e 's/MODULES=()/MODULES=(vsock vmw_vsock_vmci_transport vmw_balloon vmw_vmci vmwgfx)/' /etc/mkinitcpio.conf
-  else
+  fi
+  
+  if [ "$DEVICES_FS" = 'TYPE=BTRFS' ]; then
     sed -i -e 's/MODULES=(btrfs)/MODULES=(btrfs vsock vmw_vsock_vmci_transport vmw_balloon vmw_vmci vmwgfx)/' /etc/mkinitcpio.conf
   fi  
+  
   mkinitcpio -P
 fi
 

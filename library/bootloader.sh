@@ -33,11 +33,15 @@ echo 'initrd /initramfs-linux.img' >>/boot/loader/entries/archlinux.conf
 
 # Set the OS device
 DEVICES_FS=$(blkid -t PARTLABEL=OS -o export | grep TYPE)
-if [ "$DEVICES_FS" = 'TYPE=btrfs' ]; then
+DEVICES_FS=${DEVICES_FS^^}
+
+if [ "$DEVICES_FS" = 'TYPE=BTRFS' ]; then
   echo 'options root='"$(blkid -t PARTLABEL=OS -o export | grep PARTUUID)"' rootflags=subvol=@ rw' >>/boot/loader/entries/archlinux.conf    
   sed -i -e 's/MODULES=()/MODULES=(btrfs)/' /etc/mkinitcpio.conf
   mkinitcpio -P
-else
+fi
+
+if [ "$DEVICES_FS" = 'TYPE=EXT4' ]; then
   echo 'options root='"$(blkid -t PARTLABEL=OS -o export | grep PARTUUID)" >>/boot/loader/entries/archlinux.conf
 fi
  
