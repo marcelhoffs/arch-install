@@ -34,7 +34,7 @@ git clone https://github.com/marcelhoffs/arch-install .
 The base.sh script will do the following:
 - Set hostname and create hosts file
 - Set timezone to Europe/Brussels
-- Install the selected kernel
+- Install Linux kernel
 - Install base packages
 - Install Intel or AMD CPU Microcode
 - Update pacman mirror list (Netherlands/Belgium/Germany)
