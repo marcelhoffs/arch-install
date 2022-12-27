@@ -33,7 +33,7 @@ collect_parameters() {
 if [ "$EUID" -ne 0 ]; then
   # Not root
   echo 'Please run with root privileges:'
-  echo './preparation.sh'
+  echo './prep.sh'
 else
   # Clear screen
   clear
@@ -125,7 +125,7 @@ else
     # ---------------------------------------------------------
 
     # pacstrap
-    pacstrap /mnt base base-devel vi nano git
+    pacstrap -K /mnt base base-devel vi nano git
 
     # generate fstab
     genfstab -U -p /mnt >>/mnt/etc/fstab
