@@ -123,7 +123,10 @@ else
     # ---------------------------------------------------------
     # Pacstrap and generate fstab
     # ---------------------------------------------------------
-
+    
+    # restart pacman-init
+    systemctl restart pacman-init.service
+    
     # pacstrap
     pacstrap -K /mnt base base-devel vi nano git
 
