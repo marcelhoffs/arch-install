@@ -5,7 +5,7 @@ NC='\e[0m'
 # Install GNOME
 echo ''
 echo -e "${CYAN}"'>> Installing GNOME'"${NC}"
-pacman -S --noconfirm gdm gnome gnome-tweak-tool gnome-bluetooth gst-plugin-pipewire wireplumber
+pacman -S --noconfirm gdm gnome gnome-tweak-tool gnome-bluetooth gst-plugin-pipewire wireplumber power-profiles-daemon fwupd
 
 # Enable services
 systemctl enable gdm

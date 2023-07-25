@@ -1,7 +1,7 @@
 # arch-install
 
 # Introduction
-This repository provides an easy way to install Arch Linux on an UEFI. There are some hard coded things in this script. These are easily changed if needed (see scripts in library directory).
+This repository provides an easy way to install Arch Linux on an UEFI based PC. There are some hard coded things in this script. These are easily changed if needed (see scripts in library directory).
 - The locale will be set to en_US.UTF-8
 - The timezone will be set to Europe\Brussels
 - Pacman mirrors are optimized for Belgium\Netherlands\Germany

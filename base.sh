@@ -37,12 +37,12 @@ collect_parameters() {
     read -r -p ' 5) Set root password: ' INSTALL_ROOT_PWD
   done
 
-  # Root password
+  # New user
   while [ "$INSTALL_USER" == '' ]; do
     read -r -p ' 6) Create new user: ' INSTALL_USER
   done
 
-  # Root password
+  # New user password
   while [ "$INSTALL_PASSWORD" == '' ]; do
     read -r -p ' 7) Set new user password: ' INSTALL_PASSWORD
   done
@@ -65,8 +65,8 @@ else
   clear
   echo -e "${CYAN}"'╔══════════════════════════════════════════════╗'"${NC}"
   echo -e "${CYAN}"'║ Arch Linux installation script               ║'"${NC}"
-  echo -e "${CYAN}"'║ Marcel Hoffs, 14.03.2021                     ║'"${NC}"
-  echo -e "${CYAN}"'║ Version 2.0                                  ║'"${NC}"
+  echo -e "${CYAN}"'║ Marcel Hoffs, 25.07.2023                     ║'"${NC}"
+  echo -e "${CYAN}"'║ Version 3.0                                  ║'"${NC}"
   echo -e "${CYAN}"'╚══════════════════════════════════════════════╝'"${NC}"
   echo ''
 
