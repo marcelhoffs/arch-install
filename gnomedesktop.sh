@@ -55,7 +55,7 @@ if [ "$EUID" -ne 0 ]; then
     ./library/gnomedefaults.sh | tee -a "$INSTALL_LOG"
 
     # Reboot
-    reboot
+    sudo reboot
   fi
 else
   # Root

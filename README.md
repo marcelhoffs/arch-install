@@ -47,10 +47,10 @@ The base.sh script will do the following:
 - Create user
 - Move installation files to the user directory
 
-# Step 3: Install Desktop Environment
+# Step 3: Install Gnome Desktop Environment
 After reboot you will find the arch-install folder in the users home directory.
-From there you can start the installer for Desktop Environments. Run the script with root privileges.
+From there you can start the installer for the Gnome Desktop Environment. Run the script as a regular user.
 ```
 cd arch-install
-sudo ./desktop.sh
+./desktop.sh
 ```
