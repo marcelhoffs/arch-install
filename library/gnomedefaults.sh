@@ -2,6 +2,7 @@
 CURRENTUSER=$(whoami)
 
 # Copy wallpaper
+mkdir -p /home/"$CURRENTUSER"/Pictures
 cp ../wallpapers/* /home/"$CURRENTUSER"/Pictures
 
 # Set wallpaper
