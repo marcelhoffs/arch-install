@@ -3,7 +3,7 @@ CURRENTUSER=$(whoami)
 
 # Copy wallpaper
 mkdir -p /home/"$CURRENTUSER"/Pictures
-cp ../wallpapers/* /home/"$CURRENTUSER"/Pictures
+cp wallpapers/* /home/"$CURRENTUSER"/Pictures
 
 # Set wallpaper
 gsettings set org.gnome.desktop.background picture-uri file:///home/"$CURRENTUSER"/Pictures/vanilla-default.png
