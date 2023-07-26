@@ -9,6 +9,9 @@ cp ../wallpapers/* /home/"$CURRENTUSER"/Pictures
 gsettings set org.gnome.desktop.background picture-uri file:///home/"$CURRENTUSER"/Pictures/vanilla-default.png
 gsettings set org.gnome.desktop.background picture-uri-dark file:///home/"$CURRENTUSER"/Pictures/vanilla-dark.png
 
+# Favorite apps
+gsettings set org.gnome.shell favorite-apps "['firefox.desktop', 'org.gnome.Nautilus.desktop', 'org.gnome.Console.desktop', 'org.gnome.Software.desktop']"
+
 # Center new windows
 gsettings set org.gnome.mutter center-new-windows true
 
