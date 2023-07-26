@@ -57,7 +57,7 @@ if [ "$EUID" -ne 0 ]; then
 
     echo ''
     echo -e "${GREEN}"'════════════════════════════════════════════════'"${NC}"
-    echo -e "${GREEN}"' Installation finalized, now reboot.            '"${NC}"
+    echo -e "${WHITE}"' Installation finalized, now reboot.            '"${NC}"
     echo -e "${GREEN}"'════════════════════════════════════════════════'"${NC}"
     echo ''
   fi
