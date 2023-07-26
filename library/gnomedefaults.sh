@@ -27,6 +27,15 @@ gsettings set org.gnome.desktop.datetime automatic-timezone true
 # Icons
 gsettings set org.gnome.desktop.interface icon-theme "Papirus"
 
+# Fonts
+gsettings set org.gnome.desktop.interface font-name "Noto Sans 12"
+gsettings set org.gnome.desktop.interface document-font-name "Noto Sans 12"
+gsettings set org.gnome.desktop.interface monospace-font-name "Source Code Pro 14"
+gsettings set org.gnome.desktop.wm.preferences titlebar-font "Noto Sans Bold 12"
+
+# Battery inidicator
+gsettings set org.gnome.desktop.interface show-battery-percentage true
+
 # Touchpad
 gsettings set org.gnome.desktop.peripherals.touchpad tap-to-click true
 gsettings set org.gnome.desktop.peripherals.touchpad two-finger-scrolling-enabled true

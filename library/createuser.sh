@@ -11,6 +11,7 @@ if [ $# -eq 2 ]; then
   echo ''
   echo -e "${CYAN}"'>> Creating new user: '"$USERNAME""${NC}"
   useradd -m -g users -s /bin/bash "$USERNAME"
+  usermod -aG adm "$USERNAME"
   echo "$USERNAME":"$PASSWORD" | chpasswd
   echo "$USERNAME"' ALL=(ALL) ALL' >>/etc/sudoers.d/"$USERNAME"
 
