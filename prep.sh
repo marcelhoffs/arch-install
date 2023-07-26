@@ -1,9 +1,7 @@
 #!/bin/bash
 
 # Constants
-GREEN='\e[1;32m'
 CYAN='\e[1;36m'
-WHITE='\e[1;37m'
 NC='\e[0m'
 
 collect_parameters() {
@@ -135,19 +133,12 @@ else
     # generate fstab
     genfstab -U -p /mnt >>/mnt/etc/fstab
 
+    # clone the repository
+    mkdir -p /mnt/arch-install
+    git clone https://github.com/marcelhoffs/arch-install /mnt/arch-linux
+
     # chroot
     arch-chroot /mnt
-
-    # clone the repository
-    mkdir /arch-install
-    cd /arch-install
-    git clone https://github.com/marcelhoffs/arch-install .
-
-    echo ''
-    echo -e "${GREEN}"'════════════════════════════════════════════════'"${NC}"
-    echo -e "${WHITE}"' Now execute /arch-install/base.sh              '"${NC}"
-    echo -e "${GREEN}"'════════════════════════════════════════════════'"${NC}"
-    echo ''
   else
     echo ''
     echo -e "${CYAN}"'════════════════════════════════════════════════'"${NC}"
