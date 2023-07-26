@@ -1,5 +1,11 @@
 #!/bin/bash
+CYAN='\e[1;36m'
+NC='\e[0m'
 CURRENTUSER=$(whoami)
+
+# Install GNOME
+echo ''
+echo -e "${CYAN}"'>> Setting GNOME defaults'"${NC}"
 
 # Copy wallpaper
 mkdir -p /home/"$CURRENTUSER"/Pictures

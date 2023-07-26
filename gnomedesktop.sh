@@ -1,4 +1,5 @@
 #!/bin/bash
+GREEN='\e[1;32m'
 CYAN='\e[1;36m'
 WHITE='\e[1;37m'
 NC='\e[0m'
@@ -54,8 +55,11 @@ if [ "$EUID" -ne 0 ]; then
     # Set defaults
     ./library/gnomedefaults.sh | tee -a "$INSTALL_LOG"
 
-    # Reboot
-    sudo reboot
+    echo ''
+    echo -e "${GREEN}"'════════════════════════════════════════════════'"${NC}"
+    echo -e "${GREEN}"' Installation finalized, now reboot.            '"${NC}"
+    echo -e "${GREEN}"'════════════════════════════════════════════════'"${NC}"
+    echo ''
   fi
 else
   # Root
