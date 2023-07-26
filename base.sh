@@ -21,8 +21,8 @@ collect_parameters() {
   done
 
   # Are you installing a virtual host
-  while [ "$INSTALL_VIRTHOST" != 'VMWARE' ] && [ "$INSTALL_VIRTHOST" != 'VIRTUALBOX' ] && [ "$INSTALL_VIRTHOST" != 'QEMU' ] && [ "$INSTALL_VIRTHOST" != 'NONE' ]; do
-    read -r -p ' 3) Are you installing on a virtual host [VMWARE/VIRTUALBOX/QEMU/NONE]: ' INSTALL_VIRTHOST
+  while [ "$INSTALL_VIRTHOST" != 'VMWARE' ] && [ "$INSTALL_VIRTHOST" != 'VIRTUALBOX' ] && [ "$INSTALL_VIRTHOST" != 'QEMU' ] && [ "$INSTALL_VIRTHOST" != 'GNOMEBOXES' ] && [ "$INSTALL_VIRTHOST" != 'NONE' ] ; do
+    read -r -p ' 3) Are you installing on a virtual host [VMWARE/VIRTUALBOX/QEMU/GNOMEBOXES/NONE]: ' INSTALL_VIRTHOST
     INSTALL_VIRTHOST=${INSTALL_VIRTHOST^^}
   done
 

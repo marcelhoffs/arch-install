@@ -41,3 +41,9 @@ if [ "$VMHOST" == 'QEMU' ]; then
   pacman -S --noconfirm qemu-guest-agent xf86-video-vmware
   systemctl enable qemu-guest-agent
 fi
+
+if [ "$VMHOST" == 'GNOMEBOXES' ]; then
+  echo ''
+  echo -e "${CYAN}"'>> Enable Spice'"${NC}"
+  pacman -S --noconfirm spice-vdagent spice-protocol
+fi
