@@ -6,6 +6,11 @@ This repository provides an easy way to install Arch Linux on an UEFI based PC. 
 - The timezone will be set to Europe\Brussels
 - Pacman mirrors are optimized for Belgium\Netherlands\Germany
 
+Make sure that you have an internet connection. This can be via ethernet or wifi. If you want to use wifi you can connect to the intenet via:
+```
+iwctl station wlan0 connect <SSID>
+```
+
 # Step 1: Preparation
 You should first run the preparation script. This script creates the needed partitions and formats them.
 It will also mount the partitions and prepares them for further installation
