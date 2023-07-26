@@ -133,10 +133,6 @@ else
     # generate fstab
     genfstab -U -p /mnt >>/mnt/etc/fstab
 
-    # clone the repository
-    mkdir -p /mnt/arch-install
-    git clone https://github.com/marcelhoffs/arch-install /mnt/arch-linux
-
     # chroot
     arch-chroot /mnt
   else
