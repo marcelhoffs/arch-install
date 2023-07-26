@@ -9,4 +9,3 @@ systemctl enable sshd
 systemctl enable NetworkManager
 systemctl enable bluetooth
 systemctl enable fstrim.timer
-systemctl enable tlp
