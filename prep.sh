@@ -1,7 +1,9 @@
 #!/bin/bash
 
 # Constants
+GREEN='\e[1;32m'
 CYAN='\e[1;36m'
+WHITE='\e[1;37m'
 NC='\e[0m'
 
 collect_parameters() {
@@ -135,6 +137,17 @@ else
 
     # chroot
     arch-chroot /mnt
+
+    # clone the repository
+    mkdir /arch-install
+    cd /arch-install
+    git clone https://github.com/marcelhoffs/arch-install .
+
+    echo ''
+    echo -e "${GREEN}"'════════════════════════════════════════════════'"${NC}"
+    echo -e "${WHITE}"' Now execute /arch-install/base.sh              '"${NC}"
+    echo -e "${GREEN}"'════════════════════════════════════════════════'"${NC}"
+    echo ''
   else
     echo ''
     echo -e "${CYAN}"'════════════════════════════════════════════════'"${NC}"
