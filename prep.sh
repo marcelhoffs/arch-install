@@ -4,6 +4,7 @@
 GREEN='\e[1;32m'
 CYAN='\e[1;36m'
 WHITE='\e[1;37m'
+RED='\e[1;31m'
 NC='\e[0m'
 
 collect_parameters() {
@@ -150,9 +151,9 @@ else
     arch-chroot /mnt
   else
     echo ''
-    echo -e "${CYAN}"'════════════════════════════════════════════════'"${NC}"
-    echo -e "${CYAN}"' Installation aborted.                          '"${NC}"
-    echo -e "${CYAN}"'════════════════════════════════════════════════'"${NC}"
+    echo -e "${RED}"'════════════════════════════════════════════════'"${NC}"
+    echo -e "${RED}"' Installation aborted.                          '"${NC}"
+    echo -e "${RED}"'════════════════════════════════════════════════'"${NC}"
     echo ''
   fi
 fi
