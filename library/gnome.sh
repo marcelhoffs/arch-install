@@ -14,7 +14,6 @@ pacman -R --noconfirm epiphany gnome-music gnome-calendar
 rm /usr/share/applications/lstopo.desktop 
 rm /usr/share/applications/qv4l2.desktop 
 rm /usr/share/applications/qvidcap.desktop 
-rm /usr/share/applications/org.gnome.Tour.desktop
 
 # Enable services
 systemctl enable gdm
