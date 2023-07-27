@@ -42,7 +42,7 @@ The base.sh script will do the following:
 - Install Linux kernel
 - Install base packages
 - Install Intel or AMD CPU Microcode
-- Update pacman mirror list (Netherlands/Belgium/Germany)
+- Update pacman mirror list (Netherlands/Belgium/France/Germany)
 - Set locale (en_US.UTF-8)
 - Install the bootloader (systemd-boot)
 - Install packages for virtual guest
