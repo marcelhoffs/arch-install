@@ -2,6 +2,7 @@
 GREEN='\e[1;32m'
 CYAN='\e[1;36m'
 WHITE='\e[1;37m'
+RED='\e[1;31m'
 NC='\e[0m'
 INSTALL_LOG='install_desktop.log'
 
@@ -35,9 +36,9 @@ if [ "$EUID" -ne 0 ]; then
   # Continue if not aborted
   if [ "$INSTALL_CONTINUE" == 'N' ]; then
     echo ''
-    echo -e "${CYAN}"'════════════════════════════════════════════════'"${NC}"
-    echo -e "${CYAN}"' Installation aborted.                        '"${NC}"
-    echo -e "${CYAN}"'════════════════════════════════════════════════'"${NC}"
+    echo -e "${RED}"'════════════════════════════════════════════════'"${NC}"
+    echo -e "${RED}"' Installation aborted.                        '"${NC}"
+    echo -e "${RED}"'════════════════════════════════════════════════'"${NC}"
     echo ''
   else
     # Install graphics drivers
@@ -60,7 +61,7 @@ if [ "$EUID" -ne 0 ]; then
 
     echo ''
     echo -e "${GREEN}"'════════════════════════════════════════════════'"${NC}"
-    echo -e "${WHITE}"' Installation finalized, now reboot.            '"${NC}"
+    echo -e "${GREEN}"' Installation finalized, now reboot.            '"${NC}"
     echo -e "${GREEN}"'════════════════════════════════════════════════'"${NC}"
     echo ''
   fi
