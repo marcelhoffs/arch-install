@@ -1,31 +1,44 @@
 #!/bin/bash
 
 # Constants
+GREEN='\e[1;32m'
 CYAN='\e[1;36m'
+WHITE='\e[1;37m'
 NC='\e[0m'
 
 collect_parameters() {
   # Ask which device the OS will be installed on
+  echo -e "${CYAN}"'1) On which device do you want to install Arch Linux?'"${NC}"
+  echo ''
+  lsblk
+  echo ''
   while [ "$INSTALL_DEVICE" == "" ]; do
-    read -r -p ' 1) On which device are you installing [e.g. /dev/sda]: ' INSTALL_DEVICE
+    read -r -p 'Enter the device [e.g. /dev/sda]: ' INSTALL_DEVICE
   done
 
   # Swap file size
+  echo ''
+  echo -e "${CYAN}"'2) What should be the size of the swap partition?'"${NC}"
+  echo ''
   while [ "$INSTALL_SWAPSIZE" == "" ]; do
-    read -r -p ' 2) What should be the size of the swap partition (in Gb): ' INSTALL_SWAPSIZE
+    read -r -p 'Enter swap partition size (in Gb): ' INSTALL_SWAPSIZE
   done
 
   # File system
+  echo ''
+  echo -e "${CYAN}"'3) What filesystem do you want to use?'"${NC}"
+  echo ''  
   while [ "$INSTALL_FS" != 'EXT4' ] && [ "$INSTALL_FS" != 'BTRFS' ]; do
-    read -r -p ' 3) What filesystem do you want to use [EXT4/BTRFS]: ' INSTALL_FS
+    read -r -p 'Enter the file system [EXT4/BTRFS]: ' INSTALL_FS
     INSTALL_FS=${INSTALL_FS^^}
   done
 
   echo ''
-
+  echo -e "${GREEN}"'Are you sure you want to continue?'"${NC}"
+  echo '' 
   # Continue
   while [ "$INSTALL_CONTINUE" != 'Y' ] && [ "$INSTALL_CONTINUE" != 'N' ]; do
-    read -r -p ' Are you sure you want to continue? [Y/N]: ' INSTALL_CONTINUE
+    read -r -p 'Continue? [Y/N]: ' INSTALL_CONTINUE
     INSTALL_CONTINUE=${INSTALL_CONTINUE^^}
   done
 }
@@ -39,8 +52,8 @@ else
   clear
   echo -e "${CYAN}"'╔══════════════════════════════════════════════╗'"${NC}"
   echo -e "${CYAN}"'║ Arch Linux preparation script                ║'"${NC}"
-  echo -e "${CYAN}"'║ Marcel Hoffs, 29.04.2022                     ║'"${NC}"
-  echo -e "${CYAN}"'║ Version 1.0                                  ║'"${NC}"
+  echo -e "${CYAN}"'║ Marcel Hoffs, 27.07.2023                     ║'"${NC}"
+  echo -e "${CYAN}"'║ Version 2.0                                  ║'"${NC}"
   echo -e "${CYAN}"'╚══════════════════════════════════════════════╝'"${NC}"
   echo ''
 

@@ -9,49 +9,68 @@ INSTALL_LOG='install_base.log'
 
 collect_parameters() {
   # What keyboard are you using
+  echo -e "${CYAN}"'1) Which keyboard layout do you want to use?'"${NC}"
+  echo -e "${CYAN}"'   Examples: us, nl, be-latin1'"${NC}"  
+  echo ''
   while [ "$INSTALL_KEYBOARD" == '' ]; do
-    read -r -p ' 1) What keyboard layout are you using : ' INSTALL_KEYBOARD
+    read -r -p 'Enter keyboard layout: ' INSTALL_KEYBOARD
     INSTALL_KEYBOARD=${INSTALL_KEYBOARD,,}
   done
 
   # What CPU are you using
+  echo ''
+  echo -e "${CYAN}"'2) Which brand of CPU are you using?'"${NC}"
+  echo ''
   while [ "$INSTALL_CPU" != 'INTEL' ] && [ "$INSTALL_CPU" != 'AMD' ]; do
-    read -r -p ' 2) Do you use an Intel or AMD CPU [INTEL/AMD]: ' INSTALL_CPU
+    read -r -p 'Enter CPU brand [INTEL/AMD]: ' INSTALL_CPU
     INSTALL_CPU=${INSTALL_CPU^^}
   done
 
   # Are you installing a virtual host
+  echo ''
+  echo -e "${CYAN}"'3) Are you installing on a virtual host?'"${NC}"
+  echo ''
   while [ "$INSTALL_VIRTHOST" != 'VMWARE' ] && [ "$INSTALL_VIRTHOST" != 'VIRTUALBOX' ] && [ "$INSTALL_VIRTHOST" != 'QEMU' ] && [ "$INSTALL_VIRTHOST" != 'GNOMEBOXES' ] && [ "$INSTALL_VIRTHOST" != 'NONE' ] ; do
-    read -r -p ' 3) Are you installing on a virtual host [VMWARE/VIRTUALBOX/QEMU/GNOMEBOXES/NONE]: ' INSTALL_VIRTHOST
+    read -r -p 'Enter virtualization host [VMWARE/VIRTUALBOX/QEMU/GNOMEBOXES/NONE]: ' INSTALL_VIRTHOST
     INSTALL_VIRTHOST=${INSTALL_VIRTHOST^^}
   done
 
   # Hostname
+  echo ''
+  echo -e "${CYAN}"'4) Set the hostname of this machine'"${NC}"
+  echo ''
   while [ "$INSTALL_HOSTNAME" == '' ]; do
-    read -r -p ' 4) Provide the desired hostname: ' INSTALL_HOSTNAME
+    read -r -p 'Enter hostname: ' INSTALL_HOSTNAME
     INSTALL_HOSTNAME=${INSTALL_HOSTNAME,,}
   done
 
   # Root password
+  echo ''
+  echo -e "${CYAN}"'5) Set the root password'"${NC}"
+  echo ''
   while [ "$INSTALL_ROOT_PWD" == '' ]; do
-    read -r -p ' 5) Set root password: ' INSTALL_ROOT_PWD
+    read -r -p 'Enter password: ' INSTALL_ROOT_PWD
   done
 
   # New user
+  echo ''
+  echo -e "${CYAN}"'6) Create new user'"${NC}"
+  echo ''
   while [ "$INSTALL_USER" == '' ]; do
-    read -r -p ' 6) Create new user: ' INSTALL_USER
+    read -r -p 'Username: ' INSTALL_USER
   done
 
   # New user password
   while [ "$INSTALL_PASSWORD" == '' ]; do
-    read -r -p ' 7) Set new user password: ' INSTALL_PASSWORD
+    read -r -p 'Password: ' INSTALL_PASSWORD
   done
 
-  echo ''
-
   # Continue
+  echo ''
+  echo -e "${GREEN}"'Are you sure you want to continue?'"${NC}"
+  echo ''
   while [ "$INSTALL_CONTINUE" != 'Y' ] && [ "$INSTALL_CONTINUE" != 'N' ]; do
-    read -r -p ' Are you sure you want to continue? [Y/N]: ' INSTALL_CONTINUE
+    read -r -p 'Continue? [Y/N]: ' INSTALL_CONTINUE
     INSTALL_CONTINUE=${INSTALL_CONTINUE^^}
   done
 }
