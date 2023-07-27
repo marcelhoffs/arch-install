@@ -27,6 +27,9 @@ if [ $# -eq 2 ]; then
   echo '# Clear screen and run neofetch' >>/home/"$USERNAME"/.bash_profile
   echo 'clear' >>/home/"$USERNAME"/.bash_profile
   echo 'neofetch' >>/home/"$USERNAME"/.bash_profile
+
+  # Create .face file for default avatar
+  cp images/.face /home/"$USERNAME"/.face
 else
   echo 'Provide a username and password.'
   echo 'Usage: createuser.sh <username> <password>'
