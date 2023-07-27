@@ -29,7 +29,7 @@ if [ $# -eq 2 ]; then
   echo 'neofetch' >>/home/"$USERNAME"/.bash_profile
 
   # Create .face file for default avatar
-  cp images/.face /home/"$USERNAME"/.face
+  busctl call org.freedesktop.Accounts /org/freedesktop/Accounts/User$(id -u "$USERNAME") org.freedesktop.Accounts.User SetIconFile s /usr/share/pixmaps/faces/hummingbird.jpg
 else
   echo 'Provide a username and password.'
   echo 'Usage: createuser.sh <username> <password>'
