@@ -9,16 +9,14 @@ if [ "$EUID" -ne 0 ]; then
   # Ask what desktop to install
   clear
   echo -e "${CYAN}"'╔══════════════════════════════════════════════╗'"${NC}"
-  echo -e "${CYAN}"'║ Arch Linux Desktop Environment installation  ║'"${NC}"
+  echo -e "${CYAN}"'║ GNOME Desktop Environment installation       ║'"${NC}"
   echo -e "${CYAN}"'║ Marcel Hoffs, 25.07.2023                     ║'"${NC}"
   echo -e "${CYAN}"'║ Version 2.0                                  ║'"${NC}"
   echo -e "${CYAN}"'╚══════════════════════════════════════════════╝'"${NC}"
-  echo ''
-  echo ' Installing Gnome Desktop'
   
   # What GPU are you using
   echo ''
-  echo -e "${CYAN}"'What GPU are you using?'"${NC}"
+  echo -e "${CYAN}"'1) What GPU are you using?'"${NC}"
   echo ''
   while [ "$INSTALL_GPU" != 'INTEL' ] && [ "$INSTALL_GPU" != 'AMD' ] && [ "$INSTALL_GPU" != 'NVIDIA' ]; do
     read -r -p 'Enter GPU brand [INTEL/AMD/NVIDIA]: ' INSTALL_GPU
@@ -30,7 +28,7 @@ if [ "$EUID" -ne 0 ]; then
   echo -e "${GREEN}"'Are you sure you want to continue?'"${NC}"
   echo ''
   while [ "$INSTALL_CONTINUE" != 'Y' ] && [ "$INSTALL_CONTINUE" != 'N' ]; do
-    read -r -p ' Continue? [Y/N]: ' INSTALL_CONTINUE
+    read -r -p 'Continue? [Y/N]: ' INSTALL_CONTINUE
     INSTALL_CONTINUE=${INSTALL_CONTINUE^^}
   done
 
