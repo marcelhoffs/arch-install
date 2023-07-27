@@ -3,9 +3,12 @@ CYAN='\e[1;36m'
 NC='\e[0m'
 CURRENTUSER=$(whoami)
 
-# Install GNOME
+# Setting GNOME defaults
 echo ''
 echo -e "${CYAN}"'>> Setting GNOME defaults'"${NC}"
+
+# Set avatar
+busctl call org.freedesktop.Accounts /org/freedesktop/Accounts/User$(id -u "$CURRENTUSER") org.freedesktop.Accounts.User SetIconFile s /usr/share/pixmaps/faces/hummingbird.jpg
 
 # Copy wallpaper
 mkdir -p /home/"$CURRENTUSER"/Pictures
