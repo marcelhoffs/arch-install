@@ -52,15 +52,15 @@ The base.sh script will do the following:
 - Create user
 - Move installation files to the user directory
 
-# Step 3: Install Gnome Desktop Environment
+# Step 3: Install GNOME Desktop Environment
 If you are using wifi, then after reboot, you will not have an internet connection anymore. You can connect to your wifi by using:
 ```
 nmtui
 ```
 
 Now, after reboot you will find the arch-install folder in the users home directory.
-From there you can start the installer for the Gnome Desktop Environment. Run the script as a regular user.
+From there you can start the installer for the GNOME Desktop Environment. Run the script as a regular user.
 ```
 cd arch-install
-./desktop.sh
+./gnomedesktop.sh
 ```
