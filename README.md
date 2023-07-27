@@ -4,7 +4,7 @@
 This repository provides an easy way to install Arch Linux on an UEFI based PC. There are some hard coded things in this script. These are easily changed if needed (see scripts in library directory).
 - The locale will be set to en_US.UTF-8
 - The timezone will be set to Europe\Brussels
-- Pacman mirrors are optimized for Belgium\Netherlands\Germany
+- Pacman mirrors are optimized for Belgium\Netherlands\France\Germany
 
 Make sure that you have a working internet connection. This can be via ethernet or wifi. If you want to use wifi you can connect to the intenet via:
 ```
@@ -42,7 +42,7 @@ The base.sh script will do the following:
 - Install Linux kernel
 - Install base packages
 - Install Intel or AMD CPU Microcode
-- Update pacman mirror list (Netherlands/Belgium/France/Germany)
+- Update pacman mirror list (Belgium\Netherlands\France\Germany)
 - Set locale (en_US.UTF-8)
 - Install the bootloader (systemd-boot)
 - Install packages for virtual guest
