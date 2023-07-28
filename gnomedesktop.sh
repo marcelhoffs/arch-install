@@ -24,6 +24,21 @@ if [ "$EUID" -ne 0 ]; then
     INSTALL_GPU=${INSTALL_GPU^^}
   done
 
+  # Install extra applications
+  echo ''
+  echo -e "${CYAN}"'2) Do you want to install extra applications?'"${NC}"
+  echo -e "${CYAN}"'   The following applications will be installed:'"${NC}"
+  echo -e "${CYAN}"'   - Mozilla Thunderbird'"${NC}"
+  echo -e "${CYAN}"'   - Gimp'"${NC}"
+  echo -e "${CYAN}"'   - LibreOffice'"${NC}"
+  echo -e "${CYAN}"'   - Bitwarden'"${NC}"
+  echo -e "${CYAN}"'   - Remmina'"${NC}"
+  echo ''
+  while [ "$EXTRA" != 'Y' ] && [ "$EXTRA" != 'N' ]; do
+    read -r -p 'Install [Y/N]: ' EXTRA
+    EXTRA=${EXTRA^^}
+  done
+
   # Continue
   echo ''
   echo -e "${GREEN}"'Are you sure you want to continue?'"${NC}"
@@ -52,6 +67,10 @@ if [ "$EUID" -ne 0 ]; then
 
     # Install base applications
     sudo ./library/baseapps.sh | tee -a "$INSTALL_LOG"
+
+    if [ "$EXTRA" == 'Y' ]; then
+      sudo ./library/extraapps.sh | tee -a "$INSTALL_LOG"
+    fi
 
     # Update all
     sudo ./library/update.sh | tee -a "$INSTALL_LOG"
