@@ -33,6 +33,7 @@ if [ "$EUID" -ne 0 ]; then
   echo -e "${CYAN}"'   - LibreOffice'"${NC}"
   echo -e "${CYAN}"'   - Bitwarden'"${NC}"
   echo -e "${CYAN}"'   - Remmina'"${NC}"
+  echo -e "${CYAN}"'   - Gnome Boxes'"${NC}"
   echo ''
   while [ "$EXTRA" != 'Y' ] && [ "$EXTRA" != 'N' ]; do
     read -r -p 'Install [Y/N]: ' EXTRA
