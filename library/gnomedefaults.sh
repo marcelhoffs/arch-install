@@ -52,6 +52,12 @@ gsettings set org.gnome.nautilus.list-view default-zoom-level "small"
 gsettings set org.gnome.nautilus.preferences default-folder-viewer "icon-view"
 gsettings set org.gnome.nautilus.preferences show-delete-permanently true
 
+# Text Editor
+gsettings set org.gnome.TextEditor highlight-current-line true
+gsettings set org.gnome.TextEditor show-line-numbers true
+gsettings set org.gnome.TextEditor show-map true
+gsettings set org.gnome.TextEditor restore-session false
+
 # Media handling
 gsettings set org.gnome.desktop.media-handling autorun-never true
 
