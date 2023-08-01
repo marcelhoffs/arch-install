@@ -67,3 +67,6 @@ From there you can start the installer for the GNOME Desktop Environment. Run th
 cd arch-install
 ./gnomedesktop.sh
 ```
+---
+Wallpapers courtesy of the Vanilla OS project:
+https://github.com/Vanilla-OS
