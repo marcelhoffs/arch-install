@@ -56,6 +56,12 @@ gsettings set org.gnome.nautilus.preferences default-folder-viewer "icon-view"
 gsettings set org.gnome.nautilus.preferences show-delete-permanently true
 gsettings set org.gtk.gtk4.Settings.FileChooser sort-directories-first true
 
+# Media handling
+gsettings set org.gnome.desktop.media-handling autorun-never true
+
+# Window Manager
+gsettings set org.gnome.desktop.wm.preferences button-layout "appmen:minimize,close"
+
 # Remove launcher icons
 mkdir -p /home/"$CURRENTUSER"/.local/share/applications
 echo 'NoDisplay=true' > /home/"$CURRENTUSER"/.local/share/applications/lstopo.desktop
