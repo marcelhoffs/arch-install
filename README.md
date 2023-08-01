@@ -68,5 +68,4 @@ cd arch-install
 ./gnomedesktop.sh
 ```
 ---
-Wallpapers courtesy of the Vanilla OS project:
-https://github.com/Vanilla-OS
+^Wallpapers courtesy of the Vanilla OS project: https://github.com/Vanilla-OS^
