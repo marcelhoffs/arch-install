@@ -21,9 +21,6 @@ gsettings set org.gnome.desktop.background picture-uri-dark file:///home/"$CURRE
 # Favorite apps
 gsettings set org.gnome.shell favorite-apps "['firefox.desktop', 'org.gnome.Nautilus.desktop', 'org.gnome.Console.desktop', 'org.gnome.Software.desktop']"
 
-# Center new windows
-gsettings set org.gnome.mutter center-new-windows true
-
 # Enable Geolocation
 gsettings set org.gnome.system.location enabled true
 
@@ -60,7 +57,14 @@ gsettings set org.gtk.gtk4.Settings.FileChooser sort-directories-first true
 gsettings set org.gnome.desktop.media-handling autorun-never true
 
 # Window Manager
+gsettings set org.gnome.mutter center-new-windows true
 gsettings set org.gnome.desktop.wm.preferences button-layout "appmen:minimize,close"
+
+# Alt-Tab behaviour
+gsettings set org.gnome.desktop.wm.keybindings switch-applications "[]"
+gsettings set org.gnome.desktop.wm.keybindings switch-applications-backward "[]"
+gsettings set org.gnome.desktop.wm.keybindings switch-windows "['<Alt>Tab']"
+gsettings set org.gnome.desktop.wm.keybindings switch-windows-backward "['<Shift><Alt>Tab']"
 
 # Remove launcher icons
 mkdir -p /home/"$CURRENTUSER"/.local/share/applications
