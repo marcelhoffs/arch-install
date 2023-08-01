@@ -50,6 +50,7 @@ gsettings set org.gnome.desktop.peripherals.touchpad tap-to-click true
 gsettings set org.gnome.desktop.peripherals.touchpad two-finger-scrolling-enabled true
 
 # Remove launcher icons
+mkdir -p /home/"$CURRENTUSER"/.local/share/applications
 echo 'NoDisplay=true' > /home/"$CURRENTUSER"/.local/share/applications/lstopo.desktop
 echo 'NoDisplay=true' > /home/"$CURRENTUSER"/.local/share/applications/qv4l2.desktop
 echo 'NoDisplay=true' > /home/"$CURRENTUSER"/.local/share/applications/qvidcap.desktop
