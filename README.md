@@ -26,7 +26,7 @@ Root | rest | Linux (83) | /mnt
 ```
 curl -o prep.sh https://raw.githubusercontent.com/marcelhoffs/arch-install/main/prep.sh
 or alternatively
-curl -o prep.sh https://tinyurl.com/archinstall-prep
+curl -o prep.sh -L https://tinyurl.com/archinstall-prep
 
 chmod +x prep.sh
 ./prep.sh
