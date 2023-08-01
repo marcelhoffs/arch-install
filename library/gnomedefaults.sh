@@ -48,3 +48,11 @@ gsettings set org.gnome.desktop.interface show-battery-percentage true
 # Touchpad
 gsettings set org.gnome.desktop.peripherals.touchpad tap-to-click true
 gsettings set org.gnome.desktop.peripherals.touchpad two-finger-scrolling-enabled true
+
+# Remove launcher icons
+echo 'NoDisplay=true' > /home/"$CURRENTUSER"/.local/share/applications/lstopo.desktop
+echo 'NoDisplay=true' > /home/"$CURRENTUSER"/.local/share/applications/qv4l2.desktop
+echo 'NoDisplay=true' > /home/"$CURRENTUSER"/.local/share/applications/qvidcap.desktop
+echo 'NoDisplay=true' > /home/"$CURRENTUSER"/.local/share/applications/stoken-gui.desktop
+echo 'NoDisplay=true' > /home/"$CURRENTUSER"/.local/share/applications/stoken-gui-small.desktop
+echo 'NoDisplay=true' > /home/"$CURRENTUSER"/.local/share/applications/electron24.desktop
