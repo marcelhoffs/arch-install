@@ -49,6 +49,13 @@ gsettings set org.gnome.desktop.interface show-battery-percentage true
 gsettings set org.gnome.desktop.peripherals.touchpad tap-to-click true
 gsettings set org.gnome.desktop.peripherals.touchpad two-finger-scrolling-enabled true
 
+# Nautilus
+gsettings set org.gnome.nautilus.icon-view default-zoom-level "small"
+gsettings set org.gnome.nautilus.list-view default-zoom-level "small"
+gsettings set org.gnome.nautilus.preferences default-folder-viewer "icon-view"
+gsettings set org.gnome.nautilus.preferences show-delete-permanently true
+gsettings set org.gtk.gtk4.Settings.FileChooser sort-directories-first true
+
 # Remove launcher icons
 mkdir -p /home/"$CURRENTUSER"/.local/share/applications
 echo 'NoDisplay=true' > /home/"$CURRENTUSER"/.local/share/applications/lstopo.desktop
