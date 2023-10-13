@@ -93,6 +93,15 @@ else
   # Ask questions to collect installation parameters
   collect_parameters
 
+  # Define package arrays
+  ARRAYINSTALL=()
+
+  # Package files
+  KERNEL="packages/kernel"
+  BASEPACKAGES="packages/basepackages"
+  CPUINTEL="packages/cpuintel"
+  CPUAMD="packages/cpuamd"
+
   INSTALL_CONTINUE=${INSTALL_CONTINUE^^}
   if [ "$INSTALL_CONTINUE" == 'Y' ]; then
     # Make scripts executable
@@ -104,14 +113,33 @@ else
     # Set timezone
     ./library/timezone.sh | tee -a "$INSTALL_LOG"
 
-    # Install kernel
-    ./library/kernel.sh | tee -a "$INSTALL_LOG"
+    # Read kernel install packages 
+    while read -r line
+    do
+      ARRAYINSTALL+=("$line")
+    done < "$KERNEL"
 
-    # Install base packages
-    ./library/basepackages.sh | tee -a "$INSTALL_LOG"
+    # Read base package install packages 
+    while read -r line
+    do
+      ARRAYINSTALL+=("$line")
+    done < "$BASEPACKAGES"
 
-    # Install CPU Microcode
-    ./library/cpu.sh "$INSTALL_CPU" | tee -a "$INSTALL_LOG"
+    # Read cpu install packages 
+    case "$INSTALL_CPU" in
+      INTEL)
+        CPUINSTALL="$CPUINTEL";;
+      AMD)
+        CPUINSTALL="$CPUAMD";;
+    esac
+
+    while read -r line
+    do
+      ARRAYINSTALL+=("$line")
+    done < "$CPUINSTALL"
+
+    # Install packages
+    sudo pacman -S --noconfirm ${ARRAYINSTALL[@]} | tee -a "$INSTALL_LOG"
 
     # Update pacman mirror list
     ./library/pacmanmirror.sh | tee -a "$INSTALL_LOG"

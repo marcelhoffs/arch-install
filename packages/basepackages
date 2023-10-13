@@ -1,0 +1,17 @@
+archlinux-keyring
+bluez
+bluez-utils
+btrfs-progs
+curl
+dosfstools
+efibootmgr
+fwupd
+git
+neofetch
+networkmanager
+openssh
+reflector
+unrar
+unzip
+wget
+zip
