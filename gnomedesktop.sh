@@ -129,9 +129,6 @@ if [ "$EUID" -ne 0 ]; then
     sudo systemctl enable cups
     sudo systemctl enable avahi-daemon   
 
-    # Update all
-    sudo ./library/update.sh | tee -a "$INSTALL_LOG"
-
     # Set defaults
     ./library/gnomedefaults.sh | tee -a "$INSTALL_LOG"
 
