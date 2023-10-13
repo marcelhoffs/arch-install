@@ -57,21 +57,77 @@ if [ "$EUID" -ne 0 ]; then
     echo -e "${RED}"'════════════════════════════════════════════════'"${NC}"
     echo ''
   else
-    # Install graphics drivers
-    sudo ./library/gpu.sh "$INSTALL_GPU" | tee -a "$INSTALL_LOG"
+    # Define package arrays
+    ARRAYINSTALL=()
+    ARRAYREMOVE=()
+    
+    # Package files
+    GNOMEINSTALL="packages/gnomeinstall"
+    GNOMEREMOVE="packages/gnomeremove"
+    GPUINTEL="packages/gpuintel"
+    GPUAMD="packages/gpuamd"
+    GPUNVIDIA="packages/gpunvidia"
+    FONTS="packages/fonts"
+    BASEAPPS="packages/baseapps"
+    EXTRAAPPS="packages/extraapps"
 
-    # Install fonts
-    sudo ./library/fonts.sh | tee -a "$INSTALL_LOG"
+    # Read gnome install packages 
+    while read -r line
+    do
+      ARRAYINSTALL+=("$line")
+    done < "$GNOMEINSTALL"
 
-    # Install GNOME
-    sudo ./library/gnome.sh | tee -a "$INSTALL_LOG"
+    # Read gnome remove packages 
+    while read -r line
+    do
+      ARRAYREMOVE+=("$line")
+    done < "$GNOMEREMOVE"
 
-    # Install base applications
-    sudo ./library/baseapps.sh | tee -a "$INSTALL_LOG"
+    # Read gpu install packages 
+    case "$INSTALL_GPU" in
+      INTEL)
+        GPUINSTALL="$GPUINTEL";;
+      AMD)
+        GPUINSTALL="$GPUAMD";;
+      NVIDIA)
+        GPUINSTALL="$GPUNVIDIA";;
+    esac
 
+    while read -r line
+    do
+      ARRAYINSTALL+=("$line")
+    done < "$GPUINSTALL"
+
+    # Read fonts install packages 
+    while read -r line
+    do
+      ARRAYINSTALL+=("$line")
+    done < "$FONTS"
+
+    # Read base install packages 
+    while read -r line
+    do
+      ARRAYINSTALL+=("$line")
+    done < "$BASEAPPS"
+
+    # Read extra install packages 
     if [ "$EXTRA" == 'Y' ]; then
-      sudo ./library/extraapps.sh | tee -a "$INSTALL_LOG"
+      while read -r line
+      do
+        ARRAYINSTALL+=("$line")
+      done < "$EXTRAAPPS"
     fi
+
+    # Install packages
+    sudo pacman -S --noconfirm ${ARRAYINSTALL[@]} | tee -a "$INSTALL_LOG"
+
+    # Remove packages
+    sudo pacman -R --noconfirm ${ARRAYREMOVE[@]} | tee -a "$INSTALL_LOG"
+
+    # Enable services
+    sudo systemctl enable gdm
+    sudo systemctl enable cups
+    sudo systemctl enable avahi-daemon   
 
     # Update all
     sudo ./library/update.sh | tee -a "$INSTALL_LOG"
