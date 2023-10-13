@@ -6,7 +6,7 @@ if [ $# -eq 1 ]; then
   # Set root password
   echo ''
   echo -e "${CYAN}"'>> Setting root password'"${NC}"
-  echo root:"$1" | chpasswd
+  echo root:"$1" | chpasswd -c SHA512
 else
   echo 'Provide a password.'
   echo 'Usage: rootpwd.sh <password>'

@@ -13,7 +13,7 @@ if [ $# -eq 2 ]; then
   useradd -m -g users -s /bin/bash "$USERNAME"
   usermod -aG adm "$USERNAME"
   usermod -aG wheel "$USERNAME"
-  echo "$USERNAME":"$PASSWORD" | chpasswd
+  echo "$USERNAME":"$PASSWORD" | chpasswd -c SHA512
   echo "$USERNAME"' ALL=(ALL) ALL' >>/etc/sudoers.d/"$USERNAME"
 
   # Create aliasses
