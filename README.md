@@ -32,7 +32,7 @@ chmod +x prep.sh
 ./prep.sh
 ```
 
-# Step 2: Clone the repository and run the base installer
+# Step 2: Run the base installer
 ```
 cd /arch-install
 ./base.sh
