@@ -129,6 +129,9 @@ if [ "$EUID" -ne 0 ]; then
     sudo systemctl enable cups
     sudo systemctl enable avahi-daemon   
 
+    # Enable fractional scaling
+    sudo ./library/fractionalscaling.sh | tee -a "$INSTALL_LOG"
+
     # Set defaults
     ./library/gnomedefaults.sh | tee -a "$INSTALL_LOG"
 
