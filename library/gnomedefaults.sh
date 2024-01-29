@@ -34,10 +34,10 @@ gsettings set org.gnome.desktop.datetime automatic-timezone true
 gsettings set org.gnome.desktop.interface icon-theme "Papirus"
 
 # Fonts
-gsettings set org.gnome.desktop.interface font-name "Noto Sans 12"
-gsettings set org.gnome.desktop.interface document-font-name "Noto Sans 12"
-gsettings set org.gnome.desktop.interface monospace-font-name "Source Code Pro 14"
-gsettings set org.gnome.desktop.wm.preferences titlebar-font "Noto Sans Bold 12"
+gsettings set org.gnome.desktop.interface font-name "Noto Sans 10"
+gsettings set org.gnome.desktop.interface document-font-name "Noto Sans 10"
+gsettings set org.gnome.desktop.interface monospace-font-name "Source Code Pro 12"
+gsettings set org.gnome.desktop.wm.preferences titlebar-font "Noto Sans Bold 10"
 
 # Battery inidicator
 gsettings set org.gnome.desktop.interface show-battery-percentage true
