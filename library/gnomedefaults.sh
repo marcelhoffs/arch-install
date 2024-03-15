@@ -81,3 +81,4 @@ echo 'NoDisplay=true' > /home/"$CURRENTUSER"/.local/share/applications/stoken-gu
 echo 'NoDisplay=true' > /home/"$CURRENTUSER"/.local/share/applications/electron24.desktop
 echo 'NoDisplay=true' > /home/"$CURRENTUSER"/.local/share/applications/electron25.desktop
 echo 'NoDisplay=true' > /home/"$CURRENTUSER"/.local/share/applications/electron27.desktop
+echo 'NoDisplay=true' > /home/"$CURRENTUSER"/.local/share/applications/electron28.desktop
