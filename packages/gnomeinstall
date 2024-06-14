@@ -7,4 +7,5 @@ gst-plugin-pipewire
 networkmanager-openconnect
 networkmanager-openvpn
 power-profiles-daemon
+sof-firmware
 wireplumber
