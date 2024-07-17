@@ -67,3 +67,6 @@ cd arch-install
 ```
 ---
 <sub>Wallpapers courtesy of the Vanilla OS project: https://github.com/Vanilla-OS</sub>
+
+# Other things
+## Install printer
