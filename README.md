@@ -65,8 +65,6 @@ From there you can start the installer for the GNOME Desktop Environment. Run th
 cd arch-install
 ./gnomedesktop.sh
 ```
----
-<sub>Wallpapers courtesy of the Vanilla OS project: https://github.com/Vanilla-OS</sub>
 
 # Other things
 ## Install printer
@@ -74,3 +72,6 @@ Install a printer with the everywhere driver
 ```
 sudo lpadmin -p "MFC-J5930DW" -E -v ipp://brother.rdbx.be:631 -m everywhere
 ```
+
+---
+<sub>Wallpapers courtesy of the Vanilla OS project: https://github.com/Vanilla-OS</sub>
