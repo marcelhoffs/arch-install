@@ -82,3 +82,4 @@ echo 'NoDisplay=true' > /home/"$CURRENTUSER"/.local/share/applications/electron2
 echo 'NoDisplay=true' > /home/"$CURRENTUSER"/.local/share/applications/electron25.desktop
 echo 'NoDisplay=true' > /home/"$CURRENTUSER"/.local/share/applications/electron27.desktop
 echo 'NoDisplay=true' > /home/"$CURRENTUSER"/.local/share/applications/electron28.desktop
+echo 'NoDisplay=true' > /home/"$CURRENTUSER"/.local/share/applications/electron29.desktop
