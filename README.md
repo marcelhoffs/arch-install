@@ -70,3 +70,7 @@ cd arch-install
 
 # Other things
 ## Install printer
+Install a printer with the everywhere driver
+```
+sudo lpadmin -p "MFC-J5930DW" -E -v ipp://brother.rdbx.be:631 -m everywhere
+```
