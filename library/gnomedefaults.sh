@@ -15,8 +15,8 @@ mkdir -p /home/"$CURRENTUSER"/Pictures
 cp wallpapers/* /home/"$CURRENTUSER"/Pictures
 
 # Set wallpaper
-gsettings set org.gnome.desktop.background picture-uri file:///home/"$CURRENTUSER"/Pictures/vanilla-default.png
-gsettings set org.gnome.desktop.background picture-uri-dark file:///home/"$CURRENTUSER"/Pictures/vanilla-dark.png
+gsettings set org.gnome.desktop.background picture-uri file:///home/"$CURRENTUSER"/Pictures/vanilla-petal-default.png
+gsettings set org.gnome.desktop.background picture-uri-dark file:///home/"$CURRENTUSER"/Pictures/vanilla-petal-dark.png
 
 # Favorite apps
 gsettings set org.gnome.shell favorite-apps "['firefox.desktop', 'org.gnome.Nautilus.desktop', 'org.gnome.Console.desktop', 'org.gnome.Software.desktop']"
